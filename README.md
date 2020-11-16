@@ -2,9 +2,13 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-hello-webapp.git)
 
 <p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/img/how-to.png?raw=true" /></a>
+<a href="https://www.figma.com/file/8xHaE8JAjJUw5Uaeqqb2Gl/PetBuddy--mockup?node-id=0%3A1">FIGMA MOCKUPS</a>
 </p>
 
+<img src="src/img/PETBUDDY_DB_MODEL.png">
+<a href="https://www.figma.com/file/8xHaE8JAjJUw5Uaeqqb2Gl/PetBuddy--mockup?node-id=0%3A1">
+<img src="src/img/color-palette.png">
+</a>
 
 ### Requirements:
 - Make sure you are using node version 10
