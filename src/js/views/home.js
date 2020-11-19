@@ -5,8 +5,8 @@ import { StartRating } from "../component/starsReview.js";
 import { CardReview } from "../component/cardReview.js";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<CardReview userName="María" />
+	<div className="text-center margin-5">
+		<CardReview />
 		<h1>Hello Rigo!</h1>
 		<p>
 			<img src={rigoImage} />
