@@ -1,16 +1,20 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			animals: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					id: 1,
+					user_id: 1,
+					name: "Pluto",
+					image: "https://i.ebayimg.com/images/g/apgAAOSwd4tT5JgM/s-l300.jpg",
+					animal_type: "perro",
+					age: 3,
+					personality: "amigable",
+					gender: false,
+					weight: 20.0,
+					size: 40.0,
+					diseases: "no tiene",
+					sterilized: true
 				}
 			]
 		},
@@ -21,8 +25,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                fetch().then().then(data => setStore({ "foo": data.bar }))
+            */
 			},
 			changeColor: (index, color) => {
 				//get the store
