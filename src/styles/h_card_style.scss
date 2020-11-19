@@ -1,0 +1,42 @@
+$secondarycolor : #464B57;
+
+.no-gutters{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 8rem;
+    padding: 0;
+    width: 100%;
+}
+.card-body-continer{
+    text-align: right;
+    background-image: url("../assets/img/animal_print_v2.png");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 100%;
+    width: 90%;
+}
+img {
+    width: 8rem;
+    height: 8rem;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    img {
+        height: 15rem;
+        width: 20rem;
+    }
+
+    
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }
