@@ -3,7 +3,7 @@ import React, { useState, Component } from "react";
 import { render } from "react-dom";
 import PetsIcon from "@material-ui/icons/Pets";
 
-const StartRating = () => {
+export const StartRating = () => {
 	const [rating, setRating] = useState(null);
 	const [hover, setHover] = useState(null);
 
