@@ -6,22 +6,22 @@ import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
+import "../../styles/h_card_style.scss";
+
 export const HorizontalCard = props => {
 	return (
-		<div className="card mb-3" style={{ width: "540px" }}>
+		<div className="card mb-3">
 			<div className="row no-gutters">
-				<div className="col-md-4">
-					<img src={props.source} className="card-img" alt="Profile picture" />
-				</div>
-				<div className="col-md-8">
+				<img src={props.source} className="" alt="Profile picture" />
+				<div className="card-body-continer">
 					<div className="card-body">
 						<h5 className="card-title">{props.name}</h5>
 						<p className="card-text">Servicion ofrecido: {props.service}</p>
 						<p className="card-text">
-							<small className="text-muted">{props.date}</small>
+							<small className="text-ligth">Fecha: {props.date}</small>
 						</p>
 						<p className="card-text">
-							<small className="text-muted">Precio: {props.price} €</small>
+							<small className="text-ligth">Coste del servicio: {props.price} €</small>
 						</p>
 					</div>
 				</div>
