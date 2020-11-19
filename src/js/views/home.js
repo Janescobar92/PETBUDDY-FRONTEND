@@ -6,7 +6,7 @@ import { CardReview } from "../component/cardReview.js";
 
 export const Home = () => (
 	<div className="text-center mt-5">
-		<CardReview />
+		<CardReview userName="María" />
 		<h1>Hello Rigo!</h1>
 		<p>
 			<img src={rigoImage} />
