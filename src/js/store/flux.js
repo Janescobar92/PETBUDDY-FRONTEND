@@ -1,6 +1,21 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			user: [
+				{
+					id: 1,
+					email: "carlosjuan1812@gmail.com",
+					password: "123456",
+					is_active: true,
+					name: "Juan Carlos",
+					last_name: "Alcalde",
+					phone: "605143832",
+					location: "calle Alberto Conti",
+					biografy: "Me gusta los perros",
+					image:
+						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+				}
+			],
 			animals: [
 				{
 					id: 1,
@@ -15,6 +30,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 					size: 40.0,
 					diseases: "no tiene",
 					sterilized: true
+				}
+			],
+			user_services: [
+				{
+					id: 1,
+					service_id: 1,
+					service: "Paseador",
+					date: "18 de Nov",
+					price: 20.0
+				}
+			],
+			services: [
+				{
+					id: 1,
+					service: "Paseador",
+					description: "Animals mean all to me.",
+					price: 20.0,
+					image:
+						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+				}
+			],
+			user_join_service_join_user_services: [
+				{
+					user_id: 1,
+					service_id: 1,
+					image:
+						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+					date: "18 de Nov",
+					price: 20.0,
+					name: "Juan Carlos",
+					service: "paseador"
 				}
 			]
 		},
