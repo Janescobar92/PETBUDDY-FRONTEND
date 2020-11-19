@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					animal_type: "perro",
 					age: 3,
 					personality: "amigable",
-					sex: false,
+					gender: false,
 					weight: 20.0,
 					size: 40.0,
 					diseases: "no tiene",
