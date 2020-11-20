@@ -16,7 +16,7 @@ export const HorizontalCard = props => {
 			</div>
 			<div className="text-container">
 				<h5 className="card-title">{props.name}</h5>
-				<p className="card-text">Servicion ofrecido: {props.service}</p>
+				<p className="card-text">Servicio ofrecido: {props.service}</p>
 				<p className="card-text">
 					<small className="text-ligth">Fecha: {props.date}</small>
 				</p>
