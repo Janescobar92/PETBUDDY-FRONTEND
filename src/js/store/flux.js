@@ -49,6 +49,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					price: 20.0,
 					image:
 						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+				},
+				{
+					id: 2,
+					service: "Cuidador",
+					description: "Animals is my passion.",
+					price: 15.5,
+					image:
+						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 				}
 			],
 			user_join_service_join_user_services: [

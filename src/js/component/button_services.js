@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext.js";
 
 export const Button_Services = props => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<Link to="/services">
 			<button type="button">{props.service}</button>

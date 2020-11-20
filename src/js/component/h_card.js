@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Context } from "../store/appContext.js";
 
@@ -15,13 +15,13 @@ export const HorizontalCard = props => {
 				<img src={props.source} className="" alt="Profile picture" />
 			</div>
 			<div className="text-container">
-				<h5 className="card-title">{props.name}</h5>
-				<p className="card-text">Servicion ofrecido: {props.service}</p>
+				<h5 className="card-title text-dark">{props.name}</h5>
+				<p className="card-text text-dark">Servicion ofrecido: {props.service}</p>
 				<p className="card-text">
-					<small className="text-ligth">Fecha: {props.date}</small>
+					<small className="text-dark">Fecha: {props.date}</small>
 				</p>
 				<p className="card-text">
-					<small className="text-ligth">Coste del servicio: {props.price} €</small>
+					<small className="text-dark">Coste del servicio: {props.price} €</small>
 				</p>
 			</div>
 		</div>
