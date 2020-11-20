@@ -17,7 +17,7 @@ export const StartRating = () => {
 						<input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} />
 						<i
 							className="fas fa-paw reviewPoints"
-							// style={ratingValue < (hover || rating) ? "#fabf66" : "#ccd4e0"}
+							//style={ratingValue < (hover || rating) ? "#fabf66" : "#ccd4e0"}
 							sice={100}
 							onMousseEnter={() => setHover(ratingValue)}
 							onMousseLeave={() => setHover(ratingValue)}
@@ -25,7 +25,7 @@ export const StartRating = () => {
 					</label>
 				);
 			})}
-			<p>The rating is {rating}.</p>
+			<p>The rating is {rating}</p>
 		</div>
 	);
 };
