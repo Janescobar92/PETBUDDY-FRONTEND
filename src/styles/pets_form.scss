@@ -1,0 +1,12 @@
+.form-pet-container{
+    background-image: url("../assets/img/animal_print_v2_copy.png");
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 0.5rem;
+    .input{
+        margin: 0.5rem 0 0.5rem 0;
+    }
+}
