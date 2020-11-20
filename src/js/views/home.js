@@ -2,11 +2,11 @@ import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { StartRating } from "../component/starsReview.js";
-import { CardReview } from "../component/cardReview.js";
+import { EditReview } from "../component/editReview.js";
 
 export const Home = () => (
 	<div className="text-center margin-5">
-		<CardReview />
+		<EditReview />
 		<h1>Hello Rigo!</h1>
 		<p>
 			<img src={rigoImage} />
