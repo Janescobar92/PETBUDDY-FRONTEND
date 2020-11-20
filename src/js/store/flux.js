@@ -61,6 +61,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					price: 20.0,
 					name: "Juan Carlos",
 					service: "paseador"
+				},
+				{
+					user_id: 2,
+					service_id: 2,
+					image:
+						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+					date: "20 de Oct",
+					price: 15.0,
+					name: "Jan",
+					service: "Canguro"
 				}
 			]
 		},
