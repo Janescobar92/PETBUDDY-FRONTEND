@@ -8,10 +8,12 @@ export function ReviewValue(props) {
 	return (
 		<div className="card col-sm-6 col-lg-4" style={{ width: "25rem" }}>
 			<div className="card-body">
-				<ValueStarsFixed review={props.patitas} />
-				<p className="lead">{props.userName}</p>
-				<p className="subtitle">{props.platano}</p>
+				<div className="d-flex justify-content-center">
+					<ValueStarsFixed review={props.patitas} /> <i className="far fa-edit ml-5" />
+				</div>
+				<p className="lead userNameTitle">{props.userName}</p>
 				<p className="lead">{props.text}</p>
+				<p className="subtitle">{props.platano}</p>
 			</div>
 		</div>
 	);
