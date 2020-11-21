@@ -6,12 +6,12 @@ export const PetsForm = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="form-pet-container">
+		<div className="form-pet-container align-self-center my-3">
 			<label htmlFor="pet_name">Nombre</label>
 			<input type="text" className="input" name="pet_name" id="name" />
 			<label htmlFor="Pet type">Tipo de mascota</label>
 			<select type="select" className="input" name="Pet type" id="type">
-				<option value="True" selected disabled>
+				<option value="True" defaultValue disabled>
 					Selecionar
 				</option>
 				<option value="perro">Perro</option>
@@ -24,7 +24,7 @@ export const PetsForm = () => {
 			<input type="text" className="input" name="Age" id="age" />
 			<label htmlFor="Personality">Carácter</label>
 			<select type="select" className="input" name="Personality" id="personality">
-				<option value="True" selected disabled>
+				<option value="True" defaultValue disabled>
 					Selecionar
 				</option>
 				<option value="amigable">Amigable</option>
@@ -39,7 +39,7 @@ export const PetsForm = () => {
 			<input type="number" className="input" name="Size" id="size" />
 			<label htmlFor="Gender">Género</label>
 			<select type="select" className="input" name="Gender" id="gender">
-				<option value="True" selected disabled>
+				<option value="True" defaultValue disabled>
 					Selecionar
 				</option>
 				<option value="True">Hembra</option>
@@ -49,7 +49,7 @@ export const PetsForm = () => {
 			<input type="text" className="input" name="Affections" id="affections" />
 			<label htmlFor="Sterilized">Esterilizado</label>
 			<select type="select" className="input" name="Sterilized" id="sterilized">
-				<option value="True" selected disabled>
+				<option value="True" defaultValue disabled>
 					Selecionar
 				</option>
 				<option value="True">Si</option>
@@ -60,7 +60,9 @@ export const PetsForm = () => {
 			<div>
 				<button
 					onClick={() => {
-						actions.MyPetsInputReciver(), actions.handleClick();
+						// actions.MyPetsInputReciver(), actions.handleClick();
+						actions.createPet(actions.MyPetsInputReciver());
+						actions.showComponent();
 					}}>
 					Crear
 				</button>

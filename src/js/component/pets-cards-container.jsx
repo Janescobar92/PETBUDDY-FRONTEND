@@ -11,10 +11,14 @@ export const PetsCardContainer = () => {
 	// const handleClick = () => setShowResults(!showResults);
 	return (
 		<div>
-			<h2>Pets</h2>
-			<button onClick={() => actions.handleClick()}>Add pet</button>
-			{store.result ? <PetsForm /> : null}
-			<PetsCard />
+			<div>
+				<h2>Pets</h2>
+				<button onClick={() => actions.showComponent()}>Add pet</button>
+			</div>
+			<div className="d-flex flex-column justify-content-center">
+				{store.show ? <PetsForm /> : null}
+				<PetsCard />
+			</div>
 		</div>
 	);
 };

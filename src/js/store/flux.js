@@ -18,17 +18,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sterilized: null
 				}
 			],
-			result: false
+			show: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			handleClick: () => {
-				if (getStore().result == false) {
-					setStore((getStore().result = true));
+			showComponent: () => {
+				if (getStore().show == false) {
+					setStore((getStore().show = true));
 				} else {
-					setStore((getStore().result = false));
+					setStore((getStore().show = false));
 				}
-				console.log(getStore().result, " HOLA ESTOY AQUI");
+			},
+			createPet: petData => {
+				// fetch("https://assets.breatheco.de/apis/fake/contact/", {
+				// 	method: "POST",
+				// 	body: JSON.stringify(param),
+				// 	headers: {
+				// 		"Content-Type": "application/json"
+				// 	}
+				// })
+				// .then(response => response.json())
+				// .then(answerUpload => {
+				// 	getActions().getContacts();
+				// 	console.log("Success: ", JSON.stringify(answerUpload));
+				// });
+				setStore({ animals: [...getStore().animals, petData] });
+				// setStore({ animals: petData });
 			},
 			MyPetsInputReciver: () => {
 				let myPetName = document.querySelector("#name").value;
@@ -54,7 +69,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					diseases: myPetAffections,
 					sterilized: myPetSterilized
 				};
-				console.log(newPet);
 				return newPet;
 			},
 
