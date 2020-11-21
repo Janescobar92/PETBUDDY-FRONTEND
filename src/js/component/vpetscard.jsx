@@ -25,7 +25,7 @@ export const PetsCard = () => {
 					kg, tiene un tamaño de {animal.size}
 					cm y es {animal.gender ? "hembra" : "macho"}.
 				</p>
-				<p className="card-text">Affecciones: {animal.diseases}</p>
+				<p className="card-text">Afecciones: {animal.diseases}</p>
 				<p className="card-text">Esterilizado: {animal.sterilized ? "Si" : "No"}</p>
 			</div>
 		</div>
