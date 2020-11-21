@@ -43,7 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	console.log("Success: ", JSON.stringify(answerUpload));
 				// });
 				setStore({ animals: [...getStore().animals, petData] });
-				// setStore({ animals: petData });
 			},
 			MyPetsInputReciver: () => {
 				let myPetName = document.querySelector("#name").value;
