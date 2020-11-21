@@ -88,8 +88,14 @@ export const PetsForm = () => {
 				</div>
 				<label htmlFor="Img">Img</label>
 				<input type="file" name="Img" className="input-file my-2 col-sm-12" accept="image/jpg" id="Img" />
-				<button type="submit">Crear</button>
-				<button>Borrar</button>
+				<div className="form-button-style container">
+					<button onClick={() => actions.showComponent()}>
+						<i className="fas fa-minus-circle" />
+					</button>
+					<button type="submit">
+						<i className="fas fa-plus-circle" />
+					</button>
+				</div>
 			</form>
 		</div>
 	);
