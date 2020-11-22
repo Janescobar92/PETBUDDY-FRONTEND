@@ -1,9 +1,27 @@
-    .navbar{
-        padding-left: 10rem;
-        padding-right: 10rem;
+.navbar{
+    padding-left: 10rem;
+  padding-right: 10rem;
 
-        }
- @media (max-width: 920) { 
+ }
+ @media (max-width: 800px) { 
+    .navbar{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    }
+ }
+  @media (max-width: 550px) { 
+    .navbar{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    }
+ }
+   @media (max-width: 369px) { 
+    .navbar{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    }
+ }
+    @media (max-width: 300px) { 
     .navbar{
     padding-left: 0;
     padding-right: 0;

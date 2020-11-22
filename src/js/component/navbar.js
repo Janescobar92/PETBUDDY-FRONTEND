@@ -4,9 +4,12 @@ import "../../styles/navbar.scss";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<span className="navbar-brand mb-0 h1">
+					<i className="fas fa-paw" />
+					PetBuddy
+				</span>
 			</Link>
 			<div className="dropdown">
 				<button
@@ -20,11 +23,11 @@ export const Navbar = () => {
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<Link to="/profile">
-						<p className="btn btn-primary">profile</p>
+						<p>Perfil</p>
 					</Link>
-					<a className="dropdown-item" href="#">
-						Another action
-					</a>
+					<Link to="/history">
+						<p>Hitorial</p>
+					</Link>
 					<a className="dropdown-item" href="#">
 						Something else here
 					</a>
