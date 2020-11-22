@@ -28,9 +28,6 @@ export const Navbar = () => {
 					<Link to="/history">
 						<p>Hitorial</p>
 					</Link>
-					<a className="dropdown-item" href="#">
-						Something else here
-					</a>
 				</div>
 			</div>
 		</nav>

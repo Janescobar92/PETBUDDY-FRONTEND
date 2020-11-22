@@ -1,15 +1,16 @@
 import React from "react";
 import "../../styles/jumbotron.scss";
+import PropTypes from "prop-types";
 
-export const ProfilePicture = () => {
+export const ProfilePicture = props => {
 	return (
 		<div>
 			<div className="jumbotron-profile-picture-shape">
-				<img
-					src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?cs=srgb&dl=pexels-pixabay-415829.jpg&fm=jpg"
-					alt="Profile picture"
-				/>
+				<img src={props.imgSrc} alt="Profile picture" />
 			</div>
 		</div>
 	);
+};
+ProfilePicture.propTypes = {
+	imgSrc: PropTypes.string
 };
