@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetGender = document.querySelector("#gender").value;
 				let myPetAffections = document.querySelector("#affections").value;
 				let myPetSterilized = document.querySelector("#sterilized").value;
-				let myPetImg = document.querySelector("#img").value;
+				let myPetImg = document.querySelector("#Img").value;
 				let newPet = {
 					user_id: getStore().user_id,
 					name: myPetName,

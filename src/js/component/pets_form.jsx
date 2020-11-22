@@ -9,9 +9,10 @@ export const PetsForm = () => {
 		<div className="form-pet-container align-self-center my-3 container">
 			<form
 				action="#"
-				onSubmit={() => {
+				onSubmit={event => {
 					actions.createPet(actions.MyPetsInputReciver());
 					actions.showComponent();
+					event.preventDefault();
 				}}>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>
@@ -32,7 +33,7 @@ export const PetsForm = () => {
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Age">Edad</label>
-					<input type="text" className="input" name="Age" id="age" required />
+					<input type="text" className="input" name="Age" id="age" required maxLength="2" />
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Personality">Carácter</label>
@@ -49,11 +50,11 @@ export const PetsForm = () => {
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Weight">Peso/kg</label>
-					<input type="number" className="input" name="Weight" id="weight" required />
+					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Size">Tamaño/cm</label>
-					<input type="number" className="input" name="Size" id="size" required />
+					<input type="text" className="input" name="Size" id="size" required maxLength="4" />
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Gender">Género</label>
