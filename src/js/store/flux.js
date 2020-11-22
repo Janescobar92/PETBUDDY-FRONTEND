@@ -68,6 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					diseases: myPetAffections,
 					sterilized: myPetSterilized
 				};
+				console.log(newPet, "THIS IS MY NEW PET");
 				return newPet;
 			},
 
