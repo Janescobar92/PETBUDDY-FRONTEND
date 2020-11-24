@@ -6,15 +6,15 @@ import { Context } from "../store/appContext.js";
 
 export const CardContainer = () => {
 	const { store, actions } = useContext(Context);
-	let myJoins = store.user_join_service_join_user_services;
-	const cards = myJoins.map((myJoin, index) => (
+	let myResults = store.yove_worked_history;
+	const cards = myResults.map((myResult, index) => (
 		<HorizontalCard
 			key={index}
-			service={myJoin.service}
-			source={myJoin.image}
-			date={myJoin.date}
-			price={myJoin.price}
-			name={myJoin.name}
+			service={myResult.service}
+			source={myResult.image}
+			date={myResult.date}
+			price={myResult.price}
+			name={myResult.name}
 		/>
 	));
 	return cards;

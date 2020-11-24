@@ -51,31 +51,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 				}
 			],
-			user_join_service_join_user_services: [
-				{
-					user_id: 1,
-					service_id: 1,
-					image:
-						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-					date: "18 de Nov",
-					price: 20.0,
-					name: "Juan Carlos",
-					service: "paseador"
-				},
-				{
-					user_id: 2,
-					service_id: 2,
-					image:
-						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-					date: "20 de Oct",
-					price: 15.0,
-					name: "Jan",
-					service: "Canguro"
-				}
-			]
+			yove_worked_history: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			getWhoHireYouHistory: () => {
+				// use fetch here
+				let data = [
+					{
+						id: 1,
+						name: "Juan Carlos",
+						last_name: "Alcalde",
+						phone: "605143832",
+						image:
+							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+						price: 20,
+						date: "18 de noviembre"
+					},
+					{
+						id: 2,
+						name: "María",
+						last_name: "Theodor",
+						phone: "605143832",
+						image:
+							"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+						price: 15,
+						date: "20 de enero "
+					}
+				];
+				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
+			},
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
