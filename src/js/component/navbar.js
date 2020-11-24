@@ -5,7 +5,7 @@ import "../../styles/navbar.scss";
 export const Navbar = () => {
 	return (
 		<nav className="navbar">
-			<Link to="/profile">
+			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
 					<i className="fas fa-paw" />
 					PetBuddy
@@ -13,26 +13,6 @@ export const Navbar = () => {
 			</Link>
 			<div className="dropdown">
 				<button
-					className="btn btn-secondary dropdown-toggle"
-					type="button"
-					id="dropdownMenuButton"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false">
-					Dropdown button
-				</button>
-				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a className="dropdown-item" href="#">
-						Action
-					</a>
-					<a className="dropdown-item" href="#">
-						Another action
-					</a>
-					<a className="dropdown-item" href="#">
-						Something else here
-					</a>
-				</div>
-				{/* <button
 					className="btn btn-secondary dropdown-toggle"
 					type="button"
 					id="dropdownMenuButton"
@@ -48,7 +28,7 @@ export const Navbar = () => {
 					<Link to="/history">
 						<p>Hitorial</p>
 					</Link>
-				</div> */}
+				</div>
 			</div>
 		</nav>
 	);
