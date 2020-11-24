@@ -14,6 +14,18 @@ export const ServiceForm = () => {
 					actions.showComponent();
 					event.preventDefault();
 				}}>
+				<div className="d-flex flex-row justify-content-between align-items-center">
+					<label htmlFor="Weight">Paseador</label>
+					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
+				</div>
+				<div className="d-flex flex-row justify-content-between align-items-center">
+					<label htmlFor="Weight">Cuidador</label>
+					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
+				</div>
+				<div className="d-flex flex-row justify-content-between align-items-center">
+					<label htmlFor="Weight">Hotel</label>
+					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
+				</div>
 				{/* <div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>
 					<input type="text" className="input" name="pet_name" id="name" required />

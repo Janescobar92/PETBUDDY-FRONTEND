@@ -9,13 +9,13 @@ export const ServiceCardContainer = () => {
 	//  aqui va un map
 
 	return (
-		<div>
-			<div className="row justify-content-center">
-				<h2> Services, info and prices</h2>
-				<button onClick={() => actions.showComponent()}>
-					<strong>+</strong>
-				</button>
-			</div>
+		<div className="body-container-margins">
+			<h2> Services, info and prices</h2>
+			<button onClick={() => actions.showComponent()}>
+				<i className="fas fa-plus-circle" />
+				{/* <strong>+</strong> */}
+			</button>
+
 			<div className="d-flex flex-column justify-content-center">
 				{store.show ? <ServiceForm /> : null}
 				<ServiceCard />
