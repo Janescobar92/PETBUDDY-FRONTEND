@@ -7,8 +7,7 @@ export const Navbar = () => {
 		<nav className="navbar">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
-					<i className="fas fa-paw" />
-					PetBuddy
+					<i className="fas fa-paw" /> PetBuddy
 				</span>
 			</Link>
 			<div className="dropdown">
