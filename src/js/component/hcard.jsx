@@ -16,7 +16,7 @@ export const HorizontalCard = props => {
 			</div>
 			<div className="text-container">
 				<h5 className="card-title">{props.name}</h5>
-				<p className="card-text">Servicio ofrecido: {props.service}</p>
+				<p className="card-text">Servicio ofrecido: {props.service_type}</p>
 				<p className="card-text">
 					<small className="text-ligth">Fecha: {props.date}</small>
 				</p>
@@ -31,6 +31,6 @@ HorizontalCard.propTypes = {
 	source: PropTypes.string,
 	name: PropTypes.string,
 	date: PropTypes.string,
-	service: PropTypes.string,
+	service_type: PropTypes.string,
 	price: PropTypes.number
 };

@@ -10,7 +10,7 @@ export const CardContainer = () => {
 	const cards = myResults.map((myResult, index) => (
 		<HorizontalCard
 			key={index}
-			service={myResult.service}
+			service_type={myResult.service_type}
 			source={myResult.image}
 			date={myResult.date}
 			price={myResult.price}

@@ -100,7 +100,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						image:
 							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
 						price: 20,
-						date: "18 de noviembre"
+						date: "18 de noviembre",
+						service_type: "paseador"
 					},
 					{
 						id: 2,
@@ -110,7 +111,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						image:
 							"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 						price: 15,
-						date: "20 de enero "
+						date: "20 de enero ",
+						service_type: "canguro"
 					}
 				];
 				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
