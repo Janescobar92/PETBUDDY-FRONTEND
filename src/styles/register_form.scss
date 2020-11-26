@@ -1,6 +1,6 @@
+$primarycolor: #659AEB;
 .form-pet-container{
     position:fixed;
-    background: white;
     height: auto;
     top:50%;
     left:50%;
@@ -9,16 +9,23 @@
     display: flex;
     width: 360px;
     flex-direction: column;
-    border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
     padding: 0.5rem;
     z-index: 1;
+    border: 1px solid $primarycolor;
     .input{
         margin: 0.5rem 0 0.5rem 0;
-        border: 1px solid white;
         border-radius: 0.5rem;
         text-align: right;
     }
+}
+.close{
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #f8f9fa;
+    text-shadow: 0 1px 0 #fff;
 }
 .open-modal-blur{
     top:0%;

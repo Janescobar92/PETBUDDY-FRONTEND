@@ -11,6 +11,15 @@ export const RegisterModal = () => {
 			<form
 			// oncSubmit={()=>}
 			>
+				{" "}
+				<button
+					type="button"
+					className="close"
+					data-dismiss="modal"
+					aria-label="Close"
+					onClick={() => actions.showComponent()}>
+					<span aria-hidden="true">&times;</span>
+				</button>
 				<div className="form-group">
 					<label htmlFor="exampleInputPassword1">Nombre</label>
 					<input type="text" className="form-control" id="exampleInputPassword1" placeholder="Nombre" />
@@ -40,7 +49,6 @@ export const RegisterModal = () => {
 					<label htmlFor="exampleInputPassword1">Password</label>
 					<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
 				</div>
-
 				<button type="submit" className="btn btn-primary">
 					Submit
 				</button>
