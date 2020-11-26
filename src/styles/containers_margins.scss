@@ -1,3 +1,13 @@
 .body-container-margins{
     margin: 2rem 20%;
+    button{
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        color: #659AEB;
+        float: right;
+    }
+    p{
+    display: flex;
+    justify-content: space-between;
+}
 }

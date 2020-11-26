@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import "../../styles/pets_form.scss";
+import "../../styles/service_form.scss";
 import { Context } from "../store/appContext.js";
 
 export const ServiceForm = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="form-pet-container align-self-center my-3 container">
+		<div className="service-form-container align-self-center my-3 container">
 			<form
 				action="#"
 				onSubmit={event => {
@@ -15,16 +15,50 @@ export const ServiceForm = () => {
 					event.preventDefault();
 				}}>
 				<div className="d-flex flex-row justify-content-between align-items-center">
-					<label htmlFor="Weight">Paseador</label>
-					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
+					<label htmlFor="Service">Paseador</label>
+					<div className="form-check">
+						<input
+							className="form-check-input position-static"
+							type="checkbox"
+							id="blankCheckbox"
+							value="option1"
+						/>
+					</div>
+				</div>
+				<div style={{ display: "block ruby" }}>
+					<input type="text" className="input" name="Paseador" id="Service" required maxLength="4" />
+					<p>(€/h)</p>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
-					<label htmlFor="Weight">Cuidador</label>
-					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
+					<label htmlFor="Service">Cuidador</label>
+					<div className="form-check">
+						<input
+							className="form-check-input position-static"
+							type="checkbox"
+							id="blankCheckbox"
+							value="option2"
+						/>
+					</div>
 				</div>
+				<div style={{ display: "block ruby" }}>
+					<input type="text" className="input" name="Cuidador" id="Service" required maxLength="4" />
+					<p>(€/h)</p>
+				</div>
+
 				<div className="d-flex flex-row justify-content-between align-items-center">
-					<label htmlFor="Weight">Hotel</label>
-					<input type="text" className="input" name="Weight" id="weight" required maxLength="4" />
+					<label htmlFor="Service">Hotel</label>
+					<div className="form-check">
+						<input
+							className="form-check-input position-static"
+							type="checkbox"
+							id="blankCheckbox"
+							value="option3"
+						/>
+					</div>
+				</div>
+				<div style={{ display: "block ruby" }}>
+					<input type="text" className="input" name="Hotel" id="Service" required maxLength="4" />
+					<p>(€/h)</p>
 				</div>
 				{/* <div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>
@@ -99,8 +133,8 @@ export const ServiceForm = () => {
 						<option value="False">No</option>
 					</select>
 				</div> */}
-				<label htmlFor="Img">Img</label>
-				<input type="file" name="Img" className="input-file my-2 col-sm-12" accept="image/jpg" id="Img" />
+				{/* <label htmlFor="Img">Img</label>
+				<input type="file" name="Img" className="input-file my-2 col-sm-12" accept="image/jpg" id="Img" /> */}
 				<div className="form-button-style container">
 					<button onClick={() => actions.showComponent()}>
 						<i className="fas fa-minus-circle" />
