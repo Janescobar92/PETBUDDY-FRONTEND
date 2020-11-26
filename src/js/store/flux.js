@@ -143,7 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					last_name: myLast_name,
 					password: myPassword
 				};
-				console.log(newUser);
+				// console.log(newUser);
 				return newUser;
 			},
 			showComponent: () => {
