@@ -137,14 +137,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myEmail = document.querySelector("#email").value;
 				let myLast_name = document.querySelector("#last_name").value;
 				let myPassword = document.querySelector("#password").value;
-				let newUser = {
-					name: myFullName,
-					email: myEmail,
-					last_name: myLast_name,
-					password: myPassword
-				};
-				// console.log(newUser);
-				return newUser;
+				let myRepeatPassword = document.querySelector("#repeatPassword").value;
+				if (myPassword == myRepeatPassword) {
+					let newUser = {
+						name: myFullName,
+						email: myEmail,
+						last_name: myLast_name,
+						password: myPassword
+					};
+					getActions().showComponent();
+					// console.log(newUser);
+					return newUser;
+				} else {
+					alert("Los passwords no coinciden");
+				}
 			},
 			showComponent: () => {
 				if (getStore().show == false) {
