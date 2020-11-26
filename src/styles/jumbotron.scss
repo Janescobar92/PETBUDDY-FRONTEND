@@ -102,6 +102,13 @@ margin-top: 10rem;
      .jumbotron-background-wave{
         height: 500px;
     }
+     .Jumbotron-img-size{
+     width: 55vw;
+    margin-top: 2rem;
+    }
+    .jumbotron-tiltle--buttons-container .jumbotronlanding-title-size{
+        font-size: 5rem;
+    }
 }
  // // Large devices (desktops, 992px and up)
 @media (max-width: 1200px) { 
@@ -110,6 +117,10 @@ margin-top: 10rem;
             .jumbotron-profile-picture-shape{
                 margin-top: 6rem;
             }
+    }
+    .Jumbotron-img-size{
+    margin-top: 5rem;
+    width: 60vw;
     }
 }
 // // Medium devices (tablets, 768px and up)
@@ -294,8 +305,8 @@ margin-top: 10rem;
     align-self: center;
     margin-top:0;
     transform: translateY(-15%);
+        }
     }
-}
     .jumbotron-profile-picture-shape{
     height: 10rem;
     width: 10rem;
@@ -306,7 +317,7 @@ margin-top: 10rem;
     }
     .Jumbotron-img-size{
     display:none;
-}
+    }
 .jumbotron-tiltle--buttons-container{
     margin-top: 2rem;
     .jumbotronlanding-title-size{
