@@ -45,7 +45,7 @@ export const Jumbotron = props => {
 			<div className="jumbotron-background-wave">
 				<div className="jumbotron-tiltle--buttons-container">
 					<h1 className="jumbotronlanding-title-size">Welcome to PetBUDDY</h1>
-					<div className="jumbotron-buttons-container">
+					<div className="jumbotron-buttons-container container">
 						<button className="button-login-style">Login</button>
 						<button className="button-login-style mt-4">Register</button>
 					</div>

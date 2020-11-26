@@ -304,5 +304,30 @@ margin-top: 10rem;
         margin-left: 1rem;
         }
     }
+    .Jumbotron-img-size{
+    display:none;
+}
+.jumbotron-tiltle--buttons-container{
+    margin-top: 2rem;
+    .jumbotronlanding-title-size{
+        margin: auto;
+        width: 80%;
+        text-align: center;
+        margin-top: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 3rem;
+        line-height: 42px;
+    }
+}
+.jumbotron-buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    .button-login-style{
+        font-size: 1.5rem;
+        }
+}
+    
  }
 
