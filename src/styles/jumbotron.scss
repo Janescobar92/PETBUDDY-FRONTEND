@@ -50,7 +50,35 @@ $primarycolor: #659AEB;
         height: 100%;
     }
 }
-
+.Jumbotron-img-size{
+    width:50vw;
+}
+.jumbotron-tiltle--buttons-container{
+margin-top: 10rem;
+.jumbotronlanding-title-size{
+    width: 580px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 6rem;
+    line-height: 80px;
+    }
+}
+.jumbotron-buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    .button-login-style{
+    margin-top: 3rem;
+    background-color: #221E1E;
+    width: 340px;
+    height: 57px;
+    left: 806px;
+    top: 385px;
+    border-radius: 10px;
+    color: white;
+    font-size: 2rem;
+    }
+}
 @media (max-width: 1600px) { 
     .jumbotron-title-size{ 
     font-size: 15vh;
