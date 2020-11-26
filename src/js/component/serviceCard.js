@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const ServiceCard = () => {
 	const { store, actions } = useContext(Context);
 	const cards = store.services.map((service, index) => (
-		<div style={{ width: "19rem", margin: "auto", color: "black", fontSize: "1.1rem" }} key={index}>
+		<div className="service-body d-flex justify-content-center" key={index}>
 			<div>
 				<p>
 					<strong>Servicio:</strong>
@@ -18,11 +18,11 @@ export const ServiceCard = () => {
 				</p>
 				<p> {service.description}</p>
 				<p>
-					<strong>Price:</strong> {service.price}
+					<strong>Precio:</strong> {service.price}
 					€/h
 				</p>
 				<p>
-					<strong>Schedule:</strong> {service.schedule}
+					<strong>Horario:</strong> {service.schedule}
 				</p>
 			</div>
 		</div>

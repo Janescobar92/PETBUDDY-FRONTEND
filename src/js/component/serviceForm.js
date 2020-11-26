@@ -14,6 +14,7 @@ export const ServiceForm = () => {
 					actions.showComponent();
 					event.preventDefault();
 				}}>
+				<h4 style={{ display: "flex", justifyContent: "center" }}>Añade Servicio</h4>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Service">Paseador</label>
 					<div className="form-check">
@@ -44,7 +45,6 @@ export const ServiceForm = () => {
 					<input type="text" className="input" name="Cuidador" id="Service" required maxLength="4" />
 					<p>(€/h)</p>
 				</div>
-
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Service">Hotel</label>
 					<div className="form-check">
@@ -59,6 +59,10 @@ export const ServiceForm = () => {
 				<div style={{ display: "block ruby" }}>
 					<input type="text" className="input" name="Hotel" id="Service" required maxLength="4" />
 					<p>(€/h)</p>
+				</div>
+				<div className="d-flex flex-row justify-content-between align-items-center">
+					<label htmlFor="Service">Descripcion:</label>
+					<input type="text" className="input" name="Descripcion" id="Service" required maxLength="4" />
 				</div>
 				{/* <div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>
