@@ -42,6 +42,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			show: false
 		},
 		actions: {
+			registerUser: params => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/register", {
+					method: "POST",
+					body: JSON.stringify(params),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						// getActions().getContacts();
+						console.log("Success: ", JSON.stringify(answerUpload));
+					});
+			},
 			getUser: () => {
 				// añadir fetch cuando este el back
 				let userData = [
@@ -117,6 +131,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				];
 				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
+			},
+			MyRegisterInputReciver: () => {
+				let myFullName = document.querySelector("#name").value;
+				let myEmail = document.querySelector("#email").value;
+				let myLast_name = document.querySelector("#last_name").value;
+				let myPassword = document.querySelector("#password").value;
+				let newUser = {
+					name: myFullName,
+					email: myEmail,
+					last_name: myLast_name,
+					password: myPassword
+				};
+				console.log(newUser);
+				return newUser;
 			},
 			showComponent: () => {
 				if (getStore().show == false) {

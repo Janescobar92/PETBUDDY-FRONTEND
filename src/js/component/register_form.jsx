@@ -9,8 +9,11 @@ export const RegisterModal = () => {
 	return (
 		<div className="form-pet-container">
 			<form
-			// oncSubmit={()=>}
-			>
+				onSubmit={event => {
+					event.preventDefault();
+					actions.registerUser(actions.MyRegisterInputReciver());
+					actions.showComponent();
+				}}>
 				{" "}
 				<button
 					type="button"
@@ -21,19 +24,19 @@ export const RegisterModal = () => {
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<div className="form-group">
-					<label htmlFor="exampleInputPassword1">Nombre</label>
-					<input type="text" className="form-control" id="exampleInputPassword1" placeholder="Nombre" />
+					<label htmlFor="name">Nombre</label>
+					<input type="text" className="form-control" id="name" placeholder="Nombre" />
 				</div>
 				<div className="form-group">
-					<label htmlFor="exampleInputPassword1">Apellido</label>
-					<input type="ext" className="form-control" id="exampleInputPassword1" placeholder="Apellido" />
+					<label htmlFor="last_name">Apellido</label>
+					<input type="ext" className="form-control" id="last_name" placeholder="Apellido" />
 				</div>
 				<div className="form-group">
-					<label htmlFor="exampleInputEmail1">Email</label>
+					<label htmlFor="email">Email</label>
 					<input
 						type="email"
 						className="form-control"
-						id="exampleInputEmail1"
+						id="email"
 						aria-describedby="emailHelp"
 						placeholder="Email"
 					/>
@@ -42,13 +45,13 @@ export const RegisterModal = () => {
 					</small>
 				</div>
 				<div className="form-group">
-					<label htmlFor="exampleInputPassword1">Password</label>
-					<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+					<label htmlFor="password">Password</label>
+					<input type="password" className="form-control" id="password" placeholder="Password" />
 				</div>
-				<div className="form-group">
-					<label htmlFor="exampleInputPassword1">Password</label>
-					<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-				</div>
+				{/* <div className="form-group">
+					<label htmlFor="password">Password</label>
+					<input type="password" className="form-control" id="password" placeholder="Password" />
+				</div> */}
 				<button type="submit" className="btn btn-primary">
 					Submit
 				</button>
