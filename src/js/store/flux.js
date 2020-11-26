@@ -38,7 +38,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 				}
 			],
-			yove_worked_history: []
+			yove_worked_history: [],
+			show: false
 		},
 		actions: {
 			getUser: () => {
@@ -116,6 +117,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				];
 				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
+			},
+			showComponent: () => {
+				if (getStore().show == false) {
+					setStore((getStore().show = true));
+				} else {
+					setStore((getStore().show = false));
+				}
 			},
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ProfilePicture } from "../component/profilepicture.jsx";
 import "../../styles/jumbotron.scss";
 import PropTypes from "prop-types";
 import jumbotronImg from "../../assets/img/pixeltrue-yoga.png";
+import { Context } from "../store/appContext.js";
 
 export const Jumbotron = props => {
+	const { store, actions } = useContext(Context);
 	if (props.view == "profile") {
 		return (
 			<div>
@@ -47,7 +49,9 @@ export const Jumbotron = props => {
 					<h1 className="jumbotronlanding-title-size">Welcome to PetBUDDY</h1>
 					<div className="jumbotron-buttons-container container">
 						<button className="button-login-style">Login</button>
-						<button className="button-login-style mt-4">Register</button>
+						<button className="button-login-style mt-4" onClick={() => actions.showComponent()}>
+							Register
+						</button>
 					</div>
 				</div>
 				<div>
@@ -63,5 +67,6 @@ Jumbotron.propTypes = {
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
 	img: PropTypes.string,
-	view: PropTypes.string
+	view: PropTypes.string,
+	clickShow: PropTypes.func
 };

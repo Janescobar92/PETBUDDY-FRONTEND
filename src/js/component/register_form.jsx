@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import "../../styles/register_form.scss";
 
 export const RegisterModal = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<div className="form-pet-container">
-			<form>
+			<form
+			// oncSubmit={()=>}
+			>
 				<div className="form-group">
 					<label htmlFor="exampleInputPassword1">Nombre</label>
 					<input type="text" className="form-control" id="exampleInputPassword1" placeholder="Nombre" />
