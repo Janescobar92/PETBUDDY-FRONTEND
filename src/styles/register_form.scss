@@ -1,4 +1,5 @@
 $primarycolor: #659AEB;
+$secondarycolor: #FEB82F;
 .form-pet-container{
     position:fixed;
     height: auto;
@@ -34,4 +35,12 @@ $primarycolor: #659AEB;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.281);
+}
+.warning-alert-style{
+    background-color: $secondarycolor;
+    width: 85%;
+    border-radius: 5px;
+    .alert-text-color{
+        color: white;
+    }
 }

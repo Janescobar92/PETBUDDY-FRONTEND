@@ -6,6 +6,13 @@ import "../../styles/register_form.scss";
 
 export const RegisterModal = () => {
 	const { store, actions } = useContext(Context);
+	let alert = (
+		<div className="warning-alert-style container">
+			<p id="emailHelp" className="alert-text-color text-center">
+				Las contraseñas no coinciden.
+			</p>
+		</div>
+	);
 
 	return (
 		<div className="form-pet-container">
@@ -23,6 +30,7 @@ export const RegisterModal = () => {
 					onClick={() => actions.showComponent()}>
 					<span aria-hidden="true">&times;</span>
 				</button>
+				{store.warning ? alert : null}
 				<div className="form-group">
 					<label htmlFor="name">Nombre</label>
 					<input type="text" className="form-control" id="name" placeholder="Nombre" required />
@@ -64,9 +72,6 @@ export const RegisterModal = () => {
 						required
 					/>
 				</div>
-				{/* <small id="emailHelp" className="form-text text-warning">
-					las contraseñas no coinciden
-				</small> */}
 				<button type="submit" className="btn btn-primary my-3">
 					Registrarse
 				</button>

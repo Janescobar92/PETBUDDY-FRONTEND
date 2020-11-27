@@ -39,7 +39,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			yove_worked_history: [],
-			show: false
+			show: false,
+			Warnings: false
 		},
 		actions: {
 			registerUser: params => {
@@ -149,7 +150,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// console.log(newUser);
 					return newUser;
 				} else {
-					alert("Los passwords no coinciden");
+					setStore((getStore().warning = true));
 				}
 			},
 			showComponent: () => {
@@ -157,6 +158,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore((getStore().show = true));
 				} else {
 					setStore((getStore().show = false));
+					setStore((getStore().warning = false));
 				}
 			},
 			exampleFunction: () => {
