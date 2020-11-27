@@ -67,8 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerDownload => {
-						console.log(answerDownload, "ESTA ES MI RESPUESTA");
-						// localStorage.setItem("x-access-token", token);
+						localStorage.setItem("x-access-token", answerDownload[0].token);
 						// console.log(token);
 						console.log("Success: ", JSON.stringify(answerDownload));
 					});
