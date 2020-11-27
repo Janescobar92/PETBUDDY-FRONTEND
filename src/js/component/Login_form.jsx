@@ -26,7 +26,11 @@ export const LoginModal = () => {
 			</button>
 			<img src={loginImg} alt="get started img" className="login-img-size" />
 			<div className="form-subcard-container">
-				<form onSubmit={event => event.preventDefault()}>
+				<form
+					onSubmit={event => {
+						actions.login(actions.MyLoginInputReciver());
+						event.preventDefault();
+					}}>
 					{" "}
 					<div className="form-group">
 						{store.warning ? alert : null}

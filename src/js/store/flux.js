@@ -57,6 +57,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Success: ", JSON.stringify(answerUpload));
 					});
 			},
+			login: loginData => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/login", {
+					method: "POST",
+					body: JSON.stringify(loginData),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						console.log(answerDownload, "ESTA ES MI RESPUESTA");
+						// localStorage.setItem("x-access-token", token);
+						// console.log(token);
+						console.log("Success: ", JSON.stringify(answerDownload));
+					});
+			},
 			getUser: () => {
 				// añadir fetch cuando este el back
 				let userData = [
@@ -133,6 +149,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				];
 				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
 			},
+			MyLoginInputReciver: () => {
+				let myEmail = document.querySelector("#email").value;
+				let myPassword = document.querySelector("#password").value;
+				let logedUser = {
+					email: myEmail,
+					password: myPassword
+				};
+				// getActions().setShowLogin();
+				console.log(logedUser);
+				return logedUser;
+				// setStore((getStore().warning = true));
+			},
 			MyRegisterInputReciver: () => {
 				let myFullName = document.querySelector("#name").value;
 				let myEmail = document.querySelector("#email").value;
@@ -147,7 +175,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: myPassword
 					};
 					getActions().showComponent();
-					// console.log(newUser);
+					console.log(newUser);
 					return newUser;
 				} else {
 					setStore((getStore().warning = true));
