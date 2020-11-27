@@ -72,7 +72,7 @@ export const RegisterModal = () => {
 						required
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary my-3">
+				<button type="submit" className="modal-button--submit-style my-3">
 					Registrarse
 				</button>
 			</form>

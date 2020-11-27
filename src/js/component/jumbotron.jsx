@@ -50,7 +50,7 @@ export const Jumbotron = props => {
 					<div className="jumbotron-buttons-container container">
 						<button className="button-login-style">Login</button>
 						<button className="button-login-style mt-4" onClick={() => actions.showComponent()}>
-							Register
+							Registro
 						</button>
 					</div>
 				</div>

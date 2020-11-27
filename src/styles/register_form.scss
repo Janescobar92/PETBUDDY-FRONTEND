@@ -14,6 +14,9 @@ $secondarycolor: #FEB82F;
     padding: 0.5rem;
     z-index: 1;
     border: 1px solid $primarycolor;
+        form{
+            padding: 0 1rem;
+        }
     .input{
         margin: 0.5rem 0 0.5rem 0;
         border-radius: 0.5rem;
@@ -32,15 +35,29 @@ $secondarycolor: #FEB82F;
     top:0%;
     position: fixed;
     z-index:0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.281);
 }
 .warning-alert-style{
     background-color: $secondarycolor;
     width: 85%;
     border-radius: 5px;
+    margin-top: 1rem;
+    p{
+        margin:0;
+    }
     .alert-text-color{
         color: white;
     }
+}
+.modal-button--submit-style{
+    background-color: #221E1E;
+    width: 300px;
+    height: 50px;
+    left: 806px;
+    top: 385px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.5rem;
 }
