@@ -40,6 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			yove_worked_history: [],
 			show: false,
+			showLogin: false,
 			Warnings: false
 		},
 		actions: {
@@ -158,6 +159,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					setStore((getStore().show = false));
 					setStore((getStore().warning = false));
+				}
+			},
+			setShowLogin: () => {
+				if (getStore().showLogin == false) {
+					setStore((getStore().showLogin = true));
+				} else {
+					setStore((getStore().showLogin = false));
+					// setStore((getStore().warning = false));
 				}
 			},
 			exampleFunction: () => {

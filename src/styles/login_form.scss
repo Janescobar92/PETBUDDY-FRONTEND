@@ -1,0 +1,46 @@
+// .modal-login-style{
+//     background-color: white;
+//     z-index: -1;
+//     border: 1px solid red
+// }
+.form-login-container{
+    background-color: rgb(245, 245, 245);
+    height: 544px;
+    width: 360px;
+    z-index: 1;
+    border-radius: 10px;
+    // espacio
+    position:fixed;
+    // height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+}
+.form-subcard-container{
+    background-image: url("../assets/img/animal_print_v2.png");
+    height: 272px;
+    width: 360px;
+    z-index: 2;
+    border-radius: 10px;
+    form{
+        padding: 1rem 1.5rem;
+        height: 272px;
+        border-radius: 10px;
+        border: solid 1px #659aeb;
+    }
+}
+.login-img-size{
+    width: 25rem;
+    height: 22rem;
+}
+ .login-close-button{
+        background: none;
+        border: none;
+        color: black;
+        margin-left: 20rem;
+        font-size: 25px;
+        button:focus{
+            border:none;
+        }
+    }
