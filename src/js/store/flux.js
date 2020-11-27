@@ -53,7 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerUpload => {
-						// getActions().getContacts();
 						console.log("Success: ", JSON.stringify(answerUpload));
 					});
 			},
