@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -68,8 +70,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerDownload => {
 						localStorage.setItem("x-access-token", answerDownload.token);
-						console.log(localStorage, "ESTO ES LA RESPUESTA");
-						console.log("Success: ", JSON.stringify(answerDownload));
+						window.location.replace("/home");
+						console.log("Success: ", 200);
 					});
 			},
 			getUser: () => {

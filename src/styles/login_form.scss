@@ -5,15 +5,13 @@
 // }
 .form-login-container{
     background-color: rgb(245, 245, 245);
-    height: 544px;
+    height: 454px;
     width: 360px;
     z-index: 1;
     border-radius: 10px;
-    // espacio
     position:fixed;
-    // height: auto;
-    top:50%;
-    left:50%;
+    top:40%;
+    left:49%;
     transform: translate(-50%,-50%);
 
 }
@@ -32,15 +30,21 @@
 }
 .login-img-size{
     width: 25rem;
-    height: 22rem;
 }
  .login-close-button{
         background: none;
         border: none;
         color: black;
-        margin-left: 20rem;
+        float: right;
+        margin-right: 0.5rem;
         font-size: 25px;
         button:focus{
             border:none;
         }
     }
+ @media (max-width: 360px) {
+    .form-pet-container{
+        width: 330px;
+    }
+
+}

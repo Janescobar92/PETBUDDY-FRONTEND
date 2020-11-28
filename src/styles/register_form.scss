@@ -10,12 +10,13 @@ $secondarycolor: #FEB82F;
     display: flex;
     width: 360px;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 0.5rem;
     z-index: 1;
     border: 1px solid $primarycolor;
         form{
             padding: 0 1rem;
+            border: solid 1px #659aeb;
         }
     .input{
         margin: 0.5rem 0 0.5rem 0;

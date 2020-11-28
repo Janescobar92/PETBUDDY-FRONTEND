@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import loginImg from "../../assets/img/runnign_with_cat_petbuddy.png";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
-// import "../../styles/register_form.scss";
 import "../../styles/login_form.scss";
 
 export const LoginModal = () => {
@@ -14,7 +13,6 @@ export const LoginModal = () => {
 	);
 
 	return (
-		// <div className="modal-login-style">
 		<div className="form-login-container">
 			<button
 				type="button"
@@ -61,6 +59,5 @@ export const LoginModal = () => {
 				</form>
 			</div>
 		</div>
-		// </div>
 	);
 };

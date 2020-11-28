@@ -5,7 +5,7 @@ import "../../styles/navbar.scss";
 export const Navbar = () => {
 	return (
 		<nav className="navbar">
-			<Link to="/">
+			<Link to="/home">
 				<span className="navbar-brand mb-0 h1">
 					<i className="fas fa-paw" /> PetBuddy
 				</span>
