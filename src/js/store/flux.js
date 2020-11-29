@@ -1,7 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user_id: 1,
 			animals: [
 				{
 					id: 1,
@@ -15,36 +14,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					weight: 20.0,
 					size: 40.0,
 					diseases: "no tiene",
-					sterilized: null
+					sterilized: true
 				}
 			],
-			show: false
+			logedUser: null
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			showComponent: () => {
-				if (getStore().show == false) {
-					setStore((getStore().show = true));
-				} else {
-					setStore((getStore().show = false));
-				}
+			getUsersPets: petData => {
+				// sustituir numero despues de /user por variable ${makedate}
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/1/pet", {
+					method: "POST",
+					body: JSON.stringify(petData),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						console.log("Success: ", JSON.stringify(answerUpload));
+					});
 			},
-			createPet: petData => {
-				// fetch("https://assets.breatheco.de/apis/fake/contact/", {
-				// 	method: "POST",
-				// 	body: JSON.stringify(param),
-				// 	headers: {
-				// 		"Content-Type": "application/json"
-				// 	}
-				// })
-				// .then(response => response.json())
-				// .then(answerUpload => {
-				// 	getActions().getContacts();
-				// 	console.log("Success: ", JSON.stringify(answerUpload));
-				// });
-				setStore({ animals: [...getStore().animals, petData] });
-			},
-			MyPetsInputReciver: () => {
+			createPetForm: () => {
 				let myPetName = document.querySelector("#name").value;
 				let myPetType = document.querySelector("#type").value;
 				let myPetAge = document.querySelector("#age").value;
@@ -53,10 +43,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetSize = document.querySelector("#size").value;
 				let myPetGender = document.querySelector("#gender").value;
 				let myPetAffections = document.querySelector("#affections").value;
-				let myPetSterilized = document.querySelector("#sterilized").value;
+				let myPetIsSterilized = document.querySelector("#sterilized").value;
 				let myPetImg = document.querySelector("#Img").value;
-				let newPet = {
-					user_id: getStore().user_id,
+				let creatPet = {
 					name: myPetName,
 					image: myPetImg,
 					animal_type: myPetType,
@@ -66,12 +55,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					weight: myPetWeight,
 					size: myPetSize,
 					diseases: myPetAffections,
-					sterilized: myPetSterilized
+					sterilized: myPetIsSterilized
 				};
-				console.log(newPet, "THIS IS MY NEW PET");
-				return newPet;
+				// getActions().setShowLogin();
+				console.log(creatPet);
+				return creatPet;
 			},
-
+			setLoged: id => {
+				setStore((getStore().logedUser = id));
+			},
+			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
