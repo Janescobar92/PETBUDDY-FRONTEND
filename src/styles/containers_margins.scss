@@ -1,0 +1,34 @@
+.body-container-margins{
+    margin: 0 20%;
+}
+
+@media (max-width: 1600px) { } 
+// // Large devices (desktops, 992px and up)
+@media (max-width: 1440px) { }
+ // // Large devices (desktops, 992px and up)
+@media (max-width: 1200px) { }
+// // Medium devices (tablets, 768px and up)
+@media (max-width: 1024px) { }
+
+@media (max-width: 900px) {
+    .body-container-margins{
+    margin: 0 10%;
+    }
+ }
+
+@media (max-width: 768px) { }
+
+@media (max-width: 600px) {
+     .body-container-margins{
+    margin: 0 5%;
+    }
+ }
+
+  @media (max-width: 480px) { }
+// Small devices (landscape phones, 576px and up)
+ @media (max-width: 360px) { 
+ .body-container-margins{
+    margin: auto;
+    }
+}
+

@@ -1,0 +1,72 @@
+$primarycolor: #659aeb;
+$secondarycolor : #464B57;
+
+.container-cardbox-align{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.card-container{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    height: 30vh; 
+    border: 3px solid $primarycolor;
+    border-radius: 5px;
+    padding: 0;
+    text-align: right;
+    margin: 1rem auto;
+    color: rgb(230, 230, 230);
+    text-shadow: 2px 2px #4d4d4d23;
+}
+.img-container{
+    width:15%;
+    height: 100%;
+    img{
+    width: 100%;
+    height: 100%;
+    min-height: 10rem;
+    min-width: 10rem;
+    }
+}
+.text-container{
+    // background-image: red;
+    background-image: url("../assets/img/animal_print_v2.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    z-index:-1;
+    font-size: 1rem;
+    .card-title{
+        padding-top: 1.5rem;
+        padding-right: 1rem;
+    }
+    .card-text{
+        padding-right: 1rem;
+    }
+}
+// Small devices (landscape phones, 576px and up)
+ @media (max-width: 585px) {
+    .card-container{
+        width: 80%;
+    }
+
+}
+
+// // Medium devices (tablets, 768px and up)
+@media (max-width: 372px) { 
+        .card-container{
+        width: 95%;
+    }
+    .text-container{
+        font-size: 0.8rem;
+    }
+ }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {  }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {  }

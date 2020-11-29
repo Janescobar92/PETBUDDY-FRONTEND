@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PetsCard } from "./vpetscard.jsx";
 import { PetsForm } from "./pets_form.jsx";
 import { Context } from "../store/appContext";
+import "../../styles/containers_margins.scss";
 
 export const PetsCardContainer = () => {
 	const { store, actions } = useContext(Context);

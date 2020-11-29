@@ -1,0 +1,64 @@
+$primarycolor: #659AEB;
+$secondarycolor: #FEB82F;
+.form-pet-container{
+    position:fixed;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-image: url("../assets/img/animal_print_v2.png");
+    display: flex;
+    width: 360px;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 0.5rem;
+    z-index: 1;
+    border: 1px solid $primarycolor;
+        form{
+            padding: 0 1rem;
+            border: solid 1px #659aeb;
+        }
+    .input{
+        margin: 0.5rem 0 0.5rem 0;
+        border-radius: 0.5rem;
+        text-align: right;
+    }
+}
+.close{
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #f8f9fa;
+    text-shadow: 0 1px 0 #fff;
+}
+.open-modal-blur{
+    top:0%;
+    position: fixed;
+    z-index:0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.281);
+}
+.warning-alert-style{
+    background-color: $secondarycolor;
+    width: 85%;
+    border-radius: 5px;
+    margin-top: 1rem;
+    p{
+        margin:0;
+    }
+    .alert-text-color{
+        color: white;
+    }
+}
+.modal-button--submit-style{
+    background-color: #221E1E;
+    width: 300px;
+    height: 50px;
+    left: 806px;
+    top: 385px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.5rem;
+}
