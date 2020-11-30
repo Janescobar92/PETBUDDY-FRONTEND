@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -49,13 +49,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			getUsersPets: petData => {
 				// sustituir numero despues de /user por variable ${makedate}
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/1/pet", {
-					method: "POST",
-					body: JSON.stringify(petData),
-					headers: {
-						"Content-Type": "application/json"
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" + { id_user } + "/pet",
+					{
+						method: "POST",
+						body: JSON.stringify(petData),
+						headers: {
+							"Content-Type": "application/json"
+						}
 					}
-				})
+				)
 					.then(response => response.json())
 					.then(answerUpload => {
 						console.log("Success: ", JSON.stringify(answerUpload));
@@ -114,10 +117,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerDownload => {
-						localStorage.setItem("x-access-token", answerDownload.token);
-						window.location.replace("/home");
+						var token = answerDownload.token;
+						localStorage.setItem("x-access-token", token);
+						const decoded = jwt_decode(token);
+						console.log("THIS IS MY DECODE", decoded);
+						var userId = decoded.id;
+						console.log(userId);
+						// window.location.replace("/home");
 						console.log("Success: ", 200);
 					});
+				// .then(payload => {
+				// 	console.log("JWT Payload @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", payload);
+				// 	// return feathersClient.service('users').get(payload.userId);
+				// });
 			},
 			getUser: () => {
 				// añadir fetch cuando este el back
