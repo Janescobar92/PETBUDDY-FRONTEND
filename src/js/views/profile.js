@@ -11,11 +11,13 @@ import { Jumbotron } from "../component/jumbotron.jsx";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
+
 	useEffect(() => {
 		actions.getLogedUser();
 	}, []);
+
 	let id_user = useParams();
-	// let myJoins = store.user;
+
 	let userIndex = null;
 	for (let index = 0; index < store.users.length; index++) {
 		if (id_user.id_user == store.users[index].id) {
