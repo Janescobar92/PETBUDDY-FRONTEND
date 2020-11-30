@@ -24,9 +24,9 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			state.actions.getWhoHireYouHistory();
 			state.actions.getLogedUser();
-			state.actions.getLocalSorageToken();
-			state.actions.getLogedUser();
-
+			if (!localStorage.length == 0) {
+				state.actions.getLocalSorageToken();
+			}
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime

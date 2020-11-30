@@ -11,6 +11,9 @@ import { Jumbotron } from "../component/jumbotron.jsx";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.getLogedUser();
+	}, []);
 	let id_user = useParams();
 	// let myJoins = store.user;
 	let userIndex = null;
