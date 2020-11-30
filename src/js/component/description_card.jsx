@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 
 export const DescriptionCard = () => {
 	const { store, actions } = useContext(Context);
-	let iduser = useParams();
+	let id_user = useParams();
 	let userIndex = null;
 	for (let index = 0; index < store.users.length; index++) {
-		if (iduser.iduser == store.users[index].id) {
+		if (id_user.id_user == store.users[index].id) {
 			userIndex = index;
 		}
 	}
