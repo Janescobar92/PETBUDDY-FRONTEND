@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	let param = useParams();
 	return (
 		<nav className="navbar">
 			<Link to="/home">
@@ -21,10 +26,10 @@ export const Navbar = () => {
 					<i className="fas fa-bars" />
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<Link to="/profile">
+					<Link to={"/profile/" + store.logedUser}>
 						<p>Perfil</p>
 					</Link>
-					<Link to="/history">
+					<Link to={"/history/" + store.logedUser}>
 						<p>Hitorial</p>
 					</Link>
 				</div>

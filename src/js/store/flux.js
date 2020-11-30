@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user_id: 1,
+			// user_id: 1,
 			users: [],
 			animals: [
 				{
@@ -47,10 +47,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logedUser: null
 		},
 		actions: {
+			registerUser: params => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/register", {
+					method: "POST",
+					body: JSON.stringify(params),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						console.log("Success: ", JSON.stringify(answerUpload));
+					});
+			},
+			login: loginData => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/login", {
+					method: "POST",
+					body: JSON.stringify(loginData),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						var token = answerDownload.token;
+						localStorage.setItem("x-access-token", token);
+						// const decoded = jwt_decode(token);
+						// getActions().setLoged(decoded.id);
+						window.location.replace("/home/" + getStore().logedUser);
+						console.log("Success: ", 200);
+					});
+			},
+			getLocalSorageToken: () => {
+				var token = localStorage.getItem("x-access-token");
+				const decoded = jwt_decode(token);
+				getActions().setLoged(decoded.id);
+			},
 			getUsersPets: petData => {
 				// sustituir numero despues de /user por variable ${makedate}
 				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" + { id_user } + "/pet",
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+						getStore().logedUser +
+						"/pet",
 					{
 						method: "POST",
 						body: JSON.stringify(petData),
@@ -87,81 +125,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					diseases: myPetAffections,
 					sterilized: myPetIsSterilized
 				};
-				// getActions().setShowLogin();
-				console.log(creatPet);
 				return creatPet;
-			},
-			registerUser: params => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/register", {
-					method: "POST",
-					body: JSON.stringify(params),
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(response => response.json())
-					.then(answerUpload => {
-						console.log("Success: ", JSON.stringify(answerUpload));
-					});
 			},
 			setLoged: id => {
 				setStore((getStore().logedUser = id));
 			},
-			login: loginData => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/login", {
-					method: "POST",
-					body: JSON.stringify(loginData),
-					headers: {
-						"Content-Type": "application/json"
+			getLogedUser: () => {
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" + getStore().logedUser,
+					{
+						method: "GET"
 					}
-				})
-					.then(response => response.json())
-					.then(answerDownload => {
-						var token = answerDownload.token;
-						localStorage.setItem("x-access-token", token);
-						const decoded = jwt_decode(token);
-						console.log("THIS IS MY DECODE", decoded);
-						var userId = decoded.id;
-						console.log(userId);
-						// window.location.replace("/home");
-						console.log("Success: ", 200);
+				)
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						console.log(responseAsJson);
+
+						var userData = responseAsJson;
+						setStore({ users: [...getStore().users, userData].flat() });
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
 					});
-				// .then(payload => {
-				// 	console.log("JWT Payload @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", payload);
-				// 	// return feathersClient.service('users').get(payload.userId);
-				// });
-			},
-			getUser: () => {
-				// añadir fetch cuando este el back
-				let userData = [
-					{
-						id: 1,
-						email: "carlosjuan1812@gmail.com",
-						password: "123456",
-						is_active: true,
-						name: "Juan Carlos",
-						last_name: "Alcalde",
-						phone: "605143832",
-						location: "calle Alberto Conti",
-						biografy: "Me gustan los perros",
-						image:
-							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-					},
-					{
-						id: 2,
-						email: "carlosjuan1812@gmail.com",
-						password: "123456",
-						is_active: true,
-						name: "María",
-						last_name: "Theodor",
-						phone: "605143832",
-						location: "calle Alberto Conti",
-						biografy: "Me gustan los gatos",
-						image:
-							"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-					}
-				];
-				setStore({ users: [...getStore().users, userData].flat() });
 			},
 			createUser: userData => {
 				// fetch("https://assets.breatheco.de/apis/fake/contact/", {

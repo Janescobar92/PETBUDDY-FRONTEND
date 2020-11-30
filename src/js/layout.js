@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -12,13 +12,14 @@ import { Footer } from "./component/footer";
 import { Profile } from "./views/profile";
 import { History } from "./views/history";
 import { Landing } from "./views/landing";
+import { Context } from "./store/appContext";
 
 //create your first component
 const Layout = () => {
+	const { store, actions } = useContext(Context);
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
-
 	return (
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
@@ -28,16 +29,16 @@ const Layout = () => {
 						<Route exact path="/">
 							<Landing />
 						</Route>
-						<Route exact path="/home">
+						<Route exact path="/home/:id_user">
 							<Home />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/profile/:iduser">
+						<Route exact path="/profile/:id_user">
 							<Profile />
 						</Route>
-						<Route exact path="/history">
+						<Route exact path="/history/:id_use">
 							<History />
 						</Route>
 						<Route exact path="/single/:theid">
