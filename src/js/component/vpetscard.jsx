@@ -13,9 +13,16 @@ export const PetsCard = () => {
 				<div className="card-header">
 					{animal.name}
 					<img className="card-img-top" src={animal.image} alt="pet" />
-					<a href="#" className="btn btn-primary">
+					<button href="#" className="btn btn-primary">
 						Edit
-					</a>
+					</button>
+					<button
+						onClick={() => {
+							alert("Are you sure you want to delete this pet");
+							actions.deletUserPet(animal.id);
+						}}>
+						<i className="fas fa-trash" />
+					</button>
 				</div>
 				<div className="card-body">
 					<h5 className="card-title">Info</h5>

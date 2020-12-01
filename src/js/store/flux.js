@@ -132,6 +132,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(creatPet);
 				return creatPet;
 			},
+			deletUserPet: petToDeleteData => {
+				console.log(petToDeleteData);
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+						getStore().logedUser +
+						"/" +
+						petToDeleteData,
+					{
+						method: "DELETE"
+					}
+				)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.status);
+						}
+						return response.json();
+					})
+					.then(answerUpload => {
+						getActions().getLogedUserPets();
+						console.log("Success: pet deleted");
+					})
+					.catch(error => {
+						console.log("Deleting pet, error status: ", error);
+					});
+			},
 			setLoged: id => {
 				setStore((getStore().logedUser = id));
 			},
