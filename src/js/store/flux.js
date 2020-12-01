@@ -73,9 +73,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
 				//getStore().logedUser +
 				//"/pet"
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/2/pet", {
-					method: "GET"
-				})
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+						getStore().logedUser +
+						"/pet",
+					{
+						method: "GET"
+					}
+				)
 					.then(response => response.json())
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
