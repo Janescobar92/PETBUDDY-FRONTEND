@@ -10,7 +10,7 @@ export const Navbar = () => {
 	let param = useParams();
 	return (
 		<nav className="navbar">
-			<Link to="/home">
+			<Link to={"/home/" + store.logedUser}>
 				<span className="navbar-brand mb-0 h1">
 					<i className="fas fa-paw" /> PetBuddy
 				</span>

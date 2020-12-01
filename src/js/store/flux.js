@@ -5,22 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// user_id: 1,
 			users: [],
-			animals: [
-				{
-					id: 1,
-					user_id: 1,
-					name: "Pluto",
-					image: "https://i.ebayimg.com/images/g/apgAAOSwd4tT5JgM/s-l300.jpg",
-					animal_type: "perro",
-					age: 3,
-					personality: "amigable",
-					gender: false,
-					weight: 20.0,
-					size: 40.0,
-					diseases: "no tiene",
-					sterilized: true
-				}
-			],
+			animals: [],
 			user_services: [
 				{
 					id: 1,
@@ -83,23 +68,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const decoded = jwt_decode(token);
 				getActions().setLoged(decoded.id);
 			},
-			getUsersPets: petData => {
+			getLogedUserPets: () => {
 				// sustituir numero despues de /user por variable ${makedate}
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "POST",
-						body: JSON.stringify(petData),
-						headers: {
-							"Content-Type": "application/json"
-						}
-					}
-				)
+				//"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+				//getStore().logedUser +
+				//"/pet"
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/2/pet", {
+					method: "GET"
+				})
 					.then(response => response.json())
-					.then(answerUpload => {
-						console.log("Success: ", JSON.stringify(answerUpload));
+					.then(answerDownload => {
+						console.log("Success: ", JSON.stringify(answerDownload));
+						let pets = answerDownload;
+						console.log(getStore().animals);
+						if (getStore().animals.length != pets.length) {
+							setStore({ animals: pets });
+						}
+						console.log(getStore().animals);
 					});
 			},
 			createPetForm: () => {

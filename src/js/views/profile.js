@@ -14,6 +14,8 @@ export const Profile = () => {
 
 	useEffect(() => {
 		actions.getLogedUser();
+		actions.getLogedUserPets();
+		console.log(" ESTOY CORRIENDO USE EFFECT");
 	}, []);
 
 	let id_user = useParams();
@@ -24,7 +26,7 @@ export const Profile = () => {
 			userIndex = index;
 		}
 	}
-	console.log(userIndex);
+	// console.log(userIndex);
 	if (store.users.length == 0) {
 		return "Cargando perfil..";
 	} else {
@@ -36,7 +38,7 @@ export const Profile = () => {
 					subtitle={store.users[userIndex].last_name}
 					img={store.users[userIndex].image}
 				/>
-				<div clasName="body--content-margins">
+				<div className="body--content-margins">
 					<DescriptionContainer />
 					<PetsCardContainer />
 					<CommentsContainer />
