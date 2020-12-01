@@ -8,8 +8,6 @@ export const PetsCard = () => {
 	const { store, actions } = useContext(Context);
 
 	const cards = store.animals.map((animal, index) => {
-		console.log(index, "IIIIIIINNNNDEEEEXX");
-		console.log(store.animals, " LOG DE ANIMALS ");
 		return (
 			<div className="card align-self-center my-3" style={{ width: "18rem" }} key={index}>
 				<div className="card-header">

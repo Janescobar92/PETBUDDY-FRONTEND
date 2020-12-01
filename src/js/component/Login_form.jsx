@@ -27,7 +27,6 @@ export const LoginModal = () => {
 				<form
 					onSubmit={event => {
 						actions.login(actions.MyLoginInputReciver());
-						// actions.setLoged()
 						event.preventDefault();
 					}}>
 					{" "}

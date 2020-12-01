@@ -80,11 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
 						let pets = answerDownload;
-						console.log(getStore().animals);
 						if (getStore().animals.length != pets.length) {
 							setStore({ animals: pets });
 						}
-						console.log(getStore().animals);
 					});
 			},
 			createPetForm: () => {
@@ -208,7 +206,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: myPassword
 					};
 					getActions().showComponent();
-					console.log(newUser);
+					// console.log(newUser);
 					return newUser;
 				} else {
 					setStore((getStore().warning = true));
