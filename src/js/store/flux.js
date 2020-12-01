@@ -69,13 +69,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().setLoged(decoded.id);
 			},
 			getLogedUserPets: () => {
-				// sustituir numero despues de /user por variable ${makedate}
-				//"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-				//getStore().logedUser +
-				//"/pet"
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/2/pet", {
-					method: "GET"
-				})
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+						getStore().logedUser +
+						"/pet",
+					{
+						method: "GET"
+					}
+				)
 					.then(response => response.json())
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
@@ -83,6 +84,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (getStore().animals.length != pets.length) {
 							setStore({ animals: pets });
 						}
+					});
+			},
+			createUserPet: petData => {
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+						getStore().logedUser +
+						"/pet",
+					{
+						method: "POST",
+						body: JSON.stringify(petData),
+						headers: {
+							"Content-Type": "application/json"
+						}
+					}
+				)
+					.then(response => response.json())
+					.then(answerUpload => {
+						console.log("Success: ", JSON.stringify(answerUpload));
+						setStore({ animals: [...getStore().animals, petData] });
 					});
 			},
 			createPetForm: () => {
@@ -97,6 +117,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
 				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
+					user_id: getStore().logedUser,
 					name: myPetName,
 					image: myPetImg,
 					animal_type: myPetType,
@@ -108,6 +129,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					diseases: myPetAffections,
 					sterilized: myPetIsSterilized
 				};
+				console.log(creatPet);
 				return creatPet;
 			},
 			setLoged: id => {
@@ -135,21 +157,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log("Error status: ", error);
 					});
-			},
-			createUser: userData => {
-				// fetch("https://assets.breatheco.de/apis/fake/contact/", {
-				// 	method: "POST",
-				// 	body: JSON.stringify(param),
-				// 	headers: {
-				// 		"Content-Type": "application/json"
-				// 	}
-				// })
-				// .then(response => response.json())
-				// .then(answerUpload => {
-				// 	getActions().getContacts();
-				// 	console.log("Success: ", JSON.stringify(answerUpload));
-				// });
-				setStore({ user: [...getStore().user, userData] });
 			},
 			// Use getActions to call a function within a fuction
 			getWhoHireYouHistory: () => {

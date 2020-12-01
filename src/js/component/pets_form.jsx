@@ -10,7 +10,7 @@ export const PetsForm = () => {
 			<form
 				action="#"
 				onSubmit={event => {
-					actions.createPet(actions.MyPetsInputReciver());
+					actions.createUserPet(actions.createPetForm());
 					actions.showComponent();
 					event.preventDefault();
 				}}>
@@ -59,11 +59,11 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Gender">Género</label>
 					<select type="select" className="input" name="Gender" id="gender" required>
-						<option value="True" selected disabled>
+						<option value={true} selected disabled>
 							Selecionar
 						</option>
-						<option value="True">Hembra</option>
-						<option value="False">Macho</option>
+						<option value={true}>Hembra</option>
+						<option value={false}>Macho</option>
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -83,8 +83,8 @@ export const PetsForm = () => {
 						<option value="True" selected disabled>
 							Selecionar
 						</option>
-						<option value="True">Si</option>
-						<option value="False">No</option>
+						<option value={true}>Si</option>
+						<option value={false}>No</option>
 					</select>
 				</div>
 				<label htmlFor="Img">Img</label>
