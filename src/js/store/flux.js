@@ -29,7 +29,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			show: false,
 			showLogin: false,
 			Warnings: false,
-			logedUser: null
+			logedUser: null,
+			indexChoosed: null
 		},
 		actions: {
 			registerUser: params => {
@@ -132,6 +133,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(creatPet);
 				return creatPet;
 			},
+			updateUserPet: petData => {
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
+						getStore().logedUser +
+						"/pet",
+					{
+						method: "PUT",
+						body: JSON.stringify(petData),
+						headers: {
+							"Content-Type": "application/json"
+						}
+					}
+				)
+					.then(response => response.json())
+					.then(answerUpload => {
+						getActions().getContacts();
+						console.log("Success: ", JSON.stringify(answerUpload));
+					});
+			},
 			deletUserPet: petToDeleteData => {
 				console.log(petToDeleteData);
 				fetch(
@@ -156,6 +176,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log("Deleting pet, error status: ", error);
 					});
+			},
+			setPickedIndex: id => {
+				setStore((getStore().indexChoosed = id));
 			},
 			setLoged: id => {
 				setStore((getStore().logedUser = id));

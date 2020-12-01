@@ -16,7 +16,9 @@ export const PetsCardContainer = () => {
 				<h2>Pets</h2>
 				<button onClick={() => actions.showComponent()}>Añadir</button>
 			</div>
-			<div className="d-flex flex-column justify-content-center">
+			<div
+			// className="d-flex flex-column justify-content-center"
+			>
 				{store.show ? <PetsForm /> : null}
 				<PetsCard />
 			</div>

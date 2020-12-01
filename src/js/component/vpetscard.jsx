@@ -4,6 +4,8 @@ import { Context } from "../store/appContext.js";
 
 import { Link } from "react-router-dom";
 
+import { UpdatePetsForm } from "./pets_update_form.jsx";
+
 export const PetsCard = () => {
 	const { store, actions } = useContext(Context);
 
@@ -13,8 +15,16 @@ export const PetsCard = () => {
 				<div className="card-header">
 					{animal.name}
 					<img className="card-img-top" src={animal.image} alt="pet" />
-					<button href="#" className="btn btn-primary">
-						Edit
+					<button
+						onClick={() => {
+							alert("Seguro que quieres editar");
+							actions.setPickedIndex(animal.id);
+							console.log(store.indexChoosed);
+							console.log(store.animals);
+							actions.showComponent();
+						}}
+						className="btn btn-primary">
+						<i className="fas fa-edit" />
 					</button>
 					<button
 						onClick={() => {
@@ -40,5 +50,10 @@ export const PetsCard = () => {
 			</div>
 		);
 	});
-	return cards;
+	return (
+		<div className="d-flex flex-column justify-content-center">
+			{cards}
+			{store.show ? <UpdatePetsForm /> : null}
+		</div>
+	);
 };
