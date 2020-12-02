@@ -1,0 +1,15 @@
+$primarycolor: #659AEB;
+.container-title-size{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 200;
+        h2{
+            font-size: 2.5rem;
+        }
+        button{
+            border: none;
+            background:none;
+            color: $primarycolor;
+        }
+
+}
