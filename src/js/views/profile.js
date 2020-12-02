@@ -17,7 +17,7 @@ export const Profile = () => {
 			userIndex = index;
 		}
 	}
-	console.log(userIndex);
+
 	if (store.users.length == 0) {
 		return "Cargando perfil..";
 	} else {

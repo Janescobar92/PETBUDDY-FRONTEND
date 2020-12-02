@@ -8,7 +8,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			addService: serviceData => {
-				console.log(serviceData, "Estoy en addservice");
 				fetch(getStore().route + "/user/1/service", {
 					method: "POST",
 					body: JSON.stringify(serviceData),
@@ -21,9 +20,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Success: ", JSON.stringify(answerUpload));
 						setStore({ services: [...getStore().services, serviceData] });
 					});
-				//aqui va el POST
-				/* 				setStore({ services: [...getStore().services, serviceData] });
- */
 			},
 			getUserServices: () => {
 				fetch(getStore().route + "/user/1/service", {
@@ -37,12 +33,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(responseAsJson => {
 						var serviceData = responseAsJson;
-
-						console.log(serviceData, "estoy en get user services");
-						console.log(serviceData.id_service_type, "estoy en get user services_type");
-						console.log(serviceData.length, "soy serviceData.length");
-						console.log(getStore().services.length, "soy services.length");
-
+						serviceData.map((service, index) => {
+							if (service.id_service_type == 1) service.id_service_type = "Paseador";
+							if (service.id_service_type == 2) service.id_service_type = "Cuidador";
+							if (service.id_service_type == 3) service.id_service_type = "Hotel";
+						});
 						if (serviceData.length != getStore().services.length) {
 							setStore({ services: serviceData });
 						}
@@ -50,6 +45,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log("Error status: ", error);
 					});
+			},
+			MyServicesInputData: () => {
+				let serviceType = document.querySelector("#service_type").value;
+				let precio = document.querySelector("#precio").value;
+				let descripcion = document.querySelector("#descripcion").value;
+
+				let id_service_type_int = 0;
+				if (serviceType == "paseador") id_service_type_int = 1;
+				if (serviceType == "cuidador") id_service_type_int = 2;
+				if (serviceType == "hotel") id_service_type_int = 3;
+				let newService = {
+					id_service_type: id_service_type_int,
+					price_h: precio,
+					description: descripcion
+				};
+				return newService;
 			},
 			showComponent: () => {
 				if (getStore().show == false) {
@@ -89,24 +100,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				];
 				setStore({ users: [...getStore().users, userData].flat() });
-			},
-			MyServicesInputData: () => {
-				let serviceType = document.querySelector("#service_type").value;
-				let precio = document.querySelector("#precio").value;
-				let descripcion = document.querySelector("#descripcion").value;
-
-				let id_service_type_int = 0;
-				if (serviceType == "paseador") id_service_type_int = 1;
-				if (serviceType == "cuidador") id_service_type_int = 2;
-				if (serviceType == "hotel") id_service_type_int = 3;
-				let newService = {
-					/* id: getStore().user_id, */
-					id_service_type: id_service_type_int,
-					price_h: precio,
-					description: descripcion
-				};
-				console.log(newService, "THIS IS MY NEW service");
-				return newService;
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

@@ -5,15 +5,25 @@ import { Context } from "../store/appContext.js";
 export const ServiceForm = () => {
 	const { store, actions } = useContext(Context);
 
+	const serviceExists = services => {
+		let exist = false;
+		services.map(service => {
+			if (service.id_service_type == document.querySelector("#service_type").value) exist = true;
+		});
+		return exist;
+	};
 	return (
 		<div className="service-form-container align-self-center my-3 container">
 			<form
 				action="#"
 				onSubmit={event => {
-					actions.addService(actions.MyServicesInputData());
-					actions.showComponent();
-
-					event.preventDefault();
+					if (!serviceExists(store.services)) {
+						actions.addService(actions.MyServicesInputData());
+						actions.showComponent();
+						event.preventDefault();
+					} else {
+						console.log("Servicio ya existe");
+					}
 				}}>
 				<h4 style={{ display: "flex", justifyContent: "center" }}>Añade Servicio</h4>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -22,15 +32,15 @@ export const ServiceForm = () => {
 						<option value="True" selected disabled>
 							Selecionar
 						</option>
-						<option value="paseador">Paseador</option>
-						<option value="cuidador">Cuidador</option>
-						<option value="hotel">Hotel</option>
+						<option value="Paseador">Paseador</option>
+						<option value="Cuidador">Cuidador</option>
+						<option value="Hotel">Hotel</option>
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Precio">Precio</label>
 					<div>
-						<input type="text" className="input" name="Precio" id="precio" required maxLength="4" />
+						<input type="text" className="input" name="Precio" id="recio" required maxLength="4" />
 						{/* <p>(€/h)</p> */}
 					</div>
 				</div>
