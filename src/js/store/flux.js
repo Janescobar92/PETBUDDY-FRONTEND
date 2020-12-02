@@ -1,57 +1,55 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: [
-				{
-					id: 1,
-					email: "carlosjuan1812@gmail.com",
-					password: "123456",
-					is_active: true,
-					name: "Juan Carlos",
-					last_name: "Alcalde",
-					phone: "605143832",
-					location: "calle Alberto Conti",
-					biografy: "Me gusta los perros",
-					image:
-						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-				}
-			],
-			user_id: 1,
 			users: [],
-			animals: [
-				{
-					id: 1,
-					user_id: 1,
-					name: "Pluto",
-					image: "https://i.ebayimg.com/images/g/apgAAOSwd4tT5JgM/s-l300.jpg",
-					animal_type: "perro",
-					age: 3,
-					personality: "amigable",
-					gender: false,
-					weight: 20.0,
-					size: 40.0,
-					diseases: "no tiene",
-					sterilized: true
-				}
-			],
-			services: [
-				{
-					id: 1,
-					service: "Cuidador",
-					description:
-						"Mi nombre es Juan Carlos, y estaria encantado de cuidar de tu perro siempre que pueda",
-					price: 6.0,
-					image:
-						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-					schedule: "9:00-18:00"
-				}
-			],
-			show: false
+			services: [],
+			show: false,
+			route: "https://3000-bc7556ef-62e8-43ac-a019-abab4e6e0d7c.ws-eu01.gitpod.io"
 		},
 		actions: {
 			addService: serviceData => {
+				console.log(serviceData, "Estoy en addservice");
+				fetch(getStore().route + "/user/1/service", {
+					method: "POST",
+					body: JSON.stringify(serviceData),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						console.log("Success: ", JSON.stringify(answerUpload));
+						setStore({ services: [...getStore().services, serviceData] });
+					});
 				//aqui va el POST
-				setStore({ services: [...getStore().services, serviceData] });
+				/* 				setStore({ services: [...getStore().services, serviceData] });
+ */
+			},
+			getUserServices: () => {
+				fetch(getStore().route + "/user/1/service", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var serviceData = responseAsJson;
+
+						console.log(serviceData, "estoy en get user services");
+						console.log(serviceData.id_service_type, "estoy en get user services_type");
+						console.log(serviceData.length, "soy serviceData.length");
+						console.log(getStore().services.length, "soy services.length");
+
+						if (serviceData.length != getStore().services.length) {
+							setStore({ services: serviceData });
+						}
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
 			},
 			showComponent: () => {
 				if (getStore().show == false) {
@@ -60,7 +58,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore((getStore().show = false));
 				}
 			},
-			createPet: petData => {},
 			getUser: () => {
 				// añadir fetch cuando este el back
 				let userData = [
@@ -93,49 +90,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				];
 				setStore({ users: [...getStore().users, userData].flat() });
 			},
+			MyServicesInputData: () => {
+				let serviceType = document.querySelector("#service_type").value;
+				let precio = document.querySelector("#precio").value;
+				let descripcion = document.querySelector("#descripcion").value;
 
-			createUser: userData => {
-				// fetch("https://assets.breatheco.de/apis/fake/contact/", {
-				// 	method: "POST",
-				// 	body: JSON.stringify(param),
-				// 	headers: {
-				// 		"Content-Type": "application/json"
-				// 	}
-				// })
-				// .then(response => response.json())
-				// .then(answerUpload => {
-				// 	getActions().getContacts();
-				// 	console.log("Success: ", JSON.stringify(answerUpload));
-				// });
-				setStore({ animals: [...getStore().animals, petData] });
-			},
-			MyPetsInputReciver: () => {
-				let myPetName = document.querySelector("#name").value;
-				let myPetType = document.querySelector("#type").value;
-				let myPetAge = document.querySelector("#age").value;
-				let myPetPersonality = document.querySelector("#personality").value;
-				let myPetWeight = document.querySelector("#weight").value;
-				let myPetSize = document.querySelector("#size").value;
-				let myPetGender = document.querySelector("#gender").value;
-				let myPetAffections = document.querySelector("#affections").value;
-				let myPetSterilized = document.querySelector("#sterilized").value;
-				let myPetImg = document.querySelector("#Img").value;
-				let newPet = {
-					user_id: getStore().user_id,
-					name: myPetName,
-					image: myPetImg,
-					animal_type: myPetType,
-					age: myPetAge,
-					personality: myPetPersonality,
-					gender: myPetGender,
-					weight: myPetWeight,
-					size: myPetSize,
-					diseases: myPetAffections,
-					sterilized: myPetSterilized
+				let id_service_type_int = 0;
+				if (serviceType == "paseador") id_service_type_int = 1;
+				if (serviceType == "cuidador") id_service_type_int = 2;
+				if (serviceType == "hotel") id_service_type_int = 3;
+				let newService = {
+					/* id: getStore().user_id, */
+					id_service_type: id_service_type_int,
+					price_h: precio,
+					description: descripcion
 				};
-				console.log(newPet, "THIS IS MY NEW PET");
-				return newPet;
-				setStore({ user: [...getStore().user, userData] });
+				console.log(newService, "THIS IS MY NEW service");
+				return newService;
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
