@@ -19,8 +19,6 @@ export const PetsCard = () => {
 						onClick={() => {
 							// alert("Seguro que quieres editar");
 							actions.setPickedIndex(animal.id);
-							console.log(store.indexChoosed);
-							console.log(store.animals);
 							actions.setShowLogin();
 						}}
 						className="btn btn-primary">

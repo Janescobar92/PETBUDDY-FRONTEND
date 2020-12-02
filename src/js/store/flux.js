@@ -128,7 +128,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					diseases: myPetAffections,
 					sterilized: myPetIsSterilized
 				};
-				console.log(creatPet);
 				return creatPet;
 			},
 			updateUserPet: petData => {
@@ -176,7 +175,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sterilized: myPetIsSterilized,
 					id: parseInt(myPetID)
 				};
-				console.log(creatPet);
 				return creatPet;
 			},
 			deletUserPet: petToDeleteData => {
@@ -270,7 +268,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: myPassword
 				};
 				// getActions().setShowLogin();
-				console.log(logedUser);
 				return logedUser;
 				// setStore((getStore().warning = true));
 			},
@@ -288,7 +285,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: myPassword
 					};
 					getActions().showComponent();
-					// console.log(newUser);
 					return newUser;
 				} else {
 					setStore((getStore().warning = true));

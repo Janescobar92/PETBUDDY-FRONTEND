@@ -8,7 +8,6 @@ export const UpdatePetsForm = () => {
 	for (let index = 0; index < store.animals.length; index++) {
 		if (store.animals[index].id == store.indexChoosed) {
 			resultIndex = index;
-			console.log(resultIndex, "IM TH INDEX");
 		}
 	}
 	return (
