@@ -58,8 +58,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(answerDownload => {
 						var token = answerDownload.token;
 						localStorage.setItem("x-access-token", token);
-						// const decoded = jwt_decode(token);
-						// getActions().setLoged(decoded.id);
 						window.location.replace("/home/" + getStore().logedUser);
 						console.log("Success: ", 200);
 					});
@@ -82,9 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
 						let pets = answerDownload;
-						if (getStore().animals.length != pets.length) {
-							setStore({ animals: pets });
-						}
+						// if (getStore().animals.length != pets.length) {
+						setStore({ animals: pets });
+						// }
 					});
 			},
 			createUserPet: petData => {
@@ -148,9 +146,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				)
 					.then(response => response.json())
 					.then(answerUpload => {
-						getActions().getContacts();
+						getActions().getLogedUserPets();
 						console.log("Success: ", JSON.stringify(answerUpload));
 					});
+			},
+			updatePetForm: () => {
+				let myPetID = document.querySelector("#id").value;
+				let myPetName = document.querySelector("#name").value;
+				let myPetType = document.querySelector("#type").value;
+				let myPetAge = document.querySelector("#age").value;
+				let myPetPersonality = document.querySelector("#personality").value;
+				let myPetWeight = document.querySelector("#weight").value;
+				let myPetSize = document.querySelector("#size").value;
+				let myPetGender = document.querySelector("#gender").value;
+				let myPetAffections = document.querySelector("#affections").value;
+				let myPetIsSterilized = document.querySelector("#sterilized").value;
+				let myPetImg = document.querySelector("#Img").value;
+				let creatPet = {
+					user_id: getStore().logedUser,
+					name: myPetName,
+					image: myPetImg,
+					animal_type: myPetType,
+					age: myPetAge,
+					personality: myPetPersonality,
+					gender: myPetGender,
+					weight: myPetWeight,
+					size: myPetSize,
+					diseases: myPetAffections,
+					sterilized: myPetIsSterilized,
+					id: parseInt(myPetID)
+				};
+				console.log(creatPet);
+				return creatPet;
 			},
 			deletUserPet: petToDeleteData => {
 				console.log(petToDeleteData);

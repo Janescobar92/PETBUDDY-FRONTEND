@@ -15,7 +15,6 @@ export const Profile = () => {
 	useEffect(() => {
 		actions.getLogedUser();
 		actions.getLogedUserPets();
-		console.log(" ESTOY CORRIENDO USE EFFECT");
 	}, []);
 
 	let id_user = useParams();

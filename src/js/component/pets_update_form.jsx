@@ -8,17 +8,29 @@ export const UpdatePetsForm = () => {
 	for (let index = 0; index < store.animals.length; index++) {
 		if (store.animals[index].id == store.indexChoosed) {
 			resultIndex = index;
+			console.log(resultIndex, "IM TH INDEX");
 		}
 	}
-
 	return (
 		<div className="form-pet-container align-self-center my-3 container">
 			<form
 				onSubmit={event => {
-					actions.updateUserPet(actions.createPetForm());
-					actions.showComponent();
+					actions.updateUserPet(actions.updatePetForm());
+					actions.setShowLogin();
 					event.preventDefault();
 				}}>
+				<div className="d-none">
+					<label htmlFor="ID">id</label>
+					<input
+						type="nummber"
+						className="input"
+						name="ID"
+						id="id"
+						required
+						defaultValue={store.animals[resultIndex].id}
+						disabled
+					/>
+				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>
 					<input
@@ -157,11 +169,11 @@ export const UpdatePetsForm = () => {
 					defaultValue={store.animals[resultIndex].image}
 				/>
 				<div className="form-button-style container">
-					<button onClick={() => actions.showComponent()}>
+					<button onClick={() => actions.setShowLogin()}>
 						<i className="fas fa-minus-circle" />
 					</button>
 					<button type="submit">
-						<i className="fas fa-plus-circle" />
+						<i className="fas fa-check-circle" />
 					</button>
 				</div>
 			</form>

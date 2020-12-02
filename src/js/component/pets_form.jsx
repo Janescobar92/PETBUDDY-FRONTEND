@@ -10,9 +10,9 @@ export const PetsForm = () => {
 			<form
 				action="#"
 				onSubmit={event => {
+					event.preventDefault();
 					actions.createUserPet(actions.createPetForm());
 					actions.showComponent();
-					event.preventDefault();
 				}}>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext.js";
 
@@ -14,14 +14,14 @@ export const PetsCard = () => {
 			<div className="card align-self-center my-3" style={{ width: "18rem" }} key={index}>
 				<div className="card-header">
 					{animal.name}
-					<img className="card-img-top" src={animal.image} alt="pet" />
+					<img className="card-img-top" src={animal.image} alt="Pet IMG" />
 					<button
 						onClick={() => {
-							alert("Seguro que quieres editar");
+							// alert("Seguro que quieres editar");
 							actions.setPickedIndex(animal.id);
 							console.log(store.indexChoosed);
 							console.log(store.animals);
-							actions.showComponent();
+							actions.setShowLogin();
 						}}
 						className="btn btn-primary">
 						<i className="fas fa-edit" />
@@ -53,7 +53,7 @@ export const PetsCard = () => {
 	return (
 		<div className="d-flex flex-column justify-content-center">
 			{cards}
-			{store.show ? <UpdatePetsForm /> : null}
+			{store.showLogin ? <UpdatePetsForm /> : null}
 		</div>
 	);
 };
