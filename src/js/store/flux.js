@@ -7,9 +7,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 			route: "https://3000-bc7556ef-62e8-43ac-a019-abab4e6e0d7c.ws-eu01.gitpod.io"
 		},
 		actions: {
+			deleteService: id_service_type => {
+				if (id_service_type == "Paseador") id_service_type = 1;
+				if (id_service_type == "Cuidador") id_service_type = 2;
+				if (id_service_type == "Hotel") id_service_type = 3;
+				if (id_service_type == "Adiestrador") id_service_type = 4;
+				if (id_service_type == "Veterinario") id_service_type = 5;
+
+				fetch(getStore().route + "/user/1/" + id_service_type, {
+					method: "DELETE"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.status);
+						}
+						return response.json();
+					})
+					.then(answerUpload => {
+						getActions().getUserServices();
+						console.log("Success: service deleted");
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
 			addService: serviceData => {
+				if (getActions().getUserServicesDisabled(serviceData.id_service_type)) {
+					fetch(getStore().route + "/user/1/service", {
+						method: "POST",
+						body: JSON.stringify(serviceData),
+						headers: {
+							"Content-Type": "application/json"
+						}
+					})
+						.then(response => response.json())
+						.then(answerUpload => {
+							console.log("Success: ", JSON.stringify(answerUpload));
+							setStore({ services: [...getStore().services, serviceData] });
+						});
+				} else {
+					getActions().updateUserService(serviceData);
+				}
+			},
+			updateUserService: serviceData => {
 				fetch(getStore().route + "/user/1/service", {
-					method: "POST",
+					method: "PUT",
 					body: JSON.stringify(serviceData),
 					headers: {
 						"Content-Type": "application/json"
@@ -17,8 +59,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerUpload => {
-						console.log("Success: ", JSON.stringify(answerUpload));
-						setStore({ services: [...getStore().services, serviceData] });
+						console.log("Success Update: ", JSON.stringify(answerUpload));
+						getActions().getUserServices();
+						/* setStore({ services: [...getStore().services, serviceData] }); */
 					});
 			},
 			getUserServices: () => {
@@ -33,14 +76,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(responseAsJson => {
 						var serviceData = responseAsJson;
-						serviceData.map((service, index) => {
+						serviceData.map(service => {
 							if (service.id_service_type == 1) service.id_service_type = "Paseador";
 							if (service.id_service_type == 2) service.id_service_type = "Cuidador";
 							if (service.id_service_type == 3) service.id_service_type = "Hotel";
+							if (service.id_service_type == 4) service.id_service_type = "Adiestrador";
+							if (service.id_service_type == 5) service.id_service_type = "Veterinario";
 						});
 						if (serviceData.length != getStore().services.length) {
 							setStore({ services: serviceData });
 						}
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
+			getUserServicesDisabled: id_service_type => {
+				fetch(getStore().route + "/user/1/service_disabled", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var serviceData = responseAsJson;
+						serviceData.map(service => {
+							if (service.id_service_type == id_service_type) {
+								return false;
+							} else {
+								return true;
+							}
+						});
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
@@ -51,12 +120,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let precio = document.querySelector("#precio").value;
 				let descripcion = document.querySelector("#descripcion").value;
 
-				let id_service_type_int = 0;
-				if (serviceType == "paseador") id_service_type_int = 1;
-				if (serviceType == "cuidador") id_service_type_int = 2;
-				if (serviceType == "hotel") id_service_type_int = 3;
+				if (serviceType == "Paseador") serviceType = 1;
+				if (serviceType == "Cuidador") serviceType = 2;
+				if (serviceType == "Hotel") serviceType = 3;
+				if (serviceType == "Adiestrador") serviceType = 4;
+				if (serviceType == "Veterinario") serviceType = 5;
 				let newService = {
-					id_service_type: id_service_type_int,
+					id_service_type: serviceType,
 					price_h: precio,
 					description: descripcion
 				};
@@ -100,29 +170,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				];
 				setStore({ users: [...getStore().users, userData].flat() });
-			},
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-                fetch().then().then(data => setStore({ "foo": data.bar }))
-            */
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
 			}
 		}
 	};

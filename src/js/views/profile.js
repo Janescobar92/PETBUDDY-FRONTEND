@@ -28,7 +28,7 @@ export const Profile = () => {
 					subtitle={store.users[userIndex].last_name}
 					img={store.users[userIndex].image}
 				/>
-				<div clasName="body--content-margins">
+				<div className="body--content-margins">
 					<DescriptionContainer />
 					<ServiceCardContainer />
 				</div>

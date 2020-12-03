@@ -19,6 +19,16 @@ export const ServiceCard = () => {
 			<div>
 				{/* Esto hay que cambiarlo */}
 				<p>----------------------------------------------------------------------</p>
+				<button href="#" className="btn btn-primary" onClick={() => actions.showComponent()}>
+					Edit
+				</button>
+				<button
+					onClick={() => {
+						alert("Are you sure you want to delete this pet");
+						actions.deleteService(service.id_service_type);
+					}}>
+					<i className="fas fa-trash" />
+				</button>
 				<p>
 					<strong>Servicio:</strong>
 					{service.id_service_type}

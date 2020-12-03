@@ -17,10 +17,10 @@ export const ServiceForm = () => {
 			<form
 				action="#"
 				onSubmit={event => {
+					/* event.preventDefault(); */
 					if (!serviceExists(store.services)) {
 						actions.addService(actions.MyServicesInputData());
 						actions.showComponent();
-						event.preventDefault();
 					} else {
 						console.log("Servicio ya existe");
 					}
@@ -35,12 +35,14 @@ export const ServiceForm = () => {
 						<option value="Paseador">Paseador</option>
 						<option value="Cuidador">Cuidador</option>
 						<option value="Hotel">Hotel</option>
+						<option value="Adiestrador">Adiestrador</option>
+						<option value="Veterinario">Veterinario</option>
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Precio">Precio</label>
 					<div>
-						<input type="text" className="input" name="Precio" id="recio" required maxLength="4" />
+						<input type="text" className="input" name="Precio" id="precio" required maxLength="6" />
 						{/* <p>(€/h)</p> */}
 					</div>
 				</div>
