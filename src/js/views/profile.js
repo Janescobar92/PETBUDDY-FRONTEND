@@ -18,13 +18,8 @@ export const Profile = () => {
 	}, []);
 
 	let id_user = useParams();
+	const userToFind = store.users.find(user => user.id == id_user.id_user);
 
-	let userIndex = null;
-	for (let index = 0; index < store.users.length; index++) {
-		if (id_user.id_user == store.users[index].id) {
-			userIndex = index;
-		}
-	}
 	if (store.users.length == 0) {
 		return "Cargando perfil..";
 	} else {
@@ -32,9 +27,9 @@ export const Profile = () => {
 			<div>
 				<Jumbotron
 					view="profile"
-					title={store.users[userIndex].name}
-					subtitle={store.users[userIndex].last_name}
-					img={store.users[userIndex].image}
+					title={userToFind.name}
+					subtitle={userToFind.last_name}
+					img={userToFind.image}
 				/>
 				<div className="body--content-margins">
 					<DescriptionContainer />
