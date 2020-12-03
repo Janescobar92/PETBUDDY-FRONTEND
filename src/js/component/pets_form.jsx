@@ -67,7 +67,7 @@ export const PetsForm = () => {
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
-					<label htmlFor="Affections">Afeciones</label>
+					<label htmlFor="Affections">Achaques</label>
 					<input
 						type="text"
 						className="input"
@@ -80,7 +80,7 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Sterilized">Esterilizado</label>
 					<select type="select" className="input" name="Sterilized" id="sterilized" required>
-						<option value="True" selected disabled>
+						<option value={false} selected disabled>
 							Selecionar
 						</option>
 						<option value={true}>Si</option>

@@ -4,12 +4,15 @@ import { Context } from "../store/appContext.js";
 
 export const UpdatePetsForm = () => {
 	const { store, actions } = useContext(Context);
-	let resultIndex = -1;
-	for (let index = 0; index < store.animals.length; index++) {
-		if (store.animals[index].id == store.indexChoosed) {
-			resultIndex = index;
-		}
-	}
+	// let resultIndex = -1;
+	// for (let index = 0; index < store.animals.length; index++) {
+	// 	if (store.animals[index].id == store.indexChoosed) {
+	// 		resultIndex = index;
+	// 	}
+	// }
+
+	const animalToFind = store.animals.find(animal => animal.id == store.indexChoosed);
+
 	return (
 		<div className="form-pet-container align-self-center my-3 container">
 			<form
@@ -26,7 +29,7 @@ export const UpdatePetsForm = () => {
 						name="ID"
 						id="id"
 						required
-						defaultValue={store.animals[resultIndex].id}
+						defaultValue={animalToFind.id}
 						disabled
 					/>
 				</div>
@@ -38,7 +41,7 @@ export const UpdatePetsForm = () => {
 						name="pet_name"
 						id="name"
 						required
-						defaultValue={store.animals[resultIndex].name}
+						defaultValue={animalToFind.name}
 					/>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -49,7 +52,7 @@ export const UpdatePetsForm = () => {
 						name="Pet type"
 						id="type"
 						required
-						defaultValue={store.animals[resultIndex].animal_type}>
+						defaultValue={animalToFind.animal_type}>
 						<option value="True" selected disabled>
 							Selecionar
 						</option>
@@ -69,7 +72,7 @@ export const UpdatePetsForm = () => {
 						id="age"
 						required
 						maxLength="2"
-						defaultValue={store.animals[resultIndex].age}
+						defaultValue={animalToFind.age}
 					/>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -80,7 +83,7 @@ export const UpdatePetsForm = () => {
 						name="Personality"
 						id="personality"
 						required
-						defaultValue={store.animals[resultIndex].personality}>
+						defaultValue={animalToFind.personality}>
 						<option value="True" selected disabled>
 							Selecionar
 						</option>
@@ -100,7 +103,7 @@ export const UpdatePetsForm = () => {
 						id="weight"
 						required
 						maxLength="4"
-						defaultValue={store.animals[resultIndex].weight}
+						defaultValue={animalToFind.weight}
 					/>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -112,7 +115,7 @@ export const UpdatePetsForm = () => {
 						id="size"
 						required
 						maxLength="4"
-						defaultValue={store.animals[resultIndex].size}
+						defaultValue={animalToFind.size}
 					/>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -123,7 +126,7 @@ export const UpdatePetsForm = () => {
 						name="Gender"
 						id="gender"
 						required
-						defaultValue={store.animals[resultIndex].gender ? "Hembra" : "Macho"}>
+						defaultValue={animalToFind.gender ? "Hembra" : "Macho"}>
 						<option value={true} selected disabled>
 							Selecionar
 						</option>
@@ -139,7 +142,7 @@ export const UpdatePetsForm = () => {
 						name="Affections"
 						id="affections"
 						required
-						defaultValue={store.animals[resultIndex].diseases}
+						defaultValue={animalToFind.diseases}
 					/>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -150,7 +153,7 @@ export const UpdatePetsForm = () => {
 						name="Sterilized"
 						id="sterilized"
 						required
-						defaultValue={store.animals[resultIndex].sterilized ? "Si" : "No"}>
+						defaultValue={animalToFind.sterilized ? "Si" : "No"}>
 						<option value="True" selected disabled>
 							Selecionar
 						</option>
@@ -165,7 +168,7 @@ export const UpdatePetsForm = () => {
 					className="input-file my-2 col-sm-12"
 					accept="image/jpg"
 					id="Img"
-					defaultValue={store.animals[resultIndex].image}
+					defaultValue={animalToFind.image}
 				/>
 				<div className="form-button-style container">
 					<button onClick={() => actions.setShowLogin()}>
