@@ -80,9 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
 						let pets = answerDownload;
-						// if (getStore().animals.length != pets.length) {
 						setStore({ animals: pets });
-						// }
 					});
 			},
 			createUserPet: petData => {
@@ -231,7 +229,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
-			// Use getActions to call a function within a fuction
 			getWhoHireYouHistory: () => {
 				// use fetch here
 				let data = [
@@ -267,9 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					email: myEmail,
 					password: myPassword
 				};
-				// getActions().setShowLogin();
 				return logedUser;
-				// setStore((getStore().warning = true));
 			},
 			MyRegisterInputReciver: () => {
 				let myFullName = document.querySelector("#name").value;
@@ -299,26 +294,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			setShowLogin: () => {
-				if (getStore().showLogin == false) {
-					setStore((getStore().showLogin = true));
-				} else {
-					setStore((getStore().showLogin = false));
-					// setStore((getStore().warning = false));
-				}
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				getStore().showLogin
+					? setStore((getStore().showLogin = false))
+					: setStore((getStore().showLogin = true));
 			}
 		}
 	};
