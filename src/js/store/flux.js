@@ -6,6 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// user_id: 1,
 			users: [],
 			animals: [],
+			animal_type: [],
+			pets_character: [],
 			user_services: [
 				{
 					id: 1,
@@ -78,9 +80,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				)
 					.then(response => response.json())
 					.then(answerDownload => {
-						console.log("Success: ", JSON.stringify(answerDownload));
 						let pets = answerDownload;
+						console.log("Success: ", JSON.stringify(answerDownload));
 						setStore({ animals: pets });
+					});
+			},
+			getInputValues: () => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user//animals_type", {
+					method: "GET"
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						console.log("Success: ", JSON.stringify(answerDownload));
+						setStore({ animals_type: answerDownload });
+					});
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user//pets_character", {
+					method: "GET"
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						console.log("Success: ", JSON.stringify(answerDownload));
+						setStore({ pets_character: answerDownload });
 					});
 			},
 			createUserPet: petData => {
