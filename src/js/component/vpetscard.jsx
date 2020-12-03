@@ -11,7 +11,7 @@ import "../../styles/pet_card.scss";
 export const PetsCard = () => {
 	const { store, actions } = useContext(Context);
 
-	const cards = store.animals.map((animal, index) => {
+	const Cards = store.animals.map((animal, index) => {
 		return (
 			<div className="pet--card-style" key={index}>
 				<div className="pet--card-header">
@@ -53,7 +53,7 @@ export const PetsCard = () => {
 	});
 	return (
 		<div className="d-flex flex-column justify-content-center">
-			{cards}
+			{Cards}
 			{store.showLogin ? <UpdatePetsForm /> : null}
 		</div>
 	);

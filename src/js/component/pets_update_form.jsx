@@ -17,7 +17,7 @@ export const UpdatePetsForm = () => {
 		<div className="form-pet-container align-self-center my-3 container">
 			<form
 				onSubmit={event => {
-					actions.updateUserPet(actions.updatePetForm());
+					actions.updateUserPet();
 					actions.setShowLogin();
 					event.preventDefault();
 				}}>
@@ -53,7 +53,7 @@ export const UpdatePetsForm = () => {
 						id="type"
 						required
 						defaultValue={animalToFind.animal_type}>
-						<option value="True" selected disabled>
+						<option value={null} selected disabled>
 							Selecionar
 						</option>
 						<option value="perro">Perro</option>
@@ -84,7 +84,7 @@ export const UpdatePetsForm = () => {
 						id="personality"
 						required
 						defaultValue={animalToFind.personality}>
-						<option value="True" selected disabled>
+						<option value={null} selected disabled>
 							Selecionar
 						</option>
 						<option value="amigable">Amigable</option>
@@ -127,7 +127,7 @@ export const UpdatePetsForm = () => {
 						id="gender"
 						required
 						defaultValue={animalToFind.gender ? "Hembra" : "Macho"}>
-						<option value={true} selected disabled>
+						<option value={null} selected disabled>
 							Selecionar
 						</option>
 						<option value={true}>Hembra</option>
@@ -154,7 +154,7 @@ export const UpdatePetsForm = () => {
 						id="sterilized"
 						required
 						defaultValue={animalToFind.sterilized ? "Si" : "No"}>
-						<option value="True" selected disabled>
+						<option value={null} selected disabled>
 							Selecionar
 						</option>
 						<option value={true}>Si</option>

@@ -130,14 +130,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return creatPet;
 			},
-			updateUserPet: petData => {
+			updateUserPet: () => {
 				fetch(
 					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
 						getStore().logedUser +
 						"/pet",
 					{
 						method: "PUT",
-						body: JSON.stringify(petData),
+						body: JSON.stringify(getActions().updatePetForm()),
 						headers: {
 							"Content-Type": "application/json"
 						}
