@@ -5,10 +5,6 @@ import { Context } from "../store/appContext.js";
 export const PetsForm = () => {
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.getInputValues();
-	}, []);
-
 	return (
 		<div className="form-pet-container align-self-center my-3 container">
 			<form
@@ -25,7 +21,7 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Pet type">Tipo de mascota</label>
 					<select type="select" className="input" name="Pet type" id="type" required>
-						<option value="True" selected disabled>
+						<option value={null} selected disabled>
 							Selecionar
 						</option>
 						<option value={store.animal_type[0]}>Perro</option>
@@ -42,7 +38,7 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Personality">Carácter</label>
 					<select type="select" className="input" name="Personality" id="personality" required>
-						<option value="True" selected disabled>
+						<option value={null} selected disabled>
 							Selecionar
 						</option>
 						<option value={store.pets_character[0]}>Amigable</option>

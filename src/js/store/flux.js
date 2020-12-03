@@ -3,7 +3,6 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			// user_id: 1,
 			users: [],
 			animals: [],
 			animal_type: [],
@@ -85,22 +84,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ animals: pets });
 					});
 			},
-			getInputValues: () => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user//animals_type", {
+			getInputValuesAnimalType: () => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/animals_type", {
 					method: "GET"
 				})
 					.then(response => response.json())
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
-						setStore({ animals_type: answerDownload });
+						setStore({ animal_type: [answerDownload].flat() });
 					});
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user//pets_character", {
+			},
+			getInputValuesPetCharacters: () => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/pets_character", {
 					method: "GET"
 				})
 					.then(response => response.json())
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
-						setStore({ pets_character: answerDownload });
+						setStore({ pets_character: [answerDownload].flat() });
 					});
 			},
 			createUserPet: petData => {
@@ -196,7 +197,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			deletUserPet: petToDeleteData => {
-				console.log(petToDeleteData);
 				fetch(
 					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
 						getStore().logedUser +
@@ -240,8 +240,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson);
-
 						var userData = responseAsJson;
 						setStore({ users: [...getStore().users, userData].flat() });
 					})
