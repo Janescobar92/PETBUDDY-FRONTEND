@@ -5,9 +5,9 @@
 <a href="https://www.figma.com/file/8xHaE8JAjJUw5Uaeqqb2Gl/PetBuddy--mockup?node-id=0%3A1">FIGMA MOCKUPS</a>
 </p>
 
-<img src="src/img/PETBUDDY_DB_MODEL.png">
+<img src="src/assets/img/PETBUDDY_DB_MODEL.png">
 <a href="https://www.figma.com/file/8xHaE8JAjJUw5Uaeqqb2Gl/PetBuddy--mockup?node-id=0%3A1">
-<img src="src/img/color-palette.png">
+<img src="src/assets/img/color-palette.png">
 </a>
 
 ### Requirements:
