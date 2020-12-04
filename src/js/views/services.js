@@ -4,19 +4,9 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 
 import { HorizontalCard } from "../component/h_card.js";
-
-/* import { PetsCardContainer } from "../component/pets-cards-container.jsx"; */
-
 export const Services = () => {
 	const { store, actions } = useContext(Context);
-	/* useEffect(
-		() => {
-			console.log(service, "en use efeect");
-			actions.getTypeServices(service);
-		},
-		[store.render]
-	); */
-	/* actions.getTypeServices(); */
+
 	const cards = store.services.map((item, index) => (
 		<HorizontalCard
 			key={index}

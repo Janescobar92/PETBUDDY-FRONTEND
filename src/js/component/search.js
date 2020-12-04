@@ -20,7 +20,6 @@ export const Search = () => {
 				style={{ width: "40rem" }}
 				renderInput={params => (
 					<TextField
-						/*  <SearchIcon/>  */
 						{...params}
 						label="Busca Servicio"
 						margin="normal"
@@ -39,7 +38,6 @@ export const Search = () => {
 					<i className="fas fa-search" />
 				</button>
 			</Link>
-			{/* </form> */}
 		</div>
 	);
 };

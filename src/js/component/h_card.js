@@ -1,11 +1,7 @@
 import React from "react";
-
 import { Context } from "../store/appContext.js";
-
 import { Link } from "react-router-dom";
-
 import PropTypes from "prop-types";
-
 import "../../styles/h_card_style.scss";
 
 export const HorizontalCard = props => {

@@ -5,15 +5,6 @@ import { Context } from "../store/appContext.js";
 
 export const Button_Services = props => {
 	const { store, actions } = useContext(Context);
-
-	/* useEffect(
-		() => {
-			console.log(props.service, "en use efeect");
-			actions.getTypeServices(props.service);
-		},
-		[store.render]
-	); */
-
 	return (
 		<Link to="/services">
 			<button type="button" onClick={() => actions.getTypeServices(props.service)}>
