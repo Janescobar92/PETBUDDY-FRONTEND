@@ -115,6 +115,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerUpload => {
 						console.log("Success: ", JSON.stringify(answerUpload));
+						getActions().getLogedUserPets();
 						setStore({ animals: [...getStore().animals, petData] });
 					});
 			},
