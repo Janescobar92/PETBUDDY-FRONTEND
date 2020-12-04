@@ -18,10 +18,10 @@ export const HorizontalCard = props => {
 				<h5 className="card-title text-dark">{props.name}</h5>
 				<p className="card-text text-dark">Servicion ofrecido: {props.service}</p>
 				<p className="card-text">
-					<small className="text-dark">Fecha: {props.date}</small>
+					<small className="text-dark">Coste del servicio: {props.price} €</small>
 				</p>
 				<p className="card-text">
-					<small className="text-dark">Coste del servicio: {props.price} €</small>
+					<small className="text-dark">Descripcion: {props.description}</small>
 				</p>
 			</div>
 		</div>
@@ -30,7 +30,7 @@ export const HorizontalCard = props => {
 HorizontalCard.propTypes = {
 	source: PropTypes.string,
 	name: PropTypes.string,
-	date: PropTypes.string,
 	service: PropTypes.string,
-	price: PropTypes.number
+	price: PropTypes.string,
+	description: PropTypes.string
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
@@ -9,14 +9,24 @@ import { HorizontalCard } from "../component/h_card.js";
 
 export const Services = () => {
 	const { store, actions } = useContext(Context);
+	/* useEffect(
+		() => {
+			console.log(service, "en use efeect");
+			actions.getTypeServices(service);
+		},
+		[store.render]
+	); */
+	/* actions.getTypeServices(); */
 	const cards = store.services.map((item, index) => (
 		<HorizontalCard
 			key={index}
-			service={item.service}
-			source={item.image}
-			date={item.date}
-			price={item.price}
-			name={item.name}
+			source={
+				"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+			}
+			name={item.id_user_offer}
+			service={item.id_service_type}
+			price={item.price_h}
+			description={item.description}
 		/>
 	));
 	return (
@@ -26,25 +36,3 @@ export const Services = () => {
 		</div>
 	);
 };
-
-/* import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { HorizontalCard } from "./hcard.jsx";
-import PropTypes from "prop-types";
-import { Context } from "../store/appContext.js";
-
-export const CardContainer = () => {
-	const { store, actions } = useContext(Context);
-	let items = store.user_join_service_join_user_services;
-	const cards = items.map((item, index) => (
-		<HorizontalCard
-			key={index}
-			service={item.service}
-			source={item.image}
-			date={item.date}
-			price={item.price}
-			name={item.name}
-		/>
-	));
-	return cards;
-}; */
