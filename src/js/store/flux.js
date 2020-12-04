@@ -31,11 +31,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			showLogin: false,
 			Warnings: false,
 			logedUser: null,
-			indexChoosed: null
+			indexChoosed: null,
+			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/register", {
+				fetch(getStore().route + "/register", {
 					method: "POST",
 					body: JSON.stringify(params),
 					headers: {
@@ -48,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			login: loginData => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/login", {
+				fetch(getStore().route + "/login", {
 					method: "POST",
 					body: JSON.stringify(loginData),
 					headers: {
@@ -69,14 +70,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().setLoged(decoded.id);
 			},
 			getLogedUserPets: () => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "GET"
-					}
-				)
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+					method: "GET"
+				})
 					.then(response => response.json())
 					.then(answerDownload => {
 						let pets = answerDownload;
@@ -85,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getInputValuesAnimalType: () => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/animals_type", {
+				fetch(getStore().route + "/animals_type", {
 					method: "GET"
 				})
 					.then(response => response.json())
@@ -95,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getInputValuesPetCharacters: () => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/pets_character", {
+				fetch(getStore().route + "/pets_character", {
 					method: "GET"
 				})
 					.then(response => response.json())
@@ -105,18 +101,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			createUserPet: petData => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "POST",
-						body: JSON.stringify(petData),
-						headers: {
-							"Content-Type": "application/json"
-						}
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+					method: "POST",
+					body: JSON.stringify(petData),
+					headers: {
+						"Content-Type": "application/json"
 					}
-				)
+				})
 					.then(response => response.json())
 					.then(answerUpload => {
 						console.log("Success: ", JSON.stringify(answerUpload));
@@ -150,18 +141,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			updateUserPet: () => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "PUT",
-						body: JSON.stringify(getActions().updatePetForm()),
-						headers: {
-							"Content-Type": "application/json"
-						}
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+					method: "PUT",
+					body: JSON.stringify(getActions().updatePetForm()),
+					headers: {
+						"Content-Type": "application/json"
 					}
-				)
+				})
 					.then(response => response.json())
 					.then(answerUpload => {
 						getActions().getLogedUserPets();
@@ -197,15 +183,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			deletUserPet: petToDeleteData => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/" +
-						petToDeleteData,
-					{
-						method: "DELETE"
-					}
-				)
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/" + petToDeleteData, {
+					method: "DELETE"
+				})
 					.then(response => {
 						if (!response.ok) {
 							throw new Error(response.status);
@@ -227,12 +207,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore((getStore().logedUser = id));
 			},
 			getLogedUser: () => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" + getStore().logedUser,
-					{
-						method: "GET"
-					}
-				)
+				fetch(getStore().route + "/user/" + getStore().logedUser, {
+					method: "GET"
+				})
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.status);
@@ -267,7 +244,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						last_name: "Theodor",
 						phone: "605143832",
 						image:
-							"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
 						price: 15,
 						date: "20 de enero ",
 						service_type: "canguro"
