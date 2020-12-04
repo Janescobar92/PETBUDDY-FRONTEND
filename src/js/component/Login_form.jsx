@@ -29,7 +29,6 @@ export const LoginModal = () => {
 						actions.login(actions.MyLoginInputReciver());
 						event.preventDefault();
 					}}>
-					{" "}
 					<div className="form-group">
 						{store.warning ? alert : null}
 						<label htmlFor="email">Email</label>

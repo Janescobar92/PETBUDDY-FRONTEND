@@ -30,7 +30,7 @@ export const Navbar = () => {
 						<p>Perfil</p>
 					</Link>
 					<Link to={"/history/" + store.logedUser}>
-						<p>Hitorial</p>
+						<p>Historial</p>
 					</Link>
 					<Link to="/">
 						<p>

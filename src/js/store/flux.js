@@ -3,9 +3,10 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			// user_id: 1,
 			users: [],
 			animals: [],
+			animal_type: [],
+			pets_character: [],
 			user_services: [
 				{
 					id: 1,
@@ -30,11 +31,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			showLogin: false,
 			Warnings: false,
 			logedUser: null,
-			indexChoosed: null
+			indexChoosed: null,
+			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/register", {
+				fetch(getStore().route + "/register", {
 					method: "POST",
 					body: JSON.stringify(params),
 					headers: {
@@ -47,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			login: loginData => {
-				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/login", {
+				fetch(getStore().route + "/login", {
 					method: "POST",
 					body: JSON.stringify(loginData),
 					headers: {
@@ -72,36 +74,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().setLoged(decoded.id);
 			},
 			getLogedUserPets: () => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "GET"
-					}
-				)
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+					method: "GET"
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						let pets = answerDownload;
+						console.log("Success: ", JSON.stringify(answerDownload));
+						setStore({ animals: pets });
+					});
+			},
+			getInputValuesAnimalType: () => {
+				fetch(getStore().route + "/animals_type", {
+					method: "GET"
+				})
 					.then(response => response.json())
 					.then(answerDownload => {
 						console.log("Success: ", JSON.stringify(answerDownload));
-						let pets = answerDownload;
-						// if (getStore().animals.length != pets.length) {
-						setStore({ animals: pets });
-						// }
+						setStore({ animal_type: [answerDownload].flat() });
+					});
+			},
+			getInputValuesPetCharacters: () => {
+				fetch(getStore().route + "/pets_character", {
+					method: "GET"
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						console.log("Success: ", JSON.stringify(answerDownload));
+						setStore({ pets_character: [answerDownload].flat() });
 					});
 			},
 			createUserPet: petData => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "POST",
-						body: JSON.stringify(petData),
-						headers: {
-							"Content-Type": "application/json"
-						}
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+					method: "POST",
+					body: JSON.stringify(petData),
+					headers: {
+						"Content-Type": "application/json"
 					}
-				)
+				})
 					.then(response => response.json())
 					.then(answerUpload => {
 						console.log("Success: ", JSON.stringify(answerUpload));
@@ -134,19 +144,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return creatPet;
 			},
-			updateUserPet: petData => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/pet",
-					{
-						method: "PUT",
-						body: JSON.stringify(petData),
-						headers: {
-							"Content-Type": "application/json"
-						}
+			updateUserPet: () => {
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+					method: "PUT",
+					body: JSON.stringify(getActions().updatePetForm()),
+					headers: {
+						"Content-Type": "application/json"
 					}
-				)
+				})
 					.then(response => response.json())
 					.then(answerUpload => {
 						getActions().getLogedUserPets();
@@ -182,16 +187,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			deletUserPet: petToDeleteData => {
-				console.log(petToDeleteData);
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" +
-						getStore().logedUser +
-						"/" +
-						petToDeleteData,
-					{
-						method: "DELETE"
-					}
-				)
+				fetch(getStore().route + "/user/" + getStore().logedUser + "/" + petToDeleteData, {
+					method: "DELETE"
+				})
 					.then(response => {
 						if (!response.ok) {
 							throw new Error(response.status);
@@ -213,12 +211,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore((getStore().logedUser = id));
 			},
 			getLogedUser: () => {
-				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu01.gitpod.io/user/" + getStore().logedUser,
-					{
-						method: "GET"
-					}
-				)
+				fetch(getStore().route + "/user/" + getStore().logedUser, {
+					method: "GET"
+				})
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.status);
@@ -226,8 +221,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson);
-
 						var userData = responseAsJson;
 						setStore({ users: [...getStore().users, userData].flat() });
 					})
@@ -235,7 +228,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
-			// Use getActions to call a function within a fuction
 			getWhoHireYouHistory: () => {
 				// use fetch here
 				let data = [
@@ -256,7 +248,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						last_name: "Theodor",
 						phone: "605143832",
 						image:
-							"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
 						price: 15,
 						date: "20 de enero ",
 						service_type: "canguro"
@@ -271,9 +263,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					email: myEmail,
 					password: myPassword
 				};
-				// getActions().setShowLogin();
 				return logedUser;
-				// setStore((getStore().warning = true));
 			},
 			MyRegisterInputReciver: () => {
 				let myFullName = document.querySelector("#name").value;
@@ -303,34 +293,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			setShowLogin: () => {
-				if (getStore().showLogin == false) {
-					setStore((getStore().showLogin = true));
-				} else {
-					setStore((getStore().showLogin = false));
-					// setStore((getStore().warning = false));
-				}
-			},
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-                fetch().then().then(data => setStore({ "foo": data.bar }))
-            */
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				getStore().showLogin
+					? setStore((getStore().showLogin = false))
+					: setStore((getStore().showLogin = true));
 			}
 		}
 	};

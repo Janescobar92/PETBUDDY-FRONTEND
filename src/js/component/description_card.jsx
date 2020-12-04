@@ -6,15 +6,11 @@ import { useParams } from "react-router-dom";
 export const DescriptionCard = () => {
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
-	let userIndex = null;
-	for (let index = 0; index < store.users.length; index++) {
-		if (id_user.id_user == store.users[index].id) {
-			userIndex = index;
-		}
-	}
+	const userToFind = store.users.find(user => user.id == id_user.id_user);
+
 	return (
 		<div className="description--card-size">
-			<p>{store.users[userIndex].biografy}</p>
+			<p>{userToFind.biografy}</p>
 		</div>
 	);
 };

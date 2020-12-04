@@ -7,7 +7,6 @@ import "../../styles/home.scss";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
-	console.log(id_user, store.logedUser);
 	return (
 		<div className="text-center mt-5">
 			<h1>Hello Rigo!</h1>

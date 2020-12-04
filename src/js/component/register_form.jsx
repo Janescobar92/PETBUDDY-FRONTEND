@@ -21,7 +21,6 @@ export const RegisterModal = () => {
 					event.preventDefault();
 					actions.registerUser(actions.MyRegisterInputReciver());
 				}}>
-				{" "}
 				<button
 					type="button"
 					className="close"

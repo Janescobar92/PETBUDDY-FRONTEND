@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../../styles/pets_form.scss";
 import { Context } from "../store/appContext.js";
 
@@ -21,14 +21,14 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Pet type">Tipo de mascota</label>
 					<select type="select" className="input" name="Pet type" id="type" required>
-						<option value="True" selected disabled>
-							Selecionar
+						<option value={null} selected disabled>
+							Seleccionar
 						</option>
-						<option value="perro">Perro</option>
-						<option value="gato">Gato</option>
-						<option value="conejo">Conejo</option>
-						<option value="roedores">Roedores</option>
-						<option value="aves">Aves</option>
+						<option value={store.animal_type[0]}>Perro</option>
+						<option value={store.animal_type[1]}>Gato</option>
+						<option value={store.animal_type[2]}>Conejo</option>
+						<option value={store.animal_type[3]}>Roedores</option>
+						<option value={store.animal_type[4]}>Aves</option>
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -38,14 +38,14 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Personality">Carácter</label>
 					<select type="select" className="input" name="Personality" id="personality" required>
-						<option value="True" selected disabled>
-							Selecionar
+						<option value={null} selected disabled>
+							Seleccionar
 						</option>
-						<option value="amigable">Amigable</option>
-						<option value="dominante">Dominante</option>
-						<option value="nervioso">Nervioso</option>
-						<option value="agresivo">Agresivo</option>
-						<option value="jugueton">Jugueton</option>
+						<option value={store.pets_character[0]}>Amigable</option>
+						<option value={store.pets_character[1]}>Dominante</option>
+						<option value={store.pets_character[2]}>Nervioso</option>
+						<option value={store.pets_character[3]}>Agresivo</option>
+						<option value={store.pets_character[4]}>Jugueton</option>
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
@@ -60,14 +60,14 @@ export const PetsForm = () => {
 					<label htmlFor="Gender">Género</label>
 					<select type="select" className="input" name="Gender" id="gender" required>
 						<option value={true} selected disabled>
-							Selecionar
+							Seleccionar
 						</option>
 						<option value={true}>Hembra</option>
 						<option value={false}>Macho</option>
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
-					<label htmlFor="Affections">Afeciones</label>
+					<label htmlFor="Affections">Achaques</label>
 					<input
 						type="text"
 						className="input"
@@ -80,8 +80,8 @@ export const PetsForm = () => {
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="Sterilized">Esterilizado</label>
 					<select type="select" className="input" name="Sterilized" id="sterilized" required>
-						<option value="True" selected disabled>
-							Selecionar
+						<option value={false} selected disabled>
+							Seleccionar
 						</option>
 						<option value={true}>Si</option>
 						<option value={false}>No</option>
