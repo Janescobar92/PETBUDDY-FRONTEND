@@ -5,8 +5,6 @@ import "../../styles/containers_margins.scss";
 import { DescriptionCard } from "./description_card.jsx";
 
 export const DescriptionContainer = () => {
-	//  aqui va un map
-
 	return (
 		<div className="body-container-margins">
 			<h2>Sobre mí</h2>

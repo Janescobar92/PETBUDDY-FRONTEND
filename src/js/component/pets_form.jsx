@@ -22,7 +22,7 @@ export const PetsForm = () => {
 					<label htmlFor="Pet type">Tipo de mascota</label>
 					<select type="select" className="input" name="Pet type" id="type" required>
 						<option value={null} selected disabled>
-							Selecionar
+							Seleccionar
 						</option>
 						<option value={store.animal_type[0]}>Perro</option>
 						<option value={store.animal_type[1]}>Gato</option>
@@ -39,7 +39,7 @@ export const PetsForm = () => {
 					<label htmlFor="Personality">Carácter</label>
 					<select type="select" className="input" name="Personality" id="personality" required>
 						<option value={null} selected disabled>
-							Selecionar
+							Seleccionar
 						</option>
 						<option value={store.pets_character[0]}>Amigable</option>
 						<option value={store.pets_character[1]}>Dominante</option>
@@ -60,7 +60,7 @@ export const PetsForm = () => {
 					<label htmlFor="Gender">Género</label>
 					<select type="select" className="input" name="Gender" id="gender" required>
 						<option value={true} selected disabled>
-							Selecionar
+							Seleccionar
 						</option>
 						<option value={true}>Hembra</option>
 						<option value={false}>Macho</option>
@@ -81,7 +81,7 @@ export const PetsForm = () => {
 					<label htmlFor="Sterilized">Esterilizado</label>
 					<select type="select" className="input" name="Sterilized" id="sterilized" required>
 						<option value={false} selected disabled>
-							Selecionar
+							Seleccionar
 						</option>
 						<option value={true}>Si</option>
 						<option value={false}>No</option>

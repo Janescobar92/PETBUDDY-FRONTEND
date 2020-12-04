@@ -89,7 +89,7 @@ export const UpdatePetsForm = () => {
 							required
 							defaultValue={animalToFind.animal_type}>
 							<option value={null} selected disabled>
-								Selecionar
+								Seleccionar
 							</option>
 							{selectOptions}
 						</select>
@@ -104,7 +104,7 @@ export const UpdatePetsForm = () => {
 							required
 							defaultValue={animalToFind.personality}>
 							<option value={null} selected disabled>
-								Selecionar
+								Seleccionar
 							</option>
 							{selectOptionsCharacter}
 						</select>
@@ -143,7 +143,7 @@ export const UpdatePetsForm = () => {
 							required
 							defaultValue={animalToFind.gender ? "Hembra" : "Macho"}>
 							<option value={null} selected disabled>
-								Selecionar
+								Seleccionar
 							</option>
 							<option value={true}>Hembra</option>
 							<option value={false}>Macho</option>
@@ -170,7 +170,7 @@ export const UpdatePetsForm = () => {
 							required
 							defaultValue={animalToFind.sterilized ? "Si" : "No"}>
 							<option value={null} selected disabled>
-								Selecionar
+								Seleccionar
 							</option>
 							<option value={true}>Si</option>
 							<option value={false}>No</option>

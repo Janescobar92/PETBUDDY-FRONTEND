@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import "../../styles/containers_margins.scss";
 
 export const ShopCardContainer = () => {
-	//  aqui va un map
-
 	return (
 		<div className="body-container-margins">
 			<h2>Comercios</h2>

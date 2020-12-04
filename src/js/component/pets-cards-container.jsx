@@ -8,9 +8,7 @@ import "../../styles/profile_containers.scss";
 
 export const PetsCardContainer = () => {
 	const { store, actions } = useContext(Context);
-	//  aqui va un map
-	// const [showResults, setShowResults] = useState(false);
-	// const handleClick = () => setShowResults(!showResults);
+
 	return (
 		<>
 			<div className="body-container-margins">
@@ -21,9 +19,7 @@ export const PetsCardContainer = () => {
 					</button>
 				</div>
 			</div>
-			<div
-			// className="d-flex flex-column justify-content-center"
-			>
+			<div>
 				{store.show ? <PetsForm /> : null}
 				<PetsCard />
 			</div>
