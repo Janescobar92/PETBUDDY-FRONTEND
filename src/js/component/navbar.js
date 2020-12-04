@@ -32,6 +32,11 @@ export const Navbar = () => {
 					<Link to={"/history/" + store.logedUser}>
 						<p>Historial</p>
 					</Link>
+					<Link to="/">
+						<p>
+							<span onClick={() => actions.logOut()}>Cerrar sesión</span>
+						</p>
+					</Link>
 				</div>
 			</div>
 		</nav>

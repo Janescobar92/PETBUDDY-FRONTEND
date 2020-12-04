@@ -64,6 +64,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Success: ", 200);
 					});
 			},
+			logOut: () => {
+				localStorage.removeItem("x-access-token");
+				setStore((getStore().logedUser = null));
+			},
 			getLocalSorageToken: () => {
 				var token = localStorage.getItem("x-access-token");
 				const decoded = jwt_decode(token);
