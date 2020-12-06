@@ -7,7 +7,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			animals: [],
 			animal_type: [],
 			pets_character: [],
-			yove_worked_history: [],
 			show: false,
 			showLogin: false,
 			Warnings: false,
@@ -17,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			services: [],
 			yove_worked_history: [],
 			hired_history: [],
-			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
+			route: "https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
