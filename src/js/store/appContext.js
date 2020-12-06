@@ -18,7 +18,6 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			state.actions.getWhoHireYouHistory();
 			state.actions.getLogedUser();
 			state.actions.getInputValuesAnimalType();
 			state.actions.getInputValuesPetCharacters();

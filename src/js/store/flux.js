@@ -187,6 +187,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return creatPet;
 			},
+			updateUserInfo: () => {
+				let myName = document.querySelector("#name").value;
+				let myLast_name = document.querySelector("#last_name").value;
+				let myEmail = document.querySelector("#email").value;
+				let myPhone = document.querySelector("#phone").value;
+				let mylocation = document.querySelector("#location").value;
+				let mybiografy = document.querySelector("#biografy").value;
+				let myImg = document.querySelector("#img").value;
+				let updatedUser = {
+					name: myName,
+					image: myImg,
+					last_name: myLast_name,
+					email: myEmail,
+					phone: myPhone,
+					location: mylocation,
+					biografy: mybiografy
+				};
+				return updatedUser;
+			},
 			deletUserPet: petToDeleteData => {
 				fetch(getStore().route + "/user/" + getStore().logedUser + "/" + petToDeleteData, {
 					method: "DELETE"
@@ -229,33 +248,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
-			getWhoHireYouHistory: () => {
-				// use fetch here
-				let data = [
-					{
-						id: 1,
-						name: "Juan Carlos",
-						last_name: "Alcalde",
-						phone: "605143832",
-						image:
-							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-						price: 20,
-						date: "18 de noviembre",
-						service_type: "paseador"
-					},
-					{
-						id: 2,
-						name: "María",
-						last_name: "Theodor",
-						phone: "605143832",
-						image:
-							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-						price: 15,
-						date: "20 de enero ",
-						service_type: "canguro"
+			updateUser: () => {
+				fetch(getStore().route + "/user/" + getStore().logedUser, {
+					method: "PUT",
+					body: JSON.stringify(getActions().updateUserInfo()),
+					headers: {
+						"Content-Type": "application/json"
 					}
-				];
-				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						getActions().getLogedUser();
+						console.log("Success: ", JSON.stringify(answerUpload));
+					});
 			},
 			MyLoginInputReciver: () => {
 				let myEmail = document.querySelector("#email").value;

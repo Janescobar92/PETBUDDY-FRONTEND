@@ -36,7 +36,7 @@ export const RegisterModal = () => {
 				</div>
 				<div className="form-group">
 					<label htmlFor="last_name">Apellido</label>
-					<input type="ext" className="form-control" id="last_name" placeholder="Apellido" required />
+					<input type="text" className="form-control" id="last_name" placeholder="Apellido" required />
 				</div>
 				<div className="form-group">
 					<label htmlFor="email">Email</label>
