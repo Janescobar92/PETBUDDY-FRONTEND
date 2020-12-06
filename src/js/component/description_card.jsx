@@ -10,7 +10,17 @@ export const DescriptionCard = () => {
 
 	return (
 		<div className="description--card-size">
-			<p>{userToFind.biografy}</p>
+			<div>
+				<p>{userToFind.biografy}</p>
+			</div>
+			<div className="description--card--footer-style">
+				<p> Telf: {userToFind.phone} </p>
+				{""}
+				<p> Dirección: {userToFind.location} </p>
+				{""}
+				<p> Email: {userToFind.email} </p>
+				{""}
+			</div>
 		</div>
 	);
 };

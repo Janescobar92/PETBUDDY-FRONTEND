@@ -1,6 +1,6 @@
 .description--card-size{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     background-color: #464b57;
     color:white;
     height: 30vh;
@@ -8,6 +8,15 @@
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.2);
     padding: 1rem;
+    .description--card--footer-style{
+        display: flex;
+        justify-content: space-between;
+        margin: auto;        
+        margin-bottom: 0;
+        p{
+        margin-inline: 1rem;
+        }
+    }
 }
 
 @media (max-width: 1600px) { 
