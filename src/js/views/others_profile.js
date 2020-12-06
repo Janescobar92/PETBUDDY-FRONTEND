@@ -2,12 +2,13 @@ import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-
 import { ShopCardContainer } from "../component/shops-cards-container.jsx";
 import { DescriptionContainer } from "../component/description-container.jsx";
 import { CommentsContainer } from "../component/comments-container.jsx";
 import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
+
+import "../../styles/jumbotron.scss";
 
 export const OthersProfile = () => {
 	const { store, actions } = useContext(Context);
@@ -25,7 +26,7 @@ export const OthersProfile = () => {
 		return (
 			<div>
 				<Jumbotron
-					view="profile"
+					view="othersprofile"
 					title={userToFind.name}
 					subtitle={userToFind.last_name}
 					img={userToFind.image}
@@ -33,8 +34,6 @@ export const OthersProfile = () => {
 				<div className="body--content-margins">
 					<DescriptionContainer />
 					<PetsCardContainer />
-					{/* <CommentsContainer /> */}
-					{/* <ShopCardContainer /> */}
 				</div>
 			</div>
 		);

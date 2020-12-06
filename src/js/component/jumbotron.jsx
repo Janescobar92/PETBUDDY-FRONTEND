@@ -21,6 +21,23 @@ export const Jumbotron = props => {
 				</div>
 			</div>
 		);
+	} else if (props.view == "othersprofile") {
+		return (
+			<div>
+				<div className="jumbotron-background-wave ">
+					<div className="jumbotron-text-align">
+						<h1>{props.title}</h1>
+						<h2>{props.subtitle}</h2>
+						<div className="jumbotron-buttons-container container">
+							<button className="button-login-style">Contratar</button>
+						</div>
+					</div>
+					<div className="jumbotron-img-align">
+						<ProfilePicture imgSrc={props.img} />
+					</div>
+				</div>
+			</div>
+		);
 	} else if (props.view == "home") {
 		return (
 			<div className="jumbotron-background-wave ">
