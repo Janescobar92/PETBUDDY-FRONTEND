@@ -22,6 +22,14 @@
         margin-inline: 1rem;
         }
     }
+    button{
+    display: block;
+    width: 2rem;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: #659AEB;
+    }
 }
 
 @media (max-width: 1600px) { 
