@@ -28,9 +28,6 @@ export const Jumbotron = props => {
 					<div className="jumbotron-text-align">
 						<h1>{props.title}</h1>
 						<h2>{props.subtitle}</h2>
-						<div className="jumbotron-buttons-container container">
-							<button className="button-login-style">Contratar</button>
-						</div>
 					</div>
 					<div className="jumbotron-img-align">
 						<ProfilePicture imgSrc={props.img} />

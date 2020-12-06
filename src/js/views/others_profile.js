@@ -31,6 +31,9 @@ export const OthersProfile = () => {
 					subtitle={userToFind.last_name}
 					img={userToFind.image}
 				/>
+				<div className="jumbotron-buttons-container mb-3">
+					<button className="button-login-style align-self-center">Contratar</button>
+				</div>
 				<div className="body--content-margins">
 					<DescriptionContainer />
 					<PetsCardContainer />
