@@ -10,7 +10,7 @@ export const DescriptionCard = () => {
 
 	return (
 		<div className="description--card-size">
-			<div>
+			<div className="description--card--body-style">
 				<p>{userToFind.biografy}</p>
 			</div>
 			<div className="description--card--footer-style">
