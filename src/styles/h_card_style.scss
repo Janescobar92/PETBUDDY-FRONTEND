@@ -1,5 +1,5 @@
 $primarycolor: #659aeb;
-$secondarycolor : #464B57;
+$secondarycolor : #F0BB53;
 
 .container-cardbox-align{
     display: flex;
@@ -46,6 +46,14 @@ $secondarycolor : #464B57;
     .card-text{
         padding-right: 1rem;
     }
+}
+.card-container:hover{
+    border: 3px solid $secondarycolor;
+    .text-container {
+        background-image: url("../assets/img/animal_print_secondary_color.png");
+        color: #464B57;
+    }
+
 }
 // Small devices (landscape phones, 576px and up)
  @media (max-width: 585px) {
