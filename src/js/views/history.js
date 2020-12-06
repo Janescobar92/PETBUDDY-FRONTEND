@@ -7,6 +7,12 @@ import { CardContainer } from "../component/cards-container.jsx";
 import "../../styles/h_card_style.scss";
 
 export const History = () => {
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		actions.getWhoHireYouHistory();
+	}, []);
+
 	return (
 		<div>
 			<Jumbotron view="history" />

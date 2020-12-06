@@ -13,7 +13,7 @@ export const CardContainer = () => {
 			service_type={myResult.service_type}
 			source={myResult.image}
 			date={myResult.date}
-			price={myResult.price}
+			total_price={myResult.total_price}
 			name={myResult.name}
 		/>
 	));
