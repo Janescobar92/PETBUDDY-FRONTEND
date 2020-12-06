@@ -8,9 +8,19 @@ export const DescriptionCard = () => {
 	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
 
-	return (
-		<div className="description--card-size">
-			<p>{userToFind.biografy}</p>
-		</div>
-	);
+	const proFileToFind = store.profiles.find(profile => profile.id == id_user.id_user);
+
+	if (userToFind == undefined) {
+		return (
+			<div className="description--card-size">
+				<p>{proFileToFind.biografy}</p>
+			</div>
+		);
+	} else {
+		return (
+			<div className="description--card-size">
+				<p>{userToFind.biografy}</p>
+			</div>
+		);
+	}
 };
