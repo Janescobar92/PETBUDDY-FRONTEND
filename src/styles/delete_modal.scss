@@ -1,3 +1,4 @@
+$primarycolor: #659AEB;
 .delete--modal-container-style{
     z-index: 1;
     position:fixed;
@@ -9,6 +10,7 @@
     height:auto;
     padding: 1rem 0;
     border-radius:10px;
+    border: solid 1px $primarycolor;
     .delete--modal-body-align{
         display: flex;
         flex-direction: column;
@@ -42,7 +44,7 @@
         margin-left: 90%;
         font-size: 1.5rem;
         padding-bottom: 0;
-        margin-bottom: 0;
+        margin-bottom: 0; 
     }
     
 }
@@ -51,7 +53,6 @@
     position:fixed;
     top:0%;
     left:0%;
-    z-index:0;
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.281);
