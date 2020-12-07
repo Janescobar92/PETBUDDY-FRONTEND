@@ -66,6 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logOut: () => {
 				localStorage.removeItem("x-access-token");
+				localStorage.removeItem("logedUser");
 				setStore((getStore().logedUser = null));
 			},
 			getLocalSorageToken: () => {
