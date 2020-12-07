@@ -33,6 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			Warnings: false,
 			logedUser: null,
 			indexChoosed: null,
+			registeredUsers: true,
 			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
 		},
 		actions: {
@@ -57,12 +58,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					}
 				})
-					.then(response => response.json())
+					.then(response => {
+						if (!response.ok) {
+							setStore((getStore().registeredUsers = false));
+							throw Error(response.status);
+						}
+						return response.json();
+					})
 					.then(answerDownload => {
+						console.log(answerDownload);
 						var token = answerDownload.token;
 						localStorage.setItem("x-access-token", token);
 						window.location.replace("/home/" + getStore().logedUser);
 						console.log("Success: ", 200);
+					})
+					.catch(error => {
+						console.log("User not found", error);
 					});
 			},
 			logOut: () => {
@@ -225,6 +236,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						var userData = responseAsJson;
 						setStore({ users: [...getStore().users, userData].flat() });
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
+			deleteAcount: () => {
+				fetch(getStore().route + "/user/" + getStore().logedUser, {
+					method: "DELETE"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						window.location.replace("/");
+						console.log(responseAsJson);
 					})
 					.catch(error => {
 						console.log("Error status: ", error);

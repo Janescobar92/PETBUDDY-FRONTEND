@@ -24,7 +24,14 @@ export const DeleteModal = () => {
 				<div className="delete--modal-body-align">
 					<p>¿Seguro que quieres borrar tu cuenta?</p>
 					<img className="delete--modal-img-style" src={deleteImage} alt="delete image" />
-					<button className="delete--modal-button-style">Borrar</button>
+					<button
+						className="delete--modal-button-style"
+						onClick={() => {
+							actions.deleteAcount();
+							actions.setShowDeleteModal();
+						}}>
+						Borrar
+					</button>
 				</div>
 			</div>
 		</div>
