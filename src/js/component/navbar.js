@@ -25,7 +25,7 @@ export const Navbar = () => {
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
-					<i className="fas fa-bars" />
+					<i className="fas fa-user-alt" />
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<Link to={"/profile/" + store.logedUser}>
@@ -39,15 +39,14 @@ export const Navbar = () => {
 							<span onClick={() => actions.logOut()}>Cerrar sesión</span>
 						</p>
 					</Link>
-					<p>
-						<span
-							onClick={() => {
-								actions.setShowDeleteModal();
-								console.log(store.showDeleteModal);
-							}}>
-							Borrar cuenta
-						</span>
-					</p>
+					<button
+						className="navabar--delte--button-style"
+						onClick={() => {
+							actions.setShowDeleteModal();
+							console.log(store.showDeleteModal);
+						}}>
+						Borrar cuenta <i className="fas fa-user-slash" />
+					</button>
 				</div>
 				{store.showDeleteModal ? <DeleteModal /> : null}
 			</div>
