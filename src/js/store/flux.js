@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			yove_worked_history: [],
 			show: false,
 			showLogin: false,
+			showDeleteModal: false,
 			Warnings: false,
 			logedUser: null,
 			indexChoosed: null,
@@ -297,6 +298,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getStore().showLogin
 					? setStore((getStore().showLogin = false))
 					: setStore((getStore().showLogin = true));
+			},
+			setShowDeleteModal: () => {
+				getStore().showDeleteModal
+					? setStore((getStore().showDeleteModal = false))
+					: setStore((getStore().showDeleteModal = true));
 			}
 		}
 	};

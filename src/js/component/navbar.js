@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import { DeleteModal } from "./deleting_modal.jsx";
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	let param = useParams();
+	// const [displayModal, setDisplayModal] = useState(false);
+
 	return (
 		<nav className="navbar">
 			<Link to={"/home/" + store.logedUser}>
@@ -37,7 +39,17 @@ export const Navbar = () => {
 							<span onClick={() => actions.logOut()}>Cerrar sesión</span>
 						</p>
 					</Link>
+					<p>
+						<span
+							onClick={() => {
+								actions.setShowDeleteModal();
+								console.log(store.showDeleteModal);
+							}}>
+							Borrar cuenta
+						</span>
+					</p>
 				</div>
+				{store.showDeleteModal ? <DeleteModal /> : null}
 			</div>
 		</nav>
 	);

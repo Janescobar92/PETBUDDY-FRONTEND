@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImage from "../../assets/img/rigo-baby.jpg";
 import "../../styles/home.scss";
+// import { DeleteModal } from "../component/deleting_modal.jsx";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -13,6 +14,7 @@ export const Home = () => {
 			<p>
 				<img src={rigoImage} />
 			</p>
+			{/* <DeleteModal /> */}
 			<a href="#" className="btn btn-success">
 				If you see this green button, bootstrap is working
 			</a>
