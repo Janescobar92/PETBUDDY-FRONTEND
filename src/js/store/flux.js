@@ -46,21 +46,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(answerDownload => {
 						var token = answerDownload.token;
 						localStorage.setItem("x-access-token", token);
-						window.location.replace("/home/" + getStore().logedUser);
+						window.location.replace("/home/" + getActions().logedStore());
 						console.log("Success: ", 200);
 					});
 			},
 			logOut: () => {
 				localStorage.removeItem("x-access-token");
+				localStorage.removeItem("logedUser");
 				setStore((getStore().logedUser = null));
 			},
 			getLocalSorageToken: () => {
 				var token = localStorage.getItem("x-access-token");
 				const decoded = jwt_decode(token);
+				localStorage.setItem("logedUser", decoded.id);
 				getActions().setLoged(decoded.id);
 			},
 			getLogedUserPets: () => {
-				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/pet", {
 					method: "GET"
 				})
 					.then(response => response.json())
@@ -91,7 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			createUserPet: petData => {
-				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/pet", {
 					method: "POST",
 					body: JSON.stringify(petData),
 					headers: {
@@ -117,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
 				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
-					user_id: getStore().logedUser,
+					user_id: getActions().logedStore(),
 					name: myPetName,
 					image: myPetImg,
 					animal_type: myPetType,
@@ -132,7 +134,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			updateUserPet: () => {
-				fetch(getStore().route + "/user/" + getStore().logedUser + "/pet", {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/pet", {
 					method: "PUT",
 					body: JSON.stringify(getActions().updatePetForm()),
 					headers: {
@@ -158,7 +160,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
 				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
-					user_id: getStore().logedUser,
+					user_id: getActions().logedStore(),
 					name: myPetName,
 					image: myPetImg,
 					animal_type: myPetType,
@@ -173,8 +175,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return creatPet;
 			},
+			updateUserInfo: () => {
+				let myName = document.querySelector("#name").value;
+				let myLast_name = document.querySelector("#last_name").value;
+				let myEmail = document.querySelector("#email").value;
+				let myPhone = document.querySelector("#phone").value;
+				let mylocation = document.querySelector("#location").value;
+				let mybiografy = document.querySelector("#biografy").value;
+				let myImg = document.querySelector("#img").value;
+				let updatedUser = {
+					name: myName,
+					image: myImg,
+					last_name: myLast_name,
+					email: myEmail,
+					phone: myPhone,
+					location: mylocation,
+					biografy: mybiografy
+				};
+				return updatedUser;
+			},
 			deletUserPet: petToDeleteData => {
-				fetch(getStore().route + "/user/" + getStore().logedUser + "/" + petToDeleteData, {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/" + petToDeleteData, {
 					method: "DELETE"
 				})
 					.then(response => {
@@ -195,10 +216,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore((getStore().indexChoosed = id));
 			},
 			setLoged: id => {
-				setStore((getStore().logedUser = id));
+				localStorage.getItem("logedUser");
+				setStore((getStore().logedUser = localStorage.getItem("logedUser")));
 			},
 			getLogedUser: () => {
-				fetch(getStore().route + "/user/" + getStore().logedUser, {
+				fetch(getStore().route + "/user/" + getActions().logedStore(), {
 					method: "GET"
 				})
 					.then(response => {
@@ -281,6 +303,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
+                    })
+            },
+			logedStore: () => {
+				if (getStore().logedUser == null) {
+					return localStorage.getItem("logedUser");
+				} else {
+					return getStore().logedUser;
+				}
+			},
+			updateUser: () => {
+				fetch(getStore().route + "/user/" + getActions().logedStore(), {
+					method: "PUT",
+					body: JSON.stringify(getActions().updateUserInfo()),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						getActions().getLogedUser();
+						console.log("Success: ", JSON.stringify(answerUpload));
 					});
 			},
 			MyLoginInputReciver: () => {
@@ -324,7 +367,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					? setStore((getStore().showLogin = false))
 					: setStore((getStore().showLogin = true));
 			}
-		}
+        }
+        
 	};
 };
+
 export default getState;
