@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Profile } from "./views/profile";
+import { OthersProfile } from "./views/others_profile";
 import { History } from "./views/history";
 import { Landing } from "./views/landing";
 import { Context } from "./store/appContext";
@@ -31,6 +32,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/profile/:id_user">
 							<Profile />
+						</Route>
+						<Route exact path="/outprofile/:id_user">
+							<OthersProfile />
 						</Route>
 						<Route exact path="/history/:id_use">
 							<History />

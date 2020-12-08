@@ -4,11 +4,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			users: [],
+			profiles: [],
 			animals: [],
 			animal_type: [],
 			pets_character: [],
 			services: [],
 			yove_worked_history: [],
+			othersPets: [],
 			show: false,
 			showLogin: false,
 			Warnings: false,
@@ -16,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			indexChoosed: null,
 			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io",
 			user_services: [],
-			hired_history: []
+
 		},
 		actions: {
 			registerUser: params => {
@@ -213,6 +215,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
+			readOtherprofile: param => {
+				fetch(getStore().route + "/user/" + param, {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var userData = responseAsJson;
+						setStore({ profiles: [...getStore().profiles, userData].flat() });
+						getActions().getOtherUserPets(param);
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
+			getOtherUserPets: param => {
+				fetch(getStore().route + "/user/" + param + "/pet", {
+					method: "GET"
+				})
+					.then(response => response.json())
+					.then(answerDownload => {
+						let pets = answerDownload;
+						console.log("Success: ", JSON.stringify(answerDownload));
+						setStore({ othersPets: pets });
+					});
+			},
 			getWhoHireYouHistory: () => {
 				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io/user/workedfor/1", {
 					method: "GET"
@@ -226,7 +258,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						console.log(responseAsJson);
 						var operationData = responseAsJson;
-						setStore({ yove_worked_history: [...getStore().yove_worked_history, operationData].flat() });
+						setStore({ yove_worked_history: operationData });
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
@@ -245,7 +277,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						console.log(responseAsJson);
 						var operationData = responseAsJson;
-						setStore({ hired_history: [...getStore().hired_history, operationData].flat() });
+						setStore({ hired_history: operationData });
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
