@@ -7,32 +7,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			animals: [],
 			animal_type: [],
 			pets_character: [],
-			user_services: [
-				{
-					id: 1,
-					service_id: 1,
-					service: "Paseador",
-					date: "18 de Nov",
-					price: 20.0
-				}
-			],
-			services: [
-				{
-					id: 1,
-					service: "Paseador",
-					description: "Animals mean all to me.",
-					price: 20.0,
-					image:
-						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-				}
-			],
+			services: [],
 			yove_worked_history: [],
 			show: false,
 			showLogin: false,
 			Warnings: false,
 			logedUser: null,
 			indexChoosed: null,
-			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
+			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io",
+			user_services: [],
+			hired_history: []
 		},
 		actions: {
 			registerUser: params => {
@@ -230,32 +214,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getWhoHireYouHistory: () => {
-				// use fetch here
-				let data = [
-					{
-						id: 1,
-						name: "Juan Carlos",
-						last_name: "Alcalde",
-						phone: "605143832",
-						image:
-							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-						price: 20,
-						date: "18 de noviembre",
-						service_type: "paseador"
-					},
-					{
-						id: 2,
-						name: "María",
-						last_name: "Theodor",
-						phone: "605143832",
-						image:
-							"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-						price: 15,
-						date: "20 de enero ",
-						service_type: "canguro"
-					}
-				];
-				setStore({ yove_worked_history: [...getStore().yove_worked_history, data].flat() });
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io/user/workedfor/1", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						console.log(responseAsJson);
+						var operationData = responseAsJson;
+						setStore({ yove_worked_history: [...getStore().yove_worked_history, operationData].flat() });
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
+			getYourHireHistory: () => {
+				fetch("https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io/user/hired/1", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						console.log(responseAsJson);
+						var operationData = responseAsJson;
+						setStore({ hired_history: [...getStore().hired_history, operationData].flat() });
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
 			},
 			MyLoginInputReciver: () => {
 				let myEmail = document.querySelector("#email").value;
@@ -301,5 +295,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
-
 export default getState;

@@ -15,7 +15,7 @@ export const HorizontalCard = props => {
 					<small className="text-ligth">Fecha: {props.date}</small>
 				</p>
 				<p className="card-text">
-					<small className="text-ligth">Coste del servicio: {props.price} €</small>
+					<small className="text-ligth">Coste del servicio: {props.total_price} €</small>
 				</p>
 			</div>
 		</div>
@@ -26,5 +26,5 @@ HorizontalCard.propTypes = {
 	name: PropTypes.string,
 	date: PropTypes.string,
 	service_type: PropTypes.string,
-	price: PropTypes.number
+	total_price: PropTypes.number
 };
