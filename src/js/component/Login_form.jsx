@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import loginImg from "../../assets/img/runnign_with_cat_petbuddy.png";
+import notFound from "../../assets/img/not_found_user_img.png";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import "../../styles/login_form.scss";
 
 export const LoginModal = () => {
 	const { store, actions } = useContext(Context);
-	let alert = (
-		<div className="warning-alert-style container">
-			<p className="alert-text-color text-center">La contraseña o el usuario no coinciden.</p>
-		</div>
-	);
+
+	const imglogin = <img src={loginImg} alt="get started img" className="login-img-size" />;
+	const imgbadlogin = <img src={notFound} alt="get started img" className="login-img--cat-size" />;
+	let Whichimage = store.registeredUsers ? imglogin : imgbadlogin;
 
 	return (
 		<div className="form-login-container">
@@ -22,7 +22,8 @@ export const LoginModal = () => {
 				onClick={() => actions.setShowLogin()}>
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<img src={loginImg} alt="get started img" className="login-img-size" />
+			{Whichimage}
+			{/* <img src={store.registeredUsers ? loginImg : notFound} alt="get started img" className="login-img-size" /> */}
 			<div className="form-subcard-container">
 				<form
 					onSubmit={event => {

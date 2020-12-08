@@ -12,13 +12,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			yove_worked_history: [],
 			hired_history: [],
 			othersPets: [],
+			user_services: [],
 			show: false,
 			showLogin: false,
+			showDeleteModal: false,
 			Warnings: false,
 			logedUser: null,
 			indexChoosed: null,
-			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io",
-			user_services: []
+			registeredUsers: true,
+			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
@@ -42,12 +44,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					}
 				})
-					.then(response => response.json())
+					.then(response => {
+						if (!response.ok) {
+							setStore((getStore().registeredUsers = false));
+							throw Error(response.status);
+						}
+						return response.json();
+					})
 					.then(answerDownload => {
+						console.log(answerDownload);
 						var token = answerDownload.token;
 						localStorage.setItem("x-access-token", token);
 						window.location.replace("/home/" + getActions().logedStore());
 						console.log("Success: ", 200);
+					})
+					.catch(error => {
+						console.log("User not found", error);
 					});
 			},
 			logOut: () => {
@@ -256,6 +268,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
+			deleteAcount: () => {
+				fetch(getStore().route + "/user/" + getStore().logedUser, {
+					method: "DELETE"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						getActions().logOut();
+						window.location.replace("/");
+						console.log(responseAsJson);
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
 			getOtherUserPets: param => {
 				fetch(getStore().route + "/user/" + param + "/pet", {
 					method: "GET"
@@ -366,6 +397,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getStore().showLogin
 					? setStore((getStore().showLogin = false))
 					: setStore((getStore().showLogin = true));
+			},
+			setShowDeleteModal: () => {
+				getStore().showDeleteModal
+					? setStore((getStore().showDeleteModal = false))
+					: setStore((getStore().showDeleteModal = true));
 			}
 		}
 	};

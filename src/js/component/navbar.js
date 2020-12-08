@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import { DeleteModal } from "./deleting_modal.jsx";
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
@@ -39,7 +39,16 @@ export const Navbar = () => {
 								<span onClick={() => actions.logOut()}>Cerrar sesión</span>
 							</p>
 						</Link>
+						<button
+							className="navabar--delte--button-style"
+							onClick={() => {
+								actions.setShowDeleteModal();
+								console.log(store.showDeleteModal);
+							}}>
+							Borrar cuenta <i className="fas fa-user-slash" />
+						</button>
 					</div>
+					{store.showDeleteModal ? <DeleteModal /> : null}
 				</div>
 			</nav>
 		);
