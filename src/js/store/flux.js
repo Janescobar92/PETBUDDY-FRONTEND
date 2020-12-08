@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			pets_character: [],
 			services: [],
 			yove_worked_history: [],
+			hired_history: [],
 			othersPets: [],
 			show: false,
 			showLogin: false,
@@ -17,8 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logedUser: null,
 			indexChoosed: null,
 			route: " https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io",
-			user_services: [],
-
+			user_services: []
 		},
 		actions: {
 			registerUser: params => {
@@ -303,8 +303,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
-                    })
-            },
+					});
+			},
 			logedStore: () => {
 				if (getStore().logedUser == null) {
 					return localStorage.getItem("logedUser");
@@ -367,8 +367,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					? setStore((getStore().showLogin = false))
 					: setStore((getStore().showLogin = true));
 			}
-        }
-        
+		}
 	};
 };
 
