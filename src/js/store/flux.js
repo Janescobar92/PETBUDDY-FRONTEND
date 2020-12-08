@@ -252,6 +252,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
+						getActions().logOut();
 						window.location.replace("/");
 						console.log(responseAsJson);
 					})
