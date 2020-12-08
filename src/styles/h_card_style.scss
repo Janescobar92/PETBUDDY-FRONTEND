@@ -1,0 +1,62 @@
+$primarycolor: #659aeb;
+$secondarycolor : #464B57;
+
+.card-container{
+    background-image: url("https://raw.githubusercontent.com/Janescobar92/PETBUDDY-FRONTEND/feature/jan/ver_contratos_previos/src/assets/img/animal_print_v2.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    height: 30vh; 
+    border: 3px solid $primarycolor;
+    border-radius: 22px;
+    
+    padding: 0;
+    text-align: right;
+    margin: 3rem 0 3rem 24rem;
+    color: rgb(230, 230, 230);
+    text-shadow: 2px 2px #4d4d4d23;
+}
+.img-container{
+    width:28%;
+    height: 100%;
+    img{
+        width: 100%;
+    height: 100%;
+    min-height: 10rem;
+    min-width: 7rem;
+    border-radius: 19px;
+    }
+}
+.text-container{
+    width: 100%;
+    z-index:0;
+    border-radius: 19px;
+    .card-title{
+        padding-top: 1.5rem;
+        padding-right: 1rem;
+    }
+    .card-text{
+        padding-right: 1rem;
+    }
+}
+// Small devices (landscape phones, 576px and up)
+ @media (min-width: 640px) { 
+ .text-container{
+     font-size: 0.5rem;
+    }
+ }
+
+// // Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  }
+
+// // Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .text-container{
+     font-size: 2rem;
+    }
+ }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {  }

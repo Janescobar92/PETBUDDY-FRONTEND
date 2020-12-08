@@ -1,0 +1,19 @@
+.searcher{
+    display: flex;
+    justify-content: center;
+}
+.button-searcher {
+    margin-top: 1rem;
+    height: 3.5rem;
+    background-color: #659AEB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+}
+.fas{
+    font-size: x-large;
+}
+.MuiFormControl-root{
+    background: #C4C4C4;
+    opacity: 0.15;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+}

@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			users: [],
 			services: [],
 			show: false,
-			route: "https://3000-bc7556ef-62e8-43ac-a019-abab4e6e0d7c.ws-eu01.gitpod.io"
+			route: "https://3000-bc7556ef-62e8-43ac-a019-abab4e6e0d7c.ws-eu03.gitpod.io"
 		},
 		actions: {
 			deleteService: id_service_type => {
@@ -66,6 +66,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getUserServices: () => {
 				fetch(getStore().route + "/user/1/service", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var serviceData = responseAsJson;
+						serviceData.map(service => {
+							if (service.id_service_type == 1) service.id_service_type = "Paseador";
+							if (service.id_service_type == 2) service.id_service_type = "Cuidador";
+							if (service.id_service_type == 3) service.id_service_type = "Hotel";
+							if (service.id_service_type == 4) service.id_service_type = "Adiestrador";
+							if (service.id_service_type == 5) service.id_service_type = "Veterinario";
+						});
+						if (serviceData.length != getStore().services.length) {
+							setStore({ services: serviceData });
+						}
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
+
+			getTypeServices: id_service_type => {
+				if (id_service_type == "Paseador") {
+					id_service_type = 1;
+				} else if (id_service_type == "Cuidador") {
+					id_service_type = 2;
+				} else if (id_service_type == "Hotel") {
+					id_service_type = 3;
+				} else if (id_service_type == "Adiestrador") {
+					id_service_type = 4;
+				} else if (id_service_type == "Veterinario") {
+					id_service_type = 5;
+				}
+				fetch(getStore().route + "/" + id_service_type + "/services", {
 					method: "GET"
 				})
 					.then(response => {
