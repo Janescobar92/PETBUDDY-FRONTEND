@@ -410,7 +410,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (id_service_type == "Adiestrador") id_service_type = 4;
 				if (id_service_type == "Veterinario") id_service_type = 5;
 
-				fetch(getStore().route + "/user/1/" + id_service_type, {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/" + id_service_type, {
 					method: "DELETE"
 				})
 					.then(response => {
@@ -429,7 +429,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			addService: serviceData => {
 				if (getActions().getUserServicesDisabled(serviceData.id_service_type)) {
-					fetch(getStore().route + "/user/1/service", {
+					fetch(getStore().route + "/user/" + getActions().logedStore() + "/service", {
 						method: "POST",
 						body: JSON.stringify(serviceData),
 						headers: {
@@ -446,7 +446,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			updateUserService: serviceData => {
-				fetch(getStore().route + "/user/1/service", {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/service", {
 					method: "PUT",
 					body: JSON.stringify(serviceData),
 					headers: {
@@ -461,7 +461,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getUserServices: () => {
-				fetch(getStore().route + "/user/1/service", {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/service", {
 					method: "GET"
 				})
 					.then(response => {
@@ -527,7 +527,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getUserServicesDisabled: id_service_type => {
-				fetch(getStore().route + "/user/1/service_disabled", {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/service_disabled", {
 					method: "GET"
 				})
 					.then(response => {
