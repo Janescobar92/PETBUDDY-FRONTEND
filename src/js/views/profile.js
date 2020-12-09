@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext, Fragment } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-
-import { ShopCardContainer } from "../component/shops-cards-container.jsx";
 import { DescriptionContainer } from "../component/description-container.jsx";
-import { CommentsContainer } from "../component/comments-container.jsx";
-import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
+import { ServiceCardContainer } from "../component/service_card_container";
+import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
@@ -33,9 +31,10 @@ export const Profile = () => {
 				/>
 				<div className="body--content-margins">
 					<DescriptionContainer />
-					<PetsCardContainer />
 					{/* <CommentsContainer /> */}
 					{/* <ShopCardContainer /> */}
+					<ServiceCardContainer />
+					<PetsCardContainer />
 				</div>
 			</div>
 		);

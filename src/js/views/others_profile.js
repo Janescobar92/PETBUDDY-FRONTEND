@@ -2,9 +2,7 @@ import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-import { ShopCardContainer } from "../component/shops-cards-container.jsx";
 import { DescriptionContainer } from "../component/description-container.jsx";
-import { CommentsContainer } from "../component/comments-container.jsx";
 import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
 

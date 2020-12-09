@@ -7,6 +7,7 @@ import "../../styles/pet_card.scss";
 
 export const PetsCard = () => {
 	const { store, actions } = useContext(Context);
+	console.log(store.animals, "estoy en vpets");
 
 	let Cards = null;
 

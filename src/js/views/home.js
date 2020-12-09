@@ -1,23 +1,26 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import rigoImage from "../../assets/img/rigo-baby.jpg";
+import { Search } from "../component/search.js";
+import { Button_Services } from "../component/button_services.js";
+import { Jumbotron } from "../component/jumbotron.jsx";
 import "../../styles/home.scss";
-// import { DeleteModal } from "../component/deleting_modal.jsx";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			{/* <DeleteModal /> */}
-			<a href="#" className="btn btn-success">
-				If you see this green button, bootstrap is working
-			</a>
+		<div className="home text-center">
+			<div>
+				{/* Poner jumbotrom */}
+				<Jumbotron view="profile" />
+				<Search />
+				<Button_Services service="Paseador" />
+				<Button_Services service="Cuidador" />
+				<Button_Services service="Hotel" />
+				<Button_Services service="Adiestrador" />
+				<Button_Services service="Veterinario" />
+			</div>
 		</div>
 	);
 };
