@@ -19,7 +19,7 @@ export const ServiceCard = () => {
 			<div>
 				{/* Esto hay que cambiarlo */}
 				<p>----------------------------------------------------------------------</p>
-				<button href="#" className="btn btn-primary" onClick={() => actions.showComponent()}>
+				<button href="#" className="btn btn-primary" onClick={() => actions.showComponentService()}>
 					Edit
 				</button>
 				<button

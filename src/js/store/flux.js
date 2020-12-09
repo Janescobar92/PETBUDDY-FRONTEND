@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			othersPets: [],
 			user_services: [],
 			show: false,
+			showService: false,
 			showLogin: false,
 			showDeleteModal: false,
 			Warnings: false,
@@ -549,6 +550,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log("Error status: ", error);
 					});
+			},
+			showComponentService: () => {
+				if (getStore().showService == false) {
+					setStore((getStore().showService = true));
+				} else {
+					setStore((getStore().showService = false));
+					setStore((getStore().warning = false));
+				}
 			},
 			MyServicesInputData: () => {
 				let serviceType = document.querySelector("#service_type").value;

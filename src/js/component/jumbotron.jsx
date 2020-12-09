@@ -3,6 +3,7 @@ import { ProfilePicture } from "../component/profilepicture.jsx";
 import "../../styles/jumbotron.scss";
 import PropTypes from "prop-types";
 import jumbotronImg from "../../assets/img/pixeltrue-yoga.png";
+import welcomeImg from "../../assets/img/pixeltrue-welcome.png";
 import { Context } from "../store/appContext.js";
 
 export const Jumbotron = props => {
@@ -38,10 +39,16 @@ export const Jumbotron = props => {
 	} else if (props.view == "home") {
 		return (
 			<div className="jumbotron-background-wave ">
-				<h1>
-					Bienvenido
-					{props.title}
-				</h1>
+				<div className="jumbotron-text-align">
+					<h1>Bienvenido</h1>
+					<h2>{props.title}</h2>
+				</div>
+				<div>
+					<h2>Busca tu servicio</h2>
+				</div>
+				<div>
+					<img src={welcomeImg} className="Jumbotron-welcome-size" />
+				</div>
 			</div>
 		);
 	} else if (props.view == "nearby") {

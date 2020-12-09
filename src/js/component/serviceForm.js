@@ -20,7 +20,7 @@ export const ServiceForm = () => {
 					/* event.preventDefault(); */
 					if (!serviceExists(store.services)) {
 						actions.addService(actions.MyServicesInputData());
-						actions.showComponent();
+						actions.showComponentService();
 					} else {
 						console.log("Servicio ya existe");
 					}
@@ -51,7 +51,7 @@ export const ServiceForm = () => {
 					<input type="text" className="input" name="Descripcion" id="descripcion" required />
 				</div>
 				<div className="form-button-style container">
-					<button onClick={() => actions.showComponent()}>
+					<button onClick={() => actions.showComponentService()}>
 						<i className="fas fa-minus-circle" />
 					</button>
 					<button type="submit">

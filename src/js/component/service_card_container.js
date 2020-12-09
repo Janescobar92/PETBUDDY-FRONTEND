@@ -12,13 +12,13 @@ export const ServiceCardContainer = () => {
 		<div className="body-container-margins">
 			<h2 className="flex justify-content-space-between">
 				Services, info and prices
-				<button onClick={() => actions.showComponent()}>
+				<button onClick={() => actions.showComponentService()}>
 					<i className="fas fa-plus-circle" />
 				</button>
 			</h2>
 
 			<div className="d-flex flex-column justify-content-center">
-				{store.show ? <ServiceForm /> : null}
+				{store.showService ? <ServiceForm /> : null}
 				<ServiceCard />
 			</div>
 		</div>
