@@ -9,13 +9,13 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	let id_user = useParams();
 
 	useEffect(() => {
 		actions.getLogedUser();
 		actions.getLogedUserPets();
 	}, []);
 
-	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
 	console.log(userToFind, "en home");
 

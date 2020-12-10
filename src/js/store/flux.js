@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logedUser: null,
 			indexChoosed: null,
 			registeredUsers: true,
-			route: "https://33060-a1396043-370d-4c3c-a10d-725a928b2d9a.ws-eu03.gitpod.io"
+			route: "https://3000-e690a41b-291f-4821-be5d-3c15765bf4fe.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
@@ -56,6 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(answerDownload);
 						var token = answerDownload.token;
 						localStorage.setItem("x-access-token", token);
+						getActions().getLocalSorageToken();
+						getActions().logedStore();
 						window.location.replace("/home/" + getActions().logedStore());
 						console.log("Success: ", 200);
 					})
@@ -65,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logOut: () => {
 				localStorage.removeItem("x-access-token");
-				localStorage.removeItem("logedUser");
+				// localStorage.removeItem("logedUser");
 				setStore((getStore().logedUser = null));
 			},
 			getLocalSorageToken: () => {
@@ -339,8 +341,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logedStore: () => {
 				if (getStore().logedUser == null) {
+					console.log("ESTOY EN EL IF", localStorage.getItem("x-access-token"));
 					return localStorage.getItem("logedUser");
 				} else {
+					console.log("ESTOY EN EL ELSE", localStorage.getItem("logedUser"));
 					return getStore().logedUser;
 				}
 			},

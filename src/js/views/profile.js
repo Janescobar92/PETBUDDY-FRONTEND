@@ -9,13 +9,13 @@ import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
+	let id_user = useParams();
 
 	useEffect(() => {
 		actions.getLogedUser();
 		actions.getLogedUserPets();
 	}, []);
 
-	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
 
 	if (store.users.length == 0) {

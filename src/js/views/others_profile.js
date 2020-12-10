@@ -10,12 +10,12 @@ import "../../styles/jumbotron.scss";
 
 export const OthersProfile = () => {
 	const { store, actions } = useContext(Context);
+	let id_user = useParams();
 
 	useEffect(() => {
 		actions.readOtherprofile(id_user.id_user);
 	}, []);
 
-	let id_user = useParams();
 	const userToFind = store.profiles.find(profile => profile.id == id_user.id_user);
 
 	if (store.profiles.length == 0) {

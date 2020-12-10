@@ -25,7 +25,7 @@ export const Navbar = () => {
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false">
-						<i className="fas fa-bars" />
+						<i className="fas fa-user-alt" />
 					</button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<Link to={"/profile/" + store.logedUser}>
