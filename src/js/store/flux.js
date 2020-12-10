@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logedUser: null,
 			indexChoosed: null,
 			registeredUsers: true,
-			route: "https://3000-bc7556ef-62e8-43ac-a019-abab4e6e0d7c.ws-eu03.gitpod.io"
+			route: "https://33060-a1396043-370d-4c3c-a10d-725a928b2d9a.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
@@ -575,6 +575,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 					description: descripcion
 				};
 				return newService;
+			},
+			MatrixDistance: () => {
+				fetch(
+					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io/user/" +
+						getActions().logedStore() +
+						"/distance/1",
+					{
+						method: "GET"
+					}
+				)
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var serviceData = responseAsJson;
+						serviceData.map(service => {
+							if (service.id_service_type == id_service_type) {
+								return false;
+							} else {
+								return true;
+							}
+						});
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
 			}
 		}
 	};
