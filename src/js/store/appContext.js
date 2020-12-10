@@ -21,7 +21,6 @@ const injectContext = PassedComponent => {
 			state.actions.getLogedUser();
 			state.actions.getInputValuesAnimalType();
 			state.actions.getInputValuesPetCharacters();
-			console.log(localStorage.getItem("x-access-token"));
 			if (localStorage.getItem("x-access-token") != null) {
 				state.actions.getLocalSorageToken();
 			}

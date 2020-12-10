@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerUpload => {
-						console.log("Success: ", JSON.stringify(answerUpload));
+						console.log("Success ", 200);
 					});
 			},
 			login: loginData => {
@@ -53,7 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(answerDownload => {
-						console.log(answerDownload);
 						var token = answerDownload.token;
 						localStorage.setItem("x-access-token", token);
 						getActions().getLocalSorageToken();
@@ -67,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logOut: () => {
 				localStorage.removeItem("x-access-token");
-				// localStorage.removeItem("logedUser");
+				localStorage.removeItem("logedUser");
 				setStore((getStore().logedUser = null));
 			},
 			getLocalSorageToken: () => {
@@ -83,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerDownload => {
 						let pets = answerDownload;
-						console.log("Success: ", JSON.stringify(answerDownload));
+						console.log("Success: ", 200);
 						setStore({ animals: pets });
 					});
 			},
@@ -93,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerDownload => {
-						console.log("Success: ", JSON.stringify(answerDownload));
+						console.log("Success: ", 200);
 						setStore({ animal_type: [answerDownload].flat() });
 					});
 			},
@@ -103,7 +102,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerDownload => {
-						console.log("Success: ", JSON.stringify(answerDownload));
 						setStore({ pets_character: [answerDownload].flat() });
 					});
 			},
@@ -117,7 +115,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerUpload => {
-						console.log("Success: ", JSON.stringify(answerUpload));
 						getActions().getLogedUserPets();
 						setStore({ animals: [...getStore().animals, petData] });
 					});
@@ -159,7 +156,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerUpload => {
 						getActions().getLogedUserPets();
-						console.log("Success: ", JSON.stringify(answerUpload));
 					});
 			},
 			updatePetForm: () => {
@@ -210,21 +206,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return updatedUser;
 			},
 			deletUserPet: petToDeleteData => {
-				fetch(getStore().route + "/user/" + getActions().logedStore() + "/" + petToDeleteData, {
-					method: "DELETE"
+				fetch(getStore().route + "/user/pet/" + petToDeleteData, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Accept: "application/json"
+					}
 				})
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.status);
-						}
-						return response.json();
-					})
+					.then(response => response.json())
 					.then(answerUpload => {
 						getActions().getLogedUserPets();
-						console.log("Success: pet deleted");
-					})
-					.catch(error => {
-						console.log("Deleting pet, error status: ", error);
+						getActions().getLogedUserPets();
 					});
 			},
 			setPickedIndex: id => {
@@ -284,7 +276,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						getActions().logOut();
 						window.location.replace("/");
-						console.log(responseAsJson);
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
@@ -297,7 +288,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerDownload => {
 						let pets = answerDownload;
-						console.log("Success: ", JSON.stringify(answerDownload));
 						setStore({ othersPets: pets });
 					});
 			},
@@ -312,7 +302,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson);
 						var operationData = responseAsJson;
 						setStore({ yove_worked_history: operationData });
 					})
@@ -331,7 +320,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson);
 						var operationData = responseAsJson;
 						setStore({ hired_history: operationData });
 					})
@@ -341,10 +329,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logedStore: () => {
 				if (getStore().logedUser == null) {
-					console.log("ESTOY EN EL IF", localStorage.getItem("x-access-token"));
 					return localStorage.getItem("logedUser");
 				} else {
-					console.log("ESTOY EN EL ELSE", localStorage.getItem("logedUser"));
 					return getStore().logedUser;
 				}
 			},
@@ -359,7 +345,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerUpload => {
 						getActions().getLogedUser();
-						console.log("Success: ", JSON.stringify(answerUpload));
 					});
 			},
 			MyLoginInputReciver: () => {
@@ -443,7 +428,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 						.then(response => response.json())
 						.then(answerUpload => {
-							console.log("Success: ", JSON.stringify(answerUpload));
 							setStore({ services: [...getStore().services, serviceData] });
 						});
 				} else {
@@ -460,7 +444,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(answerUpload => {
-						console.log("Success Update: ", JSON.stringify(answerUpload));
 						getActions().getUserServices();
 						/* setStore({ services: [...getStore().services, serviceData] }); */
 					});

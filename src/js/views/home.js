@@ -17,7 +17,6 @@ export const Home = () => {
 	}, []);
 
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
-	console.log(userToFind, "en home");
 
 	if (store.users.length == 0) {
 		return "Cargando home..";

@@ -22,7 +22,6 @@ export const ServiceForm = () => {
 						actions.addService(actions.MyServicesInputData());
 						actions.showComponentService();
 					} else {
-						console.log("Servicio ya existe");
 					}
 				}}>
 				<h4 style={{ display: "flex", justifyContent: "center" }}>Añade Servicio</h4>

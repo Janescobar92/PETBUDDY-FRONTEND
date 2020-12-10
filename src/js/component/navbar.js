@@ -43,7 +43,6 @@ export const Navbar = () => {
 							className="navabar--delte--button-style"
 							onClick={() => {
 								actions.setShowDeleteModal();
-								console.log(store.showDeleteModal);
 							}}>
 							Borrar cuenta <i className="fas fa-user-slash" />
 						</button>
