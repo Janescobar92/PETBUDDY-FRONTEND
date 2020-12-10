@@ -15,6 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user_services: [],
 			show: false,
 			showService: false,
+			showUpdate: false,
 			showLogin: false,
 			showDeleteModal: false,
 			Warnings: false,
@@ -402,7 +403,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (id_service_type == "Adiestrador") id_service_type = 4;
 				if (id_service_type == "Veterinario") id_service_type = 5;
 
-				fetch(getStore().route + "/user/" + getActions().logedStore() + "/" + id_service_type, {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/dservices/" + id_service_type, {
 					method: "DELETE"
 				})
 					.then(response => {
@@ -420,21 +421,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			addService: serviceData => {
-				if (getActions().getUserServicesDisabled(serviceData.id_service_type)) {
-					fetch(getStore().route + "/user/" + getActions().logedStore() + "/service", {
-						method: "POST",
-						body: JSON.stringify(serviceData),
-						headers: {
-							"Content-Type": "application/json"
-						}
-					})
-						.then(response => response.json())
-						.then(answerUpload => {
-							setStore({ services: [...getStore().services, serviceData] });
-						});
-				} else {
-					getActions().updateUserService(serviceData);
-				}
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/service", {
+					method: "POST",
+					body: JSON.stringify(serviceData),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						setStore({ services: [...getStore().services, serviceData] });
+					});
 			},
 			updateUserService: serviceData => {
 				fetch(getStore().route + "/user/" + getActions().logedStore() + "/service", {
@@ -447,7 +444,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerUpload => {
 						getActions().getUserServices();
-						/* setStore({ services: [...getStore().services, serviceData] }); */
+						window.location.reload();
 					});
 			},
 			getUserServices: () => {
@@ -516,35 +513,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
-			getUserServicesDisabled: id_service_type => {
-				fetch(getStore().route + "/user/" + getActions().logedStore() + "/service_disabled", {
-					method: "GET"
-				})
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.status);
-						}
-						return response.json();
-					})
-					.then(responseAsJson => {
-						var serviceData = responseAsJson;
-						serviceData.map(service => {
-							if (service.id_service_type == id_service_type) {
-								return true;
-							} else {
-								return false;
-							}
-						});
-					})
-					.catch(error => {
-						console.log("Error status: ", error);
-					});
-			},
 			showComponentService: () => {
 				if (getStore().showService == false) {
 					setStore((getStore().showService = true));
 				} else {
 					setStore((getStore().showService = false));
+					setStore((getStore().warning = false));
+				}
+			},
+			showUpdateService: () => {
+				if (getStore().showUpdate == false) {
+					setStore((getStore().showUpdate = true));
+				} else {
+					setStore((getStore().showUpdate = false));
 					setStore((getStore().warning = false));
 				}
 			},
@@ -582,8 +563,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(responseAsJson => {
 						var distancesServices = responseAsJson;
-						console.log(distancesServices);
-
 						setStore({ distances: distancesServices });
 					})
 					.catch(error => {
@@ -591,7 +570,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			SearchDistance: id_user_offer => {
-				console.log(getStore().distances);
 				var distance = "";
 				getStore().distances.map(service => {
 					if (service.id_user_offer == id_user_offer) distance = service.distance;

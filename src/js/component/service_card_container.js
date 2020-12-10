@@ -3,10 +3,10 @@ import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import { ServiceCard } from "./serviceCard.js";
 import { ServiceForm } from "./serviceForm.js";
+import { ServiceFormUpdate } from "./service_update_form.js";
 
 export const ServiceCardContainer = () => {
 	const { store, actions } = useContext(Context);
-	//  aqui va un map
 
 	return (
 		<div className="body-container-margins">
@@ -19,6 +19,7 @@ export const ServiceCardContainer = () => {
 
 			<div className="d-flex flex-column justify-content-center">
 				{store.showService ? <ServiceForm /> : null}
+				{store.showUpdate ? <ServiceFormUpdate /> : null}
 				<ServiceCard />
 			</div>
 		</div>

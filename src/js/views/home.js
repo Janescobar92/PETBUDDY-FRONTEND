@@ -24,9 +24,7 @@ export const Home = () => {
 		return (
 			<div className="home text-center">
 				<div>
-					{/* Poner jumbotrom */}
 					<Jumbotron view="home" title={userToFind.name} />
-					{/* <Jumbotron view="home" title={userToFind.name} /> */}
 					<Search />
 					<Button_Services service="Paseador" />
 					<Button_Services service="Cuidador" />

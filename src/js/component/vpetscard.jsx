@@ -22,7 +22,6 @@ export const PetsCard = () => {
 						<div className="pet--card-buttons--container">
 							<button
 								onClick={() => {
-									// alert("Seguro que quieres editar");
 									actions.setPickedIndex(animal.id);
 									actions.setShowLogin();
 								}}>

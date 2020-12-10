@@ -13,13 +13,18 @@ export const ServiceCard = () => {
 		},
 		[store.show]
 	);
-
 	const cards = store.services.map((service, index) => (
 		<div className="service-body d-flex justify-content-center" key={index}>
 			<div>
 				{/* Esto hay que cambiarlo */}
 				<p>----------------------------------------------------------------------</p>
-				<button href="#" className="btn btn-primary" onClick={() => actions.showComponentService()}>
+				<button
+					href="#"
+					className="btn btn-primary"
+					onClick={() => {
+						actions.setPickedIndex(service.id);
+						actions.showUpdateService();
+					}}>
 					Edit
 				</button>
 				<button

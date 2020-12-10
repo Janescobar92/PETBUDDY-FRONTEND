@@ -23,7 +23,6 @@ export const LoginModal = () => {
 				<span aria-hidden="true">&times;</span>
 			</button>
 			{Whichimage}
-			{/* <img src={store.registeredUsers ? loginImg : notFound} alt="get started img" className="login-img-size" /> */}
 			<div className="form-subcard-container">
 				<form
 					onSubmit={event => {

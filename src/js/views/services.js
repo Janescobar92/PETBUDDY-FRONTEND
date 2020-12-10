@@ -10,11 +10,8 @@ export const Services = () => {
 		actions.MatrixDistance();
 	}, []);
 
-	console.log(store.distances, "en vista services");
-
 	const cards = store.services.map((item, index) => {
 		let distancia = actions.SearchDistance(item.id_user_offer);
-		console.log(distancia, "en services distances");
 
 		return (
 			<HorizontalCard

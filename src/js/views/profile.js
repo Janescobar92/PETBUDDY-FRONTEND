@@ -31,8 +31,6 @@ export const Profile = () => {
 				/>
 				<div className="body--content-margins">
 					<DescriptionContainer />
-					{/* <CommentsContainer /> */}
-					{/* <ShopCardContainer /> */}
 					<ServiceCardContainer />
 					<PetsCardContainer />
 				</div>
