@@ -21,6 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logedUser: null,
 			indexChoosed: null,
 			registeredUsers: true,
+			distances: [],
 			route: "https://3000-e690a41b-291f-4821-be5d-3c15765bf4fe.ws-eu03.gitpod.io"
 		},
 		actions: {
@@ -565,9 +566,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			MatrixDistance: () => {
 				fetch(
-					"https://3000-c948bd0b-ac9d-4c50-a69e-4fc330593eb4.ws-eu03.gitpod.io/user/" +
-						getActions().logedStore() +
-						"/distance/1",
+					"https://3000-e6e5f082-af9d-4e97-aeff-17be005f9e25.ws-eu03.gitpod.io/user/3/distance/1",
+					/* getActions().logedStore() +
+						"/distance/1", */
 					{
 						method: "GET"
 					}
@@ -579,18 +580,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						var serviceData = responseAsJson;
-						serviceData.map(service => {
-							if (service.id_service_type == id_service_type) {
-								return false;
-							} else {
-								return true;
-							}
-						});
+						var distancesServices = responseAsJson;
+						console.log(distancesServices);
+
+						setStore({ distances: distancesServices });
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
 					});
+			},
+			SearchDistance: id_user_offer => {
+				console.log(getStore().distances);
+				var distance = "";
+				getStore().distances.map(service => {
+					if (service.id_user_offer == id_user_offer) distance = service.distance;
+				});
+				return distance;
 			}
 		}
 	};
