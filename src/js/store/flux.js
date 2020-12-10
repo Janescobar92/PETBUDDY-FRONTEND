@@ -545,9 +545,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						var serviceData = responseAsJson;
 						serviceData.map(service => {
 							if (service.id_service_type == id_service_type) {
-								return false;
-							} else {
 								return true;
+							} else {
+								return false;
 							}
 						});
 					})
