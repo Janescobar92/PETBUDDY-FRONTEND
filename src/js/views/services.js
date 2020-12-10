@@ -6,7 +6,10 @@ import { Context } from "../store/appContext.js";
 import { HorizontalCard } from "../component/h_card.js";
 export const Services = () => {
 	const { store, actions } = useContext(Context);
-	actions.MatrixDistance();
+	useEffect(() => {
+		actions.MatrixDistance();
+	}, []);
+
 	console.log(store.distances, "en vista services");
 
 	const cards = store.services.map((item, index) => {

@@ -111,7 +111,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					body: JSON.stringify(petData),
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"x-access-token": localStorage.getItem("x-access-token")
 					}
 				})
 					.then(response => response.json())
@@ -566,7 +567,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			MatrixDistance: () => {
 				fetch(
-					"https://3000-e6e5f082-af9d-4e97-aeff-17be005f9e25.ws-eu03.gitpod.io/user/3/distance/1",
+					"https://3000-e690a41b-291f-4821-be5d-3c15765bf4fe.ws-eu03.gitpod.io/user/3/distance/1",
 					/* getActions().logedStore() +
 						"/distance/1", */
 					{
