@@ -43,9 +43,9 @@ export const Jumbotron = props => {
 					<h1>Bienvenido</h1>
 					<h2>{props.title}</h2>
 				</div>
-				<div>
-					<h2>Busca tu servicio</h2>
-				</div>
+				{/* <div>
+					<h2 style={{ marginTop: "34rem", paddingRight: "15rem" }}>Busca tu servicio</h2>
+				</div> */}
 				<div>
 					<img src={welcomeImg} className="Jumbotron-welcome-size" />
 				</div>
