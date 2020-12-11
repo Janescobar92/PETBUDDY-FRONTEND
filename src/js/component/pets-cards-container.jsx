@@ -15,7 +15,7 @@ export const PetsCardContainer = () => {
 	if (id_user.id_user == store.logedUser) {
 		return (
 			<>
-				<div className="body-container-margins">
+				<div className="body-container-margins mt-5">
 					<div className="container-title-size">
 						<h2>Pets</h2>
 						<button onClick={() => actions.showComponent()}>
@@ -23,7 +23,7 @@ export const PetsCardContainer = () => {
 						</button>
 					</div>
 				</div>
-				<div>
+				<div className="mt-5">
 					{store.show ? <PetsForm /> : null}
 					<PetsCard />
 				</div>

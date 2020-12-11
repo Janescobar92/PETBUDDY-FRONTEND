@@ -9,7 +9,7 @@ export const ServiceCardContainer = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="body-container-margins">
+		<div className="body-container-margins mt-5">
 			<h2 className="flex justify-content-space-between">
 				Services, info and prices
 				<button onClick={() => actions.showComponentService()}>
@@ -17,7 +17,7 @@ export const ServiceCardContainer = () => {
 				</button>
 			</h2>
 
-			<div className="d-flex flex-column justify-content-center">
+			<div className="d-flex flex-column justify-content-center mt-5">
 				{store.showService ? <ServiceForm /> : null}
 				{store.showUpdate ? <ServiceFormUpdate /> : null}
 				<ServiceCard />
