@@ -542,7 +542,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let newService = {
 					id_service_type: serviceType,
 					price_h: precio,
-					description: descripcion
+					description: descripcion,
+					is_active: true
 				};
 				return newService;
 			},
