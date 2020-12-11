@@ -431,6 +431,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(answerUpload => {
 						setStore({ services: [...getStore().services, serviceData] });
+						window.location.reload();
 					});
 			},
 			updateUserService: serviceData => {
