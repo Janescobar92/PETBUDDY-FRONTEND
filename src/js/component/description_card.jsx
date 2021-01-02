@@ -7,7 +7,8 @@ import { storage } from "../firebase/firebase_config";
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
 	const [image, setImage] = useState(null);
-	const { imgURL, setImgUrl } = useState("");
+	const [imgURL, setImgUrl] = useState("");
+	const [progress, setProgress] = useState(0);
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
@@ -25,7 +26,10 @@ export const DescriptionCard = () => {
 		const uploadTask = storage.ref("images/" + image.name).put(image);
 		uploadTask.on(
 			"state_changed",
-			snapshot => {},
+			snapshot => {
+				const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+				setProgress(progress);
+			},
 			error => {
 				console.log(error);
 			},
@@ -35,10 +39,7 @@ export const DescriptionCard = () => {
 					.child(image.name)
 					.getDownloadURL()
 					.then(url => {
-						console.log(url);
-						// console.log(actions.SetUserImageURL(url));
 						actions.SetUserImageURL(url);
-						// console.log(store.profileImgUrl);
 					});
 			}
 		);
@@ -140,15 +141,8 @@ export const DescriptionCard = () => {
 						defaultValue={userToFind.biografy}
 					/>
 					<label htmlFor="img">IMG</label>
-					<input
-						type="file"
-						className="input-file"
-						name="img"
-						id="img"
-						onChange={handleChange}
-						required
-						// defaultValue={userToFind.image}
-					/>
+					<progress value={progress} max="100" />
+					<input type="file" className="input-file" name="img" id="img" onChange={handleChange} required />
 					<button onClick={handleUpload}>Subir imagen</button>
 				</div>
 			);
