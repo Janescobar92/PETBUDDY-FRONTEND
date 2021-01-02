@@ -7,7 +7,7 @@ import { storage } from "../firebase/firebase_config";
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
 	const [image, setImage] = useState(null);
-	// const { imgURL, setImgUrl } = useState("");
+	const { imgURL, setImgUrl } = useState("");
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
@@ -36,9 +36,9 @@ export const DescriptionCard = () => {
 					.getDownloadURL()
 					.then(url => {
 						console.log(url);
-						console.log(actions.SetUserImageURL(url));
+						// console.log(actions.SetUserImageURL(url));
 						actions.SetUserImageURL(url);
-						console.log(store.profileImgUrl);
+						// console.log(store.profileImgUrl);
 					});
 			}
 		);
@@ -80,7 +80,7 @@ export const DescriptionCard = () => {
 					<button
 						onClick={() => {
 							setdislpayForm(false);
-							actions.updateUser();
+							actions.updateUser(imgURL);
 							window.location.reload();
 						}}>
 						Guardar cambios <i className="fas fa-check-circle" />
@@ -147,7 +147,7 @@ export const DescriptionCard = () => {
 						id="img"
 						onChange={handleChange}
 						required
-						defaultValue={userToFind.image}
+						// defaultValue={userToFind.image}
 					/>
 					<button onClick={handleUpload}>Subir imagen</button>
 				</div>

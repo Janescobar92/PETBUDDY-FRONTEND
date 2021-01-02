@@ -192,9 +192,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			updateUserInfo: () => {
+				// myImg = document.querySelector("#img").value;
 				let myImg = "";
 				if (getStore().profileImgUrl == "") {
-					myImg = document.querySelector("#img").value;
+					myImg = getStore().users.image;
 				} else {
 					myImg = getStore().profileImgUrl;
 				}
