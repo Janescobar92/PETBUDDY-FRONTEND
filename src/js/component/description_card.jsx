@@ -2,14 +2,47 @@ import React, { useContext, useState } from "react";
 import "../../styles/description_card.scss";
 import { Context } from "../store/appContext.js";
 import { useParams } from "react-router-dom";
+import { storage } from "../firebase/firebase_config";
 
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
+	const [image, setImage] = useState(null);
+	// const { imgURL, setImgUrl } = useState("");
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
 
 	const proFileToFind = store.profiles.find(profile => profile.id == id_user.id_user);
+
+	let handleChange = event => {
+		if (event.target.files[0]) {
+			setImage(event.target.files[0]);
+		}
+	};
+	console.log("image: ", image);
+
+	let handleUpload = () => {
+		const uploadTask = storage.ref("images/" + image.name).put(image);
+		uploadTask.on(
+			"state_changed",
+			snapshot => {},
+			error => {
+				console.log(error);
+			},
+			() => {
+				storage
+					.ref("images")
+					.child(image.name)
+					.getDownloadURL()
+					.then(url => {
+						console.log(url);
+						console.log(actions.SetUserImageURL(url));
+						actions.SetUserImageURL(url);
+						console.log(store.profileImgUrl);
+					});
+			}
+		);
+	};
 
 	if (userToFind == undefined) {
 		return (
@@ -112,9 +145,11 @@ export const DescriptionCard = () => {
 						className="input-file"
 						name="img"
 						id="img"
+						onChange={handleChange}
 						required
 						defaultValue={userToFind.image}
 					/>
+					<button onClick={handleUpload}>Subir imagen</button>
 				</div>
 			);
 		}
