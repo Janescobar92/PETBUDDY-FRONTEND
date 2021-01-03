@@ -7,7 +7,7 @@ import { storage } from "../firebase/firebase_config";
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
 	const [image, setImage] = useState(null);
-	const [imgURL, setImgUrl] = useState("");
+	// const [imgURL, setImgUrl] = useState("");
 	const [progress, setProgress] = useState(0);
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
@@ -20,7 +20,6 @@ export const DescriptionCard = () => {
 			setImage(event.target.files[0]);
 		}
 	};
-	console.log("image: ", image);
 
 	let handleUpload = () => {
 		const uploadTask = storage.ref("images/" + image.name).put(image);
@@ -81,7 +80,7 @@ export const DescriptionCard = () => {
 					<button
 						onClick={() => {
 							setdislpayForm(false);
-							actions.updateUser(imgURL);
+							actions.updateUser();
 							window.location.reload();
 						}}>
 						Guardar cambios <i className="fas fa-check-circle" />

@@ -24,6 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			indexChoosed: null,
 			registeredUsers: true,
 			profileImgUrl: "",
+			petImgUrl: "",
 			distances: [],
 			route: "https://3000-d71dd10d-1563-4ec0-aa63-46091a8a5b62.ws-eu03.gitpod.io"
 		},
@@ -150,10 +151,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return creatPet;
 			},
-			updateUserPet: () => {
+			updateUserPet: image => {
 				fetch(getStore().route + "/user/" + getActions().logedStore() + "/pet", {
 					method: "PUT",
-					body: JSON.stringify(getActions().updatePetForm()),
+					body: JSON.stringify(getActions().updatePetForm(image)),
 					headers: {
 						"Content-Type": "application/json"
 					}
@@ -163,7 +164,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().getLogedUserPets();
 					});
 			},
-			updatePetForm: () => {
+			updatePetForm: image => {
+				let myPetImg = "";
+				if (getStore().petImgUrl == "") {
+					myPetImg = image;
+				} else {
+					myPetImg = getStore().petImgUrl;
+				}
 				let myPetID = document.querySelector("#id").value;
 				let myPetName = document.querySelector("#name").value;
 				let myPetType = document.querySelector("#type").value;
@@ -174,7 +181,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetGender = document.querySelector("#gender").value;
 				let myPetAffections = document.querySelector("#affections").value;
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
-				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
 					user_id: getActions().logedStore(),
 					name: myPetName,
@@ -192,7 +198,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			updateUserInfo: () => {
-				// myImg = document.querySelector("#img").value;
 				let myImg = "";
 				if (getStore().profileImgUrl == "") {
 					myImg = getStore().users.image;
@@ -588,6 +593,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			SetUserImageURL: url => {
 				setStore((getStore().profileImgUrl = url));
+			},
+			SetPetImageURL: url => {
+				setStore((getStore().petImgUrl = url));
 			}
 		}
 	};
