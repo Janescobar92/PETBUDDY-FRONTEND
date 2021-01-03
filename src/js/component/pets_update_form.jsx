@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/pets_form.scss";
 import { Context } from "../store/appContext.js";
 import { storage } from "../firebase/firebase_config";

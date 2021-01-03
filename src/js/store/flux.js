@@ -126,6 +126,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			createPetForm: () => {
+				let myPetImg = "";
+				if (getStore().petImgUrl == "") {
+					myPetImg = null;
+				} else {
+					myPetImg = getStore().petImgUrl;
+				}
 				let myPetName = document.querySelector("#name").value;
 				let myPetType = document.querySelector("#type").value;
 				let myPetAge = document.querySelector("#age").value;
@@ -135,7 +141,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetGender = document.querySelector("#gender").value;
 				let myPetAffections = document.querySelector("#affections").value;
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
-				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
 					user_id: getActions().logedStore(),
 					name: myPetName,
@@ -595,7 +600,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore((getStore().profileImgUrl = url));
 			},
 			SetPetImageURL: url => {
-				setStore((getStore().petImgUrl = url));
+				if (getStore().petImgUrl == "") {
+					setStore((getStore().petImgUrl = url));
+				} else {
+					setStore((getStore().petImgUrl = ""));
+				}
 			}
 		}
 	};
