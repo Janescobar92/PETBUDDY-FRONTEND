@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			hired_history: [],
 			othersPets: [],
 			user_services: [],
+			otherUserServices: [],
 			show: false,
 			showService: false,
 			showUpdate: false,
@@ -23,7 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			indexChoosed: null,
 			registeredUsers: true,
 			distances: [],
-			route: "https://3000-e690a41b-291f-4821-be5d-3c15765bf4fe.ws-eu03.gitpod.io"
+			route: "https://3000-d71dd10d-1563-4ec0-aa63-46091a8a5b62.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
@@ -469,6 +470,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 						});
 						if (serviceData.length != getStore().services.length) {
 							setStore({ services: serviceData });
+						}
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
+			getOtherUserServices: userID => {
+				fetch(getStore().route + "/user/" + userID + "/service", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var serviceData = responseAsJson;
+						serviceData.map(service => {
+							if (service.id_service_type == 1) service.id_service_type = "Paseador";
+							if (service.id_service_type == 2) service.id_service_type = "Cuidador";
+							if (service.id_service_type == 3) service.id_service_type = "Hotel";
+							if (service.id_service_type == 4) service.id_service_type = "Adiestrador";
+							if (service.id_service_type == 5) service.id_service_type = "Veterinario";
+						});
+						if (serviceData.length != getStore().services.length) {
+							setStore({ otherUserServices: serviceData });
 						}
 					})
 					.catch(error => {
