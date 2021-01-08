@@ -64,7 +64,7 @@ export const PetsCard = () => {
 					<div className="pet--card-body">
 						<h5 className="">Info</h5>
 						<p className="">
-							Mi {pet.pet_type} se llama {pet.name}. Tiene {pet.age} años.
+							Mi {pet.animal_type} se llama {pet.name}. Tiene {pet.age} años.
 						</p>
 						<p className="">
 							Es {pet.personality}, pesa {pet.weight}

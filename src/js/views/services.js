@@ -14,17 +14,19 @@ export const Services = () => {
 		let distancia = actions.SearchDistance(item.id_user_offer);
 
 		return (
-			<HorizontalCard
-				key={index}
-				source={
-					"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-				}
-				name={item.id_user_offer}
-				service={item.id_service_type}
-				price={item.price_h}
-				distance={distancia}
-				description={item.description}
-			/>
+			<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + item.id}>
+				<HorizontalCard
+					key={index}
+					source={
+						"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+					}
+					name={item.id_user_offer}
+					service={item.id_service_type}
+					price={item.price_h}
+					distance={distancia}
+					description={item.description}
+				/>
+			</Link>
 		);
 	});
 	return (

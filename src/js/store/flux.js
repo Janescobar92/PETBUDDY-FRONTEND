@@ -261,8 +261,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						var userData = responseAsJson;
 						setStore({ profiles: [...getStore().profiles, userData].flat() });
+						// setStore({ profiles: [...getStore().profiles, userData].flat() });
 						getActions().getOtherUserPets(param);
 						getActions().getOtherUserServices(param);
+						console.log(getStore().profiles);
 					})
 					.catch(error => {
 						console.log("Error status: ", error);

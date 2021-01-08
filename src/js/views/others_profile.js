@@ -18,8 +18,7 @@ export const OthersProfile = () => {
 	}, []);
 
 	const userToFind = store.profiles.find(profile => profile.id == id_user.id_user);
-
-	if (store.profiles.length == 0) {
+	if (userToFind == undefined) {
 		return "Cargando perfil..";
 	} else {
 		return (
