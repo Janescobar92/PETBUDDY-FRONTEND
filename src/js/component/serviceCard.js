@@ -42,7 +42,7 @@ export const ServiceCard = () => {
 							{service.id_service_type}
 						</p>
 						<p>
-							<strong>Descripcion:</strong>
+							<strong>Descripción:</strong>
 						</p>
 						<p> {service.description}</p>
 						<p>

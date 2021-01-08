@@ -14,7 +14,7 @@ export const ServiceCardContainer = () => {
 		return (
 			<div className="body-container-margins mt-5">
 				<h2 className="flex justify-content-space-between">
-					Services, info and prices
+					Servicios
 					<button onClick={() => actions.showComponentService()}>
 						<i className="fas fa-plus-circle" />
 					</button>
