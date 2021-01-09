@@ -264,7 +264,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// setStore({ profiles: [...getStore().profiles, userData].flat() });
 						getActions().getOtherUserPets(param);
 						getActions().getOtherUserServices(param);
-						console.log(getStore().profiles);
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
@@ -506,8 +505,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
-
 			getTypeServices: id_service_type => {
+				console.log(id_service_type, "id del servicio");
 				if (id_service_type == "Paseador") {
 					id_service_type = 1;
 				} else if (id_service_type == "Cuidador") {
@@ -519,6 +518,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else if (id_service_type == "Veterinario") {
 					id_service_type = 5;
 				}
+				console.log(id_service_type, "id del servicio");
 				fetch(getStore().route + "/" + id_service_type + "/services", {
 					method: "GET"
 				})
@@ -541,6 +541,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ services: serviceData });
 						}
 					})
+					.then(() => getActions().MatrixDistance(id_service_type))
 					.catch(error => {
 						console.log("Error status: ", error);
 					});
@@ -579,15 +580,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return newService;
 			},
-			MatrixDistance: () => {
-				fetch(
-					"https://3000-e690a41b-291f-4821-be5d-3c15765bf4fe.ws-eu03.gitpod.io/user/3/distance/1",
-					/* getActions().logedStore() +
-						"/distance/1", */
-					{
-						method: "GET"
-					}
-				)
+			MatrixDistance: service_type_id => {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/distance/" + service_type_id, {
+					method: "GET"
+				})
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.status);
