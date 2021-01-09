@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { PayPalButton } from "./paypal.jsx";
 
 export const ServiceCard = () => {
 	const { store, actions } = useContext(Context);
@@ -55,27 +56,12 @@ export const ServiceCard = () => {
 		});
 	} else {
 		Cards = store.otherUserServices.map((service, index) => {
+			let value = service.price_h;
 			return (
 				<div className="service-body d-flex justify-content-center" key={index}>
 					<div>
 						{/* Esto hay que cambiarlo */}
 						<p>----------------------------------------------------------------------</p>
-						{/* <button
-						href="#"
-						className="btn btn-primary"
-						onClick={() => {
-							actions.setPickedIndex(service.id);
-							actions.showUpdateService();
-						}}>
-						Edit
-					</button>
-					<button
-						onClick={() => {
-							alert("Are you sure you want to delete this pet");
-							actions.deleteService(service.id_service_type);
-						}}>
-						<i className="fas fa-trash" />
-					</button> */}
 						<p>
 							<strong>Servicio:</strong>
 							{service.id_service_type}
@@ -88,7 +74,10 @@ export const ServiceCard = () => {
 							<strong>Precio:</strong> {service.price_h}
 							€/h
 						</p>
-						<button>contratar servicio</button>
+						<p>
+							<strong>contratar servicio</strong>
+						</p>
+						<PayPalButton price={value.toString()} />
 					</div>
 				</div>
 			);
