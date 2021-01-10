@@ -298,7 +298,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getWhoHireYouHistory: () => {
-				fetch(getStore().route + "/user/workedfor/" + getStore().logedUser, {
+				fetch(getStore().route + "/user/workedfor/" + getActions().logedStore(), {
 					method: "GET"
 				})
 					.then(response => {
@@ -308,7 +308,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						var operationData = responseAsJson;
+						var operationData = responseAsJson.flat();
 						setStore({ yove_worked_history: operationData });
 					})
 					.catch(error => {
