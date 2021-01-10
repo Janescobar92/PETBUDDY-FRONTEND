@@ -9,6 +9,20 @@ export const ServiceCard = () => {
 	let Cards = null;
 	let id_user = useParams();
 
+	const ServiceTypes = param => {
+		if (param == "Paseador") {
+			return 1;
+		} else if (param == "Cuidador") {
+			return 2;
+		} else if (param == "Hotel") {
+			return 3;
+		} else if (param == "Adiestrador") {
+			return 4;
+		} else if (param == "Veterinario") {
+			return 5;
+		}
+	};
+
 	useEffect(
 		() => {
 			actions.getUserServices();
@@ -74,10 +88,12 @@ export const ServiceCard = () => {
 							<strong>Precio:</strong> {service.price_h}
 							€/h
 						</p>
-						<p>
-							<strong>contratar servicio</strong>
-						</p>
-						<PayPalButton price={value.toString()} />
+						<p>contratar servicio</p>
+						<PayPalButton
+							price={value.toString()}
+							description={service.description}
+							service_id_hired={ServiceTypes(service.id_service_type)}
+						/>
 					</div>
 				</div>
 			);
