@@ -316,7 +316,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getYourHireHistory: () => {
-				fetch(getStore().route + "/user/hired/1", {
+				fetch(getStore().route + "/user/hired/" + getActions().logedStore(), {
 					method: "GET"
 				})
 					.then(response => {
