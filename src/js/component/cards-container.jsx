@@ -28,7 +28,6 @@ export const CardContainerYouWorkedFor = () => {
 			</div>
 		);
 	}
-
 };
 
 export const CardContainerhired = () => {
