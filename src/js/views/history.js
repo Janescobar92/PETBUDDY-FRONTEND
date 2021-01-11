@@ -19,11 +19,11 @@ export const History = () => {
 			<Jumbotron view="history" />
 			<h2>Has contratado a</h2>
 			<div className="container-cardbox-align">
-				<CardContainerhired />;
+				<CardContainerhired />
 			</div>
 			<h2>Has trabajado para</h2>
 			<div className="container-cardbox-align">
-				<CardContainerYouWorkedFor />;
+				<CardContainerYouWorkedFor />
 			</div>
 		</div>
 	);

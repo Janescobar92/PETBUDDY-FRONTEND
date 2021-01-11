@@ -17,7 +17,7 @@ export const PetsCardContainer = () => {
 			<>
 				<div className="body-container-margins mt-5">
 					<div className="container-title-size">
-						<h2>Pets</h2>
+						<h2>Mascotas</h2>
 						<button onClick={() => actions.showComponent()}>
 							<i className="fas fa-plus-circle" />
 						</button>
@@ -34,7 +34,7 @@ export const PetsCardContainer = () => {
 			<>
 				<div className="body-container-margins">
 					<div className="container-title-size">
-						<h2>Pets</h2>
+						<h2>Mascotas</h2>
 					</div>
 				</div>
 				<div>

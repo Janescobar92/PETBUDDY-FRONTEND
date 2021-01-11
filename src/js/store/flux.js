@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			hired_history: [],
 			othersPets: [],
 			user_services: [],
+			otherUserServices: [],
 			show: false,
 			showService: false,
 			showUpdate: false,
@@ -278,7 +279,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						var userData = responseAsJson;
 						setStore({ profiles: [...getStore().profiles, userData].flat() });
+						// setStore({ profiles: [...getStore().profiles, userData].flat() });
 						getActions().getOtherUserPets(param);
+						getActions().getOtherUserServices(param);
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
@@ -313,7 +316,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getWhoHireYouHistory: () => {
-				fetch(getStore().route + "/user/workedfor/1", {
+				fetch(getStore().route + "/user/workedfor/" + getActions().logedStore(), {
 					method: "GET"
 				})
 					.then(response => {
@@ -323,7 +326,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						var operationData = responseAsJson;
+						var operationData = responseAsJson.flat();
 						setStore({ yove_worked_history: operationData });
 					})
 					.catch(error => {
@@ -331,7 +334,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getYourHireHistory: () => {
-				fetch(getStore().route + "/user/hired/1", {
+				fetch(getStore().route + "/user/hired/" + getActions().logedStore(), {
 					method: "GET"
 				})
 					.then(response => {
@@ -493,8 +496,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
-
+			getOtherUserServices: userID => {
+				fetch(getStore().route + "/user/" + userID + "/service", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						var serviceData = responseAsJson;
+						serviceData.map(service => {
+							if (service.id_service_type == 1) service.id_service_type = "Paseador";
+							if (service.id_service_type == 2) service.id_service_type = "Cuidador";
+							if (service.id_service_type == 3) service.id_service_type = "Hotel";
+							if (service.id_service_type == 4) service.id_service_type = "Adiestrador";
+							if (service.id_service_type == 5) service.id_service_type = "Veterinario";
+						});
+						if (serviceData.length != getStore().services.length) {
+							setStore({ otherUserServices: serviceData });
+						}
+					})
+					.catch(error => {
+						console.log("Error status: ", error);
+					});
+			},
 			getTypeServices: id_service_type => {
+				console.log(id_service_type, "id del servicio");
 				if (id_service_type == "Paseador") {
 					id_service_type = 1;
 				} else if (id_service_type == "Cuidador") {
@@ -506,6 +536,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else if (id_service_type == "Veterinario") {
 					id_service_type = 5;
 				}
+				console.log(id_service_type, "id del servicio");
 				fetch(getStore().route + "/" + id_service_type + "/services", {
 					method: "GET"
 				})
@@ -528,6 +559,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ services: serviceData });
 						}
 					})
+					.then(() => getActions().MatrixDistance(id_service_type))
 					.catch(error => {
 						console.log("Error status: ", error);
 					});
@@ -566,15 +598,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return newService;
 			},
-			MatrixDistance: () => {
-				fetch(
-					"https://3000-e690a41b-291f-4821-be5d-3c15765bf4fe.ws-eu03.gitpod.io/user/3/distance/1",
-					/* getActions().logedStore() +
-						"/distance/1", */
-					{
-						method: "GET"
-					}
-				)
+			MatrixDistance: service_type_id => {
+				fetch(getStore().route + "/user/" + getActions().logedStore() + "/distance/" + service_type_id, {
+					method: "GET"
+				})
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.status);
@@ -587,6 +614,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						console.log("Error status: ", error);
+					});
+			},
+			PaypalPayment: order => {
+				fetch(getStore().route + "/paymant/paypal/", {
+					method: "POST",
+					body: JSON.stringify(order),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(response => response.json())
+					.then(answerUpload => {
+						console.log(answerUpload);
 					});
 			},
 			SearchDistance: id_user_offer => {
