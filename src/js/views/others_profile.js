@@ -6,6 +6,7 @@ import { DescriptionContainer } from "../component/description-container.jsx";
 import { ServiceCardContainer } from "../component/service_card_container";
 import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
+import avatar from "../../assets/img/avatar.png";
 
 import "../../styles/jumbotron.scss";
 
@@ -27,7 +28,7 @@ export const OthersProfile = () => {
 					view="othersprofile"
 					title={userToFind.name}
 					subtitle={userToFind.last_name}
-					img={userToFind.image}
+					img={userToFind.image || avatar}
 				/>
 				<div className="jumbotron-buttons-container mb-3">
 					{/* <button className="button-login-style align-self-center">Contratar</button> */}

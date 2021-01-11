@@ -2,14 +2,47 @@ import React, { useContext, useState } from "react";
 import "../../styles/description_card.scss";
 import { Context } from "../store/appContext.js";
 import { useParams } from "react-router-dom";
+import { storage } from "../firebase/firebase_config";
 
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
+	const [image, setImage] = useState(null);
+	// const [imgURL, setImgUrl] = useState("");
+	const [progress, setProgress] = useState(0);
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();
 	const userToFind = store.users.find(user => user.id == id_user.id_user);
 
 	const proFileToFind = store.profiles.find(profile => profile.id == id_user.id_user);
+
+	let handleChange = event => {
+		if (event.target.files[0]) {
+			setImage(event.target.files[0]);
+		}
+	};
+
+	let handleUpload = () => {
+		const uploadTask = storage.ref("images/" + image.name).put(image);
+		uploadTask.on(
+			"state_changed",
+			snapshot => {
+				const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+				setProgress(progress);
+			},
+			error => {
+				console.log(error);
+			},
+			() => {
+				storage
+					.ref("images")
+					.child(image.name)
+					.getDownloadURL()
+					.then(url => {
+						actions.SetUserImageURL(url);
+					});
+			}
+		);
+	};
 
 	if (userToFind == undefined) {
 		return (
@@ -107,14 +140,9 @@ export const DescriptionCard = () => {
 						defaultValue={userToFind.biografy}
 					/>
 					<label htmlFor="img">IMG</label>
-					<input
-						type="file"
-						className="input-file"
-						name="img"
-						id="img"
-						required
-						defaultValue={userToFind.image}
-					/>
+					<progress value={progress} max="100" />
+					<input type="file" className="input-file" name="img" id="img" onChange={handleChange} required />
+					<button onClick={handleUpload}>Subir imagen</button>
 				</div>
 			);
 		}

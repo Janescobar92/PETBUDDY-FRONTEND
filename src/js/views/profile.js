@@ -6,6 +6,7 @@ import { DescriptionContainer } from "../component/description-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
 import { ServiceCardContainer } from "../component/service_card_container";
 import { PetsCardContainer } from "../component/pets-cards-container.jsx";
+import avatar from "../../assets/img/avatar.png";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
@@ -27,7 +28,7 @@ export const Profile = () => {
 					view="profile"
 					title={userToFind.name}
 					subtitle={userToFind.last_name}
-					img={userToFind.image}
+					img={userToFind.image || avatar}
 				/>
 				<div className="body--content-margins">
 					<DescriptionContainer />

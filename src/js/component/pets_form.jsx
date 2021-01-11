@@ -1,9 +1,46 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/pets_form.scss";
 import { Context } from "../store/appContext.js";
+import { storage } from "../firebase/firebase_config";
 
 export const PetsForm = () => {
 	const { store, actions } = useContext(Context);
+	const [image, setImage] = useState(null);
+
+	let handleChange = event => {
+		if (event.target.files[0]) {
+			setImage(event.target.files[0]);
+		}
+	};
+	console.log("image: ", image);
+
+	let handleUpload = async () => {
+		if (image != null) {
+			const uploadTask = storage.ref("images/" + image.name).put(image);
+			uploadTask.on(
+				"state_changed",
+				snapshot => {},
+				error => {
+					console.log(error);
+				},
+				() => {
+					storage
+						.ref("images")
+						.child(image.name)
+						.getDownloadURL()
+						.then(url => {
+							actions.SetPetImageURL(url);
+							console.log(url);
+						})
+						.then(() => actions.createUserPet(actions.createPetForm()))
+						.then(() => actions.showComponent());
+				}
+			);
+		} else {
+			actions.createUserPet(actions.createPetForm());
+			actions.showComponent();
+		}
+	};
 
 	return (
 		<div className="form-pet-container align-self-center my-3 container">
@@ -11,8 +48,7 @@ export const PetsForm = () => {
 				action="#"
 				onSubmit={event => {
 					event.preventDefault();
-					actions.createUserPet(actions.createPetForm());
-					actions.showComponent();
+					handleUpload();
 				}}>
 				<div className="d-flex flex-row justify-content-between align-items-center">
 					<label htmlFor="pet_name">Nombre</label>
@@ -88,7 +124,14 @@ export const PetsForm = () => {
 					</select>
 				</div>
 				<label htmlFor="Img">Img</label>
-				<input type="file" name="Img" className="input-file my-2 col-sm-12" accept="image/jpg" id="Img" />
+				<input
+					type="file"
+					name="Img"
+					className="input-file my-2 col-sm-12"
+					accept="image/jpg"
+					id="Img"
+					onChange={handleChange}
+				/>
 				<div className="form-button-style container">
 					<button onClick={() => actions.showComponent()}>
 						<i className="fas fa-minus-circle" />

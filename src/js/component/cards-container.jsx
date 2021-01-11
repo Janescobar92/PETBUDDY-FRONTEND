@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { HorizontalCard } from "./hcard.jsx";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
+import avatar from "../../assets/img/havatar.png";
 
 export const CardContainerYouWorkedFor = () => {
 	const { store, actions } = useContext(Context);
@@ -27,11 +28,13 @@ export const CardContainerYouWorkedFor = () => {
 			</div>
 		);
 	}
+
 };
 
 export const CardContainerhired = () => {
 	const { store, actions } = useContext(Context);
 	let myResults = store.hired_history;
+
 	if (myResults.length != 0) {
 		const Cards = myResults.map((myResult, index) => (
 			<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + myResult.id}>

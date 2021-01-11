@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { storage } from "../firebase/firebase_config";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -23,6 +24,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logedUser: null,
 			indexChoosed: null,
 			registeredUsers: true,
+			profileImgUrl: "",
+			petImgUrl: "",
 			distances: [],
 			route: "https://3000-bc130ebc-7440-47ae-aa7b-4d172a859898.ws-eu03.gitpod.io"
 		},
@@ -124,6 +127,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			createPetForm: () => {
+				let myPetImg = "";
+				if (getStore().petImgUrl == "") {
+					myPetImg = null;
+				} else {
+					myPetImg = getStore().petImgUrl;
+				}
 				let myPetName = document.querySelector("#name").value;
 				let myPetType = document.querySelector("#type").value;
 				let myPetAge = document.querySelector("#age").value;
@@ -133,7 +142,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetGender = document.querySelector("#gender").value;
 				let myPetAffections = document.querySelector("#affections").value;
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
-				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
 					user_id: getActions().logedStore(),
 					name: myPetName,
@@ -149,10 +157,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				return creatPet;
 			},
-			updateUserPet: () => {
+			updateUserPet: image => {
 				fetch(getStore().route + "/user/" + getActions().logedStore() + "/pet", {
 					method: "PUT",
-					body: JSON.stringify(getActions().updatePetForm()),
+					body: JSON.stringify(getActions().updatePetForm(image)),
 					headers: {
 						"Content-Type": "application/json"
 					}
@@ -162,7 +170,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().getLogedUserPets();
 					});
 			},
-			updatePetForm: () => {
+			updatePetForm: image => {
+				let myPetImg = "";
+				if (getStore().petImgUrl == "") {
+					myPetImg = image;
+				} else {
+					myPetImg = getStore().petImgUrl;
+				}
 				let myPetID = document.querySelector("#id").value;
 				let myPetName = document.querySelector("#name").value;
 				let myPetType = document.querySelector("#type").value;
@@ -173,7 +187,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myPetGender = document.querySelector("#gender").value;
 				let myPetAffections = document.querySelector("#affections").value;
 				let myPetIsSterilized = document.querySelector("#sterilized").value;
-				let myPetImg = document.querySelector("#Img").value;
 				let creatPet = {
 					user_id: getActions().logedStore(),
 					name: myPetName,
@@ -191,13 +204,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			updateUserInfo: () => {
+				let myImg = "";
+				if (getStore().profileImgUrl == "") {
+					myImg = getStore().users.image;
+				} else {
+					myImg = getStore().profileImgUrl;
+				}
 				let myName = document.querySelector("#name").value;
 				let myLast_name = document.querySelector("#last_name").value;
 				let myEmail = document.querySelector("#email").value;
 				let myPhone = document.querySelector("#phone").value;
 				let mylocation = document.querySelector("#location").value;
 				let mybiografy = document.querySelector("#biografy").value;
-				let myImg = document.querySelector("#img").value;
 				let updatedUser = {
 					name: myName,
 					image: myImg,
@@ -617,6 +635,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (service.id_user_offer == id_user_offer) distance = service.distance;
 				});
 				return distance;
+			},
+			SetUserImageURL: url => {
+				setStore((getStore().profileImgUrl = url));
+			},
+			SetPetImageURL: url => {
+				if (getStore().petImgUrl == "") {
+					setStore((getStore().petImgUrl = url));
+				} else {
+					setStore((getStore().petImgUrl = ""));
+				}
 			}
 		}
 	};

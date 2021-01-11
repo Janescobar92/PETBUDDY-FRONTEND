@@ -3,6 +3,7 @@ import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import { UpdatePetsForm } from "./pets_update_form.jsx";
 import { useParams } from "react-router-dom";
+import paw from "../../assets/img/paw.png";
 import "../../styles/pet_card.scss";
 
 export const PetsCard = () => {
@@ -18,7 +19,7 @@ export const PetsCard = () => {
 				<div className="pet--card-style" key={index}>
 					<div className="pet--card-header">
 						<h3>{animal.name}</h3>
-						<img className="" src={animal.image} alt="Pet IMG" />
+						<img className="" src={animal.image || paw} alt="Pet IMG" />
 						<div className="pet--card-buttons--container">
 							<button
 								onClick={() => {
@@ -58,7 +59,7 @@ export const PetsCard = () => {
 				<div className="pet--card-style" key={index}>
 					<div className="pet--card-header">
 						<h3>{pet.name}</h3>
-						<img className="" src={pet.image} alt="Pet IMG" />
+						<img className="" src={pet.image || paw} alt="Pet IMG" />
 						<div className="pet--card-buttons--container" />
 					</div>
 					<div className="pet--card-body">
