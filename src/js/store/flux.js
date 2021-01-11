@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			profileImgUrl: "",
 			petImgUrl: "",
 			distances: [],
-			route: "https://3000-d71dd10d-1563-4ec0-aa63-46091a8a5b62.ws-eu03.gitpod.io"
+			route: "https://3000-bc130ebc-7440-47ae-aa7b-4d172a859898.ws-eu03.gitpod.io"
 		},
 		actions: {
 			registerUser: params => {
