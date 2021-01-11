@@ -1,23 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+$titlefonts: 'Raleway', sans-serif;
 $primarycolor: #659AEB;
    .jumbotron-title-size{ 
     font-size: 15vh;
     font-weight: 200;
-    margin-top: 10rem;
+    margin-top: 0rem;
     }
 .jumbotron-background-wave {
     display: flex;
     flex-flow: row-reverse;
-    justify-content: space-evenly;
-    background-image: url("../assets/img/jumbotron.png");
+    justify-content:end;
+    background-image: url("../assets/img/dogbackground.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-clip: border-box;
-    height: 700px;
+    height: 800px;
     z-index: -1;
     // 1920x1080
     .jumbotron-text-align{
         align-self: right;
         h1{
+        font-family: 'Raleway', sans-serif;
         margin-top: 12rem;
         font-size: 5rem;
         font-weight: 200;
@@ -52,7 +55,8 @@ $primarycolor: #659AEB;
     width:40vw;
 }
 .jumbotron-tiltle--buttons-container{
-margin-top: 10rem;
+margin-top: 15rem;
+margin-right: 20rem;
 .jumbotronlanding-title-size{
     width: 580px;
     font-style: normal;
@@ -66,6 +70,7 @@ margin-top: 10rem;
     flex-direction: column;
     justify-content: start;
     .button-login-style{
+    font-family: 'Raleway', sans-serif;
     margin-top: 3rem;
     background-color: #221E1E;
     width: 340px;
@@ -84,7 +89,7 @@ margin-top: 10rem;
     margin-top: 10rem;
     }
      .jumbotron-background-wave{
-        height: 600px;
+        height: 700px;
         .jumbotron-text-align{
         h1{
             font-size: 5rem;
@@ -98,7 +103,7 @@ margin-top: 10rem;
 // // Large devices (desktops, 992px and up)
 @media (max-width: 1440px) { 
      .jumbotron-background-wave{
-        height: 500px;
+        height: 600px;
     }
      .Jumbotron-img-size{
      width: 55vw;

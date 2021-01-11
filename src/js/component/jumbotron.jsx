@@ -67,7 +67,7 @@ export const Jumbotron = props => {
 		return (
 			<div className="jumbotron-background-wave">
 				<div className="jumbotron-tiltle--buttons-container">
-					<h1 className="jumbotronlanding-title-size">Welcome to PetBUDDY</h1>
+					<h1 className="jumbotronlanding-title-size">Bienvenido a PetBUDDY</h1>
 					<div className="jumbotron-buttons-container container">
 						<button className="button-login-style" onClick={() => actions.setShowLogin()}>
 							Login
@@ -76,9 +76,6 @@ export const Jumbotron = props => {
 							Registro
 						</button>
 					</div>
-				</div>
-				<div>
-					<img src={jumbotronImg} className="Jumbotron-img-size" />
 				</div>
 			</div>
 		);
