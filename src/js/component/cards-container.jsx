@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { HorizontalCard } from "./hcard.jsx";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
+import avatar from "../../assets/img/havatar.png";
 
 export const CardContainerYouWorkedFor = () => {
 	const { store, actions } = useContext(Context);
@@ -11,7 +12,7 @@ export const CardContainerYouWorkedFor = () => {
 		<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + myResult.id}>
 			<HorizontalCard
 				service_type={myResult.service_type}
-				source={myResult.image}
+				source={myResult.image || avatar}
 				date={myResult.date}
 				total_price={myResult.total_price}
 				name={myResult.name}
@@ -28,7 +29,7 @@ export const CardContainerhired = () => {
 		<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + myResult.id}>
 			<HorizontalCard
 				service_type={myResult.service}
-				source={myResult.image}
+				source={myResult.image || avatar}
 				date={myResult.date}
 				total_price={myResult.total_price}
 				name={myResult.name}

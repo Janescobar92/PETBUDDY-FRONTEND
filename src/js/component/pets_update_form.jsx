@@ -1,13 +1,51 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/pets_form.scss";
 import { Context } from "../store/appContext.js";
+import { storage } from "../firebase/firebase_config";
 
 export const UpdatePetsForm = () => {
 	const { store, actions } = useContext(Context);
+	const [image, setImage] = useState(null);
+	// const [imgURL, setImgUrl] = useState("");
 
 	const animal = store.animals.map((eachAnimal, index) => {
 		return eachAnimal;
 	});
+
+	let handleChange = event => {
+		if (event.target.files[0]) {
+			setImage(event.target.files[0]);
+		}
+	};
+	console.log("image: ", image);
+
+	let handleUpload = async () => {
+		if (image != null) {
+			const uploadTask = storage.ref("images/" + image.name).put(image);
+			uploadTask.on(
+				"state_changed",
+				snapshot => {},
+				error => {
+					console.log(error);
+				},
+				() => {
+					storage
+						.ref("images")
+						.child(image.name)
+						.getDownloadURL()
+						.then(url => {
+							actions.SetPetImageURL(url);
+							console.log(url);
+						})
+						.then(() => actions.updateUserPet(animalToFind.image))
+						.then(() => actions.setShowLogin());
+				}
+			);
+		} else {
+			actions.updateUserPet(animalToFind.image);
+			actions.setShowLogin();
+		}
+	};
 
 	let selectOptions = store.animal_type.map((eachAnimalType, index) => {
 		if (store.animal_type.length != 0) {
@@ -39,9 +77,8 @@ export const UpdatePetsForm = () => {
 			<div className="form-pet-container align-self-center my-3 container">
 				<form
 					onSubmit={event => {
-						actions.updateUserPet();
-						actions.setShowLogin();
 						event.preventDefault();
+						handleUpload();
 					}}>
 					<div className="d-none">
 						<label htmlFor="ID">id</label>
@@ -183,7 +220,7 @@ export const UpdatePetsForm = () => {
 						className="input-file my-2 col-sm-12"
 						accept="image/jpg"
 						id="Img"
-						defaultValue={animalToFind.image}
+						onChange={handleChange}
 					/>
 					<div className="form-button-style container">
 						<button onClick={() => actions.setShowLogin()}>
