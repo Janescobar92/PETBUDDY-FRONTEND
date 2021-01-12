@@ -68,3 +68,63 @@ $box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.0
         margin: 2rem;
         box-shadow: $box-shadow;
     }
+
+    @media screen and (min-width: 21em) {
+    .service-cards--container-flex{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .services--presentation-card--teacher{
+        flex: 0 1 calc(50% - 1em);
+    }
+    .services--presentation-card--walker{
+        flex: 0 1 calc(50% - 1em);
+    }
+    .services--presentation-card--daycare{
+        flex: 0 1 calc(50% - 1em);
+        background-position: inherit;
+    }
+    .services--presentation-card--hotel{
+        flex: 0 1 calc(50% - 1em);
+        background-position: inherit;
+    }   
+    .services--presentation-card--vet{
+        flex: 0 1 calc(50% - 1em);
+    }
+}
+@media screen and (min-width: 40em) {
+    .services--presentation-card--teacher{
+        flex: 0 1 calc(25% - 1em);
+    }
+    .services--presentation-card--walker{
+        flex: 0 1 calc(25% - 1em);
+    }
+    .services--presentation-card--daycare{
+        flex: 0 1 calc(25% - 1em);
+    }
+    .services--presentation-card--hotel{
+        flex: 0 1 calc(25% - 1em);
+    }   
+    .services--presentation-card--vet{
+        flex: 0 1 calc(25% - 1em);
+    } 
+}
+
+@media screen and (min-width: 100em) {
+    .services--presentation-card--teacher{
+        flex: 0 1 calc(15% - 1em);
+    }
+    .services--presentation-card--walker{
+        flex: 0 1 calc(15% - 1em);
+    }
+    .services--presentation-card--daycare{
+        flex: 0 1 calc(15% - 1em);
+    }
+    .services--presentation-card--hotel{
+        flex: 0 1 calc(15% - 1em);
+    }   
+    .services--presentation-card--vet{
+        flex: 0 1 calc(15% - 1em);
+    } 
+}
