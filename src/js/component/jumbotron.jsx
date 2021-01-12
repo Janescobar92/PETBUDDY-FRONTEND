@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { ProfilePicture } from "../component/profilepicture.jsx";
 import "../../styles/jumbotron.scss";
 import PropTypes from "prop-types";
-import jumbotronImg from "../../assets/img/pixeltrue-yoga.png";
 import welcomeImg from "../../assets/img/pixeltrue-welcome.png";
 import { Context } from "../store/appContext.js";
 
