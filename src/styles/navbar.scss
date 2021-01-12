@@ -5,6 +5,10 @@
     width: 100%;
     .navbar-brand{
         color: white;
+        font-size: 2rem;
+        .fa-paw:before {
+        font-size: 2rem;
+        }
     }
   .navabar--delte--button-style{
       background-color: rgba(255,255,255,0);
@@ -13,6 +17,12 @@
       margin: 0;
       padding: 0;
   }
+  .btn-secondary {
+    color: #fff;
+    background-color: #f16679;
+    border-color: #6c757d;
+    border-radius: 10rem;
+    }
 }
  @media (max-width: 800px) { 
     .navbar{

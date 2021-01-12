@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 $titlefonts: 'Raleway', sans-serif;
-$primarycolor: #659AEB;
-   .jumbotron-title-size{ 
+$primarycolor: #3587ad;
+$secondarycolor: #f16679;
+$tertiarycolor:#f5b141;
+   .jumbotron-title-size{
     font-size: 15vh;
     font-weight: 200;
     margin-top: 0rem;
@@ -55,9 +57,11 @@ $primarycolor: #659AEB;
     width:40vw;
 }
 .jumbotron-tiltle--buttons-container{
+color:white;
 margin-top: 15rem;
 margin-right: 20rem;
 .jumbotronlanding-title-size{
+
     width: 580px;
     font-style: normal;
     font-weight: normal;
@@ -70,14 +74,15 @@ margin-right: 20rem;
     flex-direction: column;
     justify-content: start;
     .button-login-style{
+    background-color: $secondarycolor;
     font-family: 'Raleway', sans-serif;
     margin-top: 3rem;
-    background-color: #221E1E;
     width: 340px;
     height: 57px;
     left: 806px;
     top: 385px;
-    border-radius: 10px;
+    border-radius: 10rem;
+    border: none;
     color: white;
     font-size: 2rem;
     }
