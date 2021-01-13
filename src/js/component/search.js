@@ -11,7 +11,7 @@ export const Search = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="searcher row">
+		<div className="searcher">
 			<Autocomplete
 				freeSolo
 				id="searcher"
@@ -25,6 +25,7 @@ export const Search = () => {
 						margin="normal"
 						variant="outlined"
 						InputProps={{ ...params.InputProps, type: "search" }}
+						color="dark"
 					/>
 				)}
 			/>
