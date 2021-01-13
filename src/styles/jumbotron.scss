@@ -62,7 +62,7 @@ margin-top: 15rem;
 margin-right: 20rem;
 .jumbotronlanding-title-size{
 
-    width: 580px;
+    width: 36.25rem;
     font-style: normal;
     font-weight: normal;
     font-size: 6rem;
@@ -358,9 +358,11 @@ margin-right: 20rem;
         .jumbotron-tiltle--buttons-container {
     margin-top: 10rem;
     margin-right: 0;
+    margin-left: 0.5rem;
     .jumbotronlanding-title-size {
     font-size: 3.5rem;
-    margin-left: 1.5rem;
+    margin-left: auto;
+    width: auto;
 }
 }
 
@@ -377,8 +379,29 @@ margin-right: 20rem;
 }
 
 
-@media screen and (min-width: 100em) {
-    .jumbotron-tiltle--buttons-container {
-    margin-right: 20rem;
+@media screen and (min-width: 50em) {
+    .jumbotron-background-wave{
+        flex-flow: row-reverse;
+        .jumbotron-tiltle--buttons-container {
+            margin-top: 15rem;
+            margin-right: 5rem;
+          .jumbotronlanding-title-size {
+                font-size: 6rem;
+                width: 36.25rem;
+            }
+        }
+    }
 }
+@media screen and (min-width: 70em) {
+    .jumbotron-background-wave{
+        flex-flow: row-reverse;
+        .jumbotron-tiltle--buttons-container {
+            margin-top: 15rem;
+            margin-right: 20rem;
+          .jumbotronlanding-title-size {
+                font-size: 6rem;
+                width: 36.25rem;
+            }
+        }
+    }
 }
