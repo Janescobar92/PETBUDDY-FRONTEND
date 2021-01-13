@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { ProfilePicture } from "../component/profilepicture.jsx";
 import "../../styles/jumbotron.scss";
 import PropTypes from "prop-types";
-import welcomeImg from "../../assets/img/pixeltrue-welcome.png";
 import { Context } from "../store/appContext.js";
 
 export const Jumbotron = props => {
@@ -37,16 +36,9 @@ export const Jumbotron = props => {
 		);
 	} else if (props.view == "home") {
 		return (
-			<div className="jumbotron-background-wave ">
-				<div className="jumbotron-text-align">
-					<h1>Bienvenido</h1>
-					<h2>{props.title}</h2>
-				</div>
-				{/* <div>
-					<h2 style={{ marginTop: "34rem", paddingRight: "15rem" }}>Busca tu servicio</h2>
-				</div> */}
-				<div>
-					<img src={welcomeImg} className="Jumbotron-welcome-size" />
+			<div className="jumbotron-background-wave">
+				<div className="jumbotron-tiltle--buttons-container">
+					<h1 className="jumbotronlanding-title-size">Bienvenido/a, {props.title}</h1>
 				</div>
 			</div>
 		);
