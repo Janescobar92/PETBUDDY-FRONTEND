@@ -9,13 +9,15 @@ export const Jumbotron = props => {
 	if (props.view == "profile") {
 		return (
 			<div>
-				<div className="jumbotron-background-wave ">
-					<div className="jumbotron-text-align">
-						<h1>{props.title}</h1>
-						<h2>{props.subtitle}</h2>
-					</div>
-					<div className="jumbotron-img-align">
-						<ProfilePicture imgSrc={props.img} />
+				<div className="jumbotron-background-wave profile">
+					<div className="jumbotron-profile--content-style profile--name--title">
+						<div className="jumbotron-img-align">
+							<ProfilePicture imgSrc={props.img} />
+						</div>
+						<div className="jumbotron-text-align title-profile">
+							<h1 className="h1--profile-title-font--style">{props.title}</h1>
+							<h2 className="h2--profile-title-font--style">{props.subtitle}</h2>
+						</div>
 					</div>
 				</div>
 			</div>
