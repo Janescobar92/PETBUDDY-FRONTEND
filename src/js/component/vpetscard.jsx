@@ -36,19 +36,19 @@ export const PetsCard = () => {
 								<i className="fas fa-trash" />
 							</button>
 						</div>
-					</div>
-					<div className="pet--card-body">
-						<h5 className="">Info</h5>
-						<p className="">
-							Mi {animal.animal_type} se llama {animal.name}. Tiene {animal.age} años.
-						</p>
-						<p className="">
-							Es {animal.personality}, pesa {animal.weight}
-							kg, tiene un tamaño de {animal.size}
-							cm y es {animal.gender ? "hembra" : "macho"}.
-						</p>
-						<p className="">Afecciones: {animal.diseases}</p>
-						<p className="">Esterilizado: {animal.sterilized ? "Si" : "No"}</p>
+						<div className="pet--card-body">
+							<h5 className="">Info</h5>
+							<p className="">
+								Mi {animal.animal_type} se llama {animal.name}. Tiene {animal.age} años.
+							</p>
+							<p className="">
+								Es {animal.personality}, pesa {animal.weight}
+								kg, tiene un tamaño de {animal.size}
+								cm y es {animal.gender ? "hembra" : "macho"}.
+							</p>
+							<p className="">Afecciones: {animal.diseases}</p>
+							<p className="">Esterilizado: {animal.sterilized ? "Si" : "No"}</p>
+						</div>
 					</div>
 				</div>
 			);

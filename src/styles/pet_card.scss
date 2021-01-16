@@ -1,24 +1,23 @@
 .pet--card-style{
-    background-image: url("../assets/img/animal_print_tertiary_color.png");
-    height: 400px;
-    width: 360px;
-    // z-index: 1;
-    border-radius: 10px;
-    margin-bottom: 11rem;
+    background-color: #ffffff36;    
+    width: 22.5rem;
+    border-radius: 2rem;
+    margin: 0 1rem;
+    margin-bottom: 1rem;
     align-self: center;
     z-index: 0;
+
     .pet--card-header{
     display: flex;
     flex-direction: column;
     justify-content: center;
+        color: white;
     img {
-  border-radius: 50%;
+    border-radius: 2rem;
     width: 13rem;
     height: 13rem;
     z-index: 0;
-    margin-top: -7%;
     align-self: center;
-
 }
 h3{
     font-size: 3rem;
@@ -35,30 +34,11 @@ h3{
 }
 }
 .pet--card-body{
-    background-image: url("../assets/img/animal_print_secondary_color.png");
+        background-color: #f1eaeaa8;
+
     height: 272px;
     width: 360px;
     z-index: 2;
-    border-radius: 10px;
+    border-radius: 2rem;
     padding: 1rem;
 }
-// .login-img-size{
-//     width: 25rem;
-// }
-//  .login-close-button{
-//         background: none;
-//         border: none;
-//         color: black;
-//         float: right;
-//         margin-right: 0.5rem;
-//         font-size: 25px;
-//         button:focus{
-//             border:none;
-//         }
-//     }
-//  @media (max-width: 360px) {
-//     .form-pet-container{
-//         width: 330px;
-//     }
-
-// }
