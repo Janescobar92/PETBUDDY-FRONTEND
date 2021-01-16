@@ -61,9 +61,6 @@ export const DescriptionCard = () => {
 		if (dislpayForm == false) {
 			return (
 				<div className="description--card-size">
-					<button onClick={() => setdislpayForm(true)}>
-						Editar perfil <i className="fas fa-edit" />
-					</button>
 					<div className="description--card--body-style">
 						<p>{userToFind.biografy}</p>
 					</div>
@@ -72,19 +69,14 @@ export const DescriptionCard = () => {
 						<p> Dirección: {userToFind.location} </p>
 						<p> Email: {userToFind.email} </p>
 					</div>
+					<button onClick={() => setdislpayForm(true)}>
+						Editar perfil <i className="fas fa-edit" />
+					</button>
 				</div>
 			);
 		} else {
 			return (
 				<div className="description--card-size">
-					<button
-						onClick={() => {
-							setdislpayForm(false);
-							actions.updateUser();
-							window.location.reload();
-						}}>
-						Guardar cambios <i className="fas fa-check-circle" />
-					</button>
 					<label htmlFor="name">Nombre</label>
 					<input
 						type="text"
@@ -142,7 +134,17 @@ export const DescriptionCard = () => {
 					<label htmlFor="img">IMG</label>
 					<progress value={progress} max="100" />
 					<input type="file" className="input-file" name="img" id="img" onChange={handleChange} required />
-					<button onClick={handleUpload}>Subir imagen</button>
+					<div className="on--edition-buttons-description--card-container">
+						<button onClick={handleUpload}>Subir imagen</button>
+						<button
+							onClick={() => {
+								setdislpayForm(false);
+								actions.updateUser();
+								window.location.reload();
+							}}>
+							Guardar cambios <i className="fas fa-check-circle" />
+						</button>
+					</div>
 				</div>
 			);
 		}

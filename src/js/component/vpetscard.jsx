@@ -81,7 +81,7 @@ export const PetsCard = () => {
 	}
 
 	return (
-		<div className="d-flex flex-column justify-content-center">
+		<div className="d-flex justify-content-around">
 			{Cards}
 			{store.showLogin ? <UpdatePetsForm /> : null}
 		</div>

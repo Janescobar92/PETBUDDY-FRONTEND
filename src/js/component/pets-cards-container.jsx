@@ -15,17 +15,19 @@ export const PetsCardContainer = () => {
 	if (id_user.id_user == store.logedUser) {
 		return (
 			<>
-				<div className="body-container-margins mt-5">
-					<div className="container-title-size">
-						<h2>Mascotas</h2>
-						<button onClick={() => actions.showComponent()}>
-							<i className="fas fa-plus-circle" />
-						</button>
+				<div className="body-container-margins">
+					<div className="description-container-style">
+						<div className="d-flex justify-content-between">
+							<h2 className="category-title-style">Mascotas</h2>
+							<button className="cards-options--buttons-style" onClick={() => actions.showComponent()}>
+								<i className="fas fa-plus-circle" />
+							</button>
+						</div>
+						<div>
+							{store.show ? <PetsForm /> : null}
+							<PetsCard />
+						</div>
 					</div>
-				</div>
-				<div className="mt-5">
-					{store.show ? <PetsForm /> : null}
-					<PetsCard />
 				</div>
 			</>
 		);

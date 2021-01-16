@@ -1,11 +1,12 @@
 .service-form-container{
-    background-image: url("https://raw.githubusercontent.com/Janescobar92/PETBUDDY-FRONTEND/feature/jan/ver_contratos_previos/src/assets/img/animal_print_v2.png");
+    background-image: url("../assets/img/animal_print_v2.png");
     display: flex;
     width: 360px;
     flex-direction: column;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 13px;
     padding: 0.5rem;
+    color:white;
     .input{
         margin: 0.5rem 0 0.5rem 0;
         border: 1px solid white;

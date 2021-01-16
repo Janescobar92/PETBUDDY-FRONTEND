@@ -34,24 +34,6 @@ export const ServiceCard = () => {
 			return (
 				<div className="service-body d-flex justify-content-center" key={index}>
 					<div>
-						{/* Esto hay que cambiarlo */}
-						<p>----------------------------------------------------------------------</p>
-						<button
-							href="#"
-							className="btn btn-primary"
-							onClick={() => {
-								actions.setPickedIndex(service.id);
-								actions.showUpdateService();
-							}}>
-							Edit
-						</button>
-						<button
-							onClick={() => {
-								alert("Are you sure you want to delete this pet");
-								actions.deleteService(service.id_service_type);
-							}}>
-							<i className="fas fa-trash" />
-						</button>
 						<p>
 							<strong>Servicio:</strong>
 							{service.id_service_type}
@@ -64,6 +46,25 @@ export const ServiceCard = () => {
 							<strong>Precio:</strong> {service.price_h}
 							€/h
 						</p>
+						<div className="on--edition-buttons-services--card-container">
+							<button
+								href="#"
+								className="service--card-button"
+								onClick={() => {
+									actions.setPickedIndex(service.id);
+									actions.showUpdateService();
+								}}>
+								Editar <i className="fas fa-edit" />
+							</button>
+							<button
+								className="service--card-button"
+								onClick={() => {
+									alert("Are you sure you want to delete this pet");
+									actions.deleteService(service.id_service_type);
+								}}>
+								Borrar <i className="fas fa-trash" />
+							</button>
+						</div>
 					</div>
 				</div>
 			);
@@ -74,8 +75,6 @@ export const ServiceCard = () => {
 			return (
 				<div className="service-body d-flex justify-content-center" key={index}>
 					<div>
-						{/* Esto hay que cambiarlo */}
-						<p>----------------------------------------------------------------------</p>
 						<p>
 							<strong>Servicio:</strong>
 							{service.id_service_type}
@@ -99,5 +98,5 @@ export const ServiceCard = () => {
 			);
 		});
 	}
-	return <div>{Cards}</div>;
+	return <div className="service--cards-profile">{Cards}</div>;
 };

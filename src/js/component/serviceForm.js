@@ -28,7 +28,7 @@ export const ServiceForm = () => {
 					</select>
 				</div>
 				<div className="d-flex flex-row justify-content-between align-items-center">
-					<label htmlFor="Precio">Precio</label>
+					<label htmlFor="Precio">Precio/€</label>
 					<div>
 						<input type="text" className="input" name="Precio" id="precio" required maxLength="6" />
 					</div>
