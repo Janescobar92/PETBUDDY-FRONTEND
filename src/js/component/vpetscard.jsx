@@ -37,17 +37,19 @@ export const PetsCard = () => {
 							</button>
 						</div>
 						<div className="pet--card-body">
-							<h5 className="">Info</h5>
-							<p className="">
+							<h5 className="pet--card-body--description--text">Info</h5>
+							<p className="pet--card-body--description--text">
 								Mi {animal.animal_type} se llama {animal.name}. Tiene {animal.age} años.
 							</p>
-							<p className="">
+							<p className="pet--card-body--description--text">
 								Es {animal.personality}, pesa {animal.weight}
 								kg, tiene un tamaño de {animal.size}
 								cm y es {animal.gender ? "hembra" : "macho"}.
 							</p>
-							<p className="">Afecciones: {animal.diseases}</p>
-							<p className="">Esterilizado: {animal.sterilized ? "Si" : "No"}</p>
+							<p className="pet--card-body--description--text">Afecciones: {animal.diseases}</p>
+							<p className="pet--card-body--description--text">
+								Esterilizado: {animal.sterilized ? "Si" : "No"}
+							</p>
 						</div>
 					</div>
 				</div>
