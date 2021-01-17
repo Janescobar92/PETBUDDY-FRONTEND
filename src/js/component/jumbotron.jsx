@@ -48,7 +48,7 @@ export const Jumbotron = props => {
 		return (
 			<div className="jumbotron-background-wave ">
 				<div className="jumbotron-tiltle--buttons-container">
-					<h1 className="jumbotronlanding-title-size">{props.title} cercanos</h1>
+					<h1 className="jumbotronlanding-title-size">Servicios de {props.title.toLowerCase()}</h1>
 				</div>
 			</div>
 		);

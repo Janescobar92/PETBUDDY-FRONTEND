@@ -35,12 +35,14 @@ export const PetsCardContainer = () => {
 		return (
 			<>
 				<div className="body-container-margins">
-					<div className="container-title-size">
-						<h2>Mascotas</h2>
+					<div className="description-container-style">
+						<div className="d-flex justify-content-between">
+							<h2 className="category-title-style">Mascotas</h2>
+						</div>
+						<div>
+							<PetsCard />
+						</div>
 					</div>
-				</div>
-				<div>
-					<PetsCard />
 				</div>
 			</>
 		);

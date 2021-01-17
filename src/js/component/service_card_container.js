@@ -32,11 +32,15 @@ export const ServiceCardContainer = () => {
 		);
 	} else {
 		return (
-			<div className="body-container-margins mt-5">
-				<h2 className="d-flex justify-content-space-between">Servicios</h2>
+			<div className="d-flex justify-content-center">
+				<div className="description-container-style">
+					<div className="d-flex justify-content-between">
+						<h2 className="category-title-style">Servicios</h2>
+					</div>
 
-				<div className="d-flex flex-column justify-content-center mt-5">
-					<ServiceCard />
+					<div className="d-flex flex-column justify-content-center">
+						<ServiceCard />
+					</div>
 				</div>
 			</div>
 		);
