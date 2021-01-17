@@ -1,12 +1,19 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
-
+import { Jumbotron } from "../component/jumbotron.jsx";
 import { HorizontalCard } from "../component/h_card.js";
-export const Services = () => {
+
+export const Services = porps => {
 	const { store, actions } = useContext(Context);
-	useEffect(() => {}, []);
+	const service_type = useParams();
+
+	console.log(service_type);
+
+	useEffect(() => {
+		actions.getTypeServices(service_type.service_type);
+	}, []);
 
 	const cards = store.services.map((item, index) => {
 		let distances = actions.SearchDistance(item.id_user_offer);
@@ -29,7 +36,7 @@ export const Services = () => {
 	});
 	return (
 		<div>
-			<h1>Nearby Services</h1>
+			<Jumbotron view="nearby" title={service_type.service_type} />
 			{cards}
 		</div>
 	);

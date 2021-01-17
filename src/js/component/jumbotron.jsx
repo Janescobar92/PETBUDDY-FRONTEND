@@ -47,7 +47,9 @@ export const Jumbotron = props => {
 	} else if (props.view == "nearby") {
 		return (
 			<div className="jumbotron-background-wave ">
-				<h1>{props.title} cercanos</h1>;
+				<div className="jumbotron-tiltle--buttons-container">
+					<h1 className="jumbotronlanding-title-size">{props.title} cercanos</h1>
+				</div>
 			</div>
 		);
 	} else if (props.view == "history") {

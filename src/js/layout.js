@@ -40,7 +40,7 @@ const Layout = () => {
 						<Route exact path="/history/:id_use">
 							<History />
 						</Route>
-						<Route exact path="/services">
+						<Route exact path="/services/:service_type">
 							<Services />
 						</Route>
 						<Route exact path="/single/:theid">
