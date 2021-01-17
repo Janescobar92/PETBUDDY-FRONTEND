@@ -5,12 +5,13 @@ $primarycolor: #659AEB;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    background-image: url("../assets/img/animal_print_v2.png");
+    background-image: url("../assets/img/deleteDog.png");
+    background-position: center;
+    background-size: contain;
     width:35rem;
-    height:auto;
+    height:35rem;
     padding: 1rem 0;
-    border-radius:10px;
-    border: solid 1px $primarycolor;
+    border-radius:2rem;
     .delete--modal-body-align{
         display: flex;
         flex-direction: column;
@@ -21,19 +22,16 @@ $primarycolor: #659AEB;
             color:white;
             text-align: center;
         }
-        .delete--modal-img-style{
-            width: 22rem;
-            z-index: 0;
-        }
         .delete--modal-button-style{
         background-color: #E44040;
         width: 21rem;
         height: 3.5rem;
-        border-radius: 10px;
+        border-radius: 2rem;
         color: white;
         font-size: 2rem;
         z-index: 1;
-        margin-bottom: 1rem;
+        margin-top: 18rem;
+        margin-right: 7rem;
         }
     }
     .delete--modal-close-button{

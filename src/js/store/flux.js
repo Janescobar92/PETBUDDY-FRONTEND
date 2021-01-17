@@ -204,11 +204,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return creatPet;
 			},
 			updateUserInfo: () => {
-				let myImg = "";
+				let myImg = null;
 				if (getStore().profileImgUrl == "") {
-					myImg = getStore().users.image;
+					myImg = getStore().users[0].image;
+					console.log(myImg, getStore().users);
 				} else {
 					myImg = getStore().profileImgUrl;
+					console.log(myImg);
 				}
 				let myName = document.querySelector("#name").value;
 				let myLast_name = document.querySelector("#last_name").value;
@@ -225,6 +227,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location: mylocation,
 					biografy: mybiografy
 				};
+				console.log(updatedUser);
 				return updatedUser;
 			},
 			deletUserPet: petToDeleteData => {
@@ -279,7 +282,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						var userData = responseAsJson;
 						setStore({ profiles: [...getStore().profiles, userData].flat() });
-						// setStore({ profiles: [...getStore().profiles, userData].flat() });
 						getActions().getOtherUserPets(param);
 						getActions().getOtherUserServices(param);
 					})

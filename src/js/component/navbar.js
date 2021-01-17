@@ -39,15 +39,7 @@ export const Navbar = props => {
 								<span onClick={() => actions.logOut()}>Cerrar sesión</span>
 							</p>
 						</Link>
-						<button
-							className="navabar--delte--button-style"
-							onClick={() => {
-								actions.setShowDeleteModal();
-							}}>
-							Borrar cuenta <i className="fas fa-user-slash" />
-						</button>
 					</div>
-					{store.showDeleteModal ? <DeleteModal /> : null}
 				</div>
 			</nav>
 		);

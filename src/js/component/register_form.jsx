@@ -20,6 +20,7 @@ export const RegisterModal = () => {
 				onSubmit={event => {
 					event.preventDefault();
 					actions.registerUser(actions.MyRegisterInputReciver());
+					actions.setShowLogin();
 				}}>
 				<button
 					type="button"

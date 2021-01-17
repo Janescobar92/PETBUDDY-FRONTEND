@@ -1,11 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { PayPalButton } from "./paypal.jsx";
+import "../../styles/service_card.scss";
 
 export const ServiceCard = () => {
 	const { store, actions } = useContext(Context);
+	const [dislpayPayment, setdislpayPayment] = useState(false);
+	const [serviceID, setServiceID] = useState(0);
+	// let serviceID = null;
 	let Cards = null;
 	let id_user = useParams();
 
@@ -70,33 +74,73 @@ export const ServiceCard = () => {
 			);
 		});
 	} else {
-		Cards = store.otherUserServices.map((service, index) => {
-			let value = service.price_h;
+		if (dislpayPayment == false) {
+			Cards = store.otherUserServices.map((service, index) => {
+				return (
+					<div key={index}>
+						<div className="service-body d-flex justify-content-center">
+							<div>
+								<p>
+									<strong>Servicio:</strong>
+									{service.id_service_type}
+								</p>
+								<p>
+									<strong>Descripcion:</strong>
+								</p>
+								<p> {service.description}</p>
+								<p>
+									<strong>Precio:</strong> {service.price_h}
+									€/h
+								</p>
+								<div className="d-flex justify-content-center">
+									<button
+										className="service--hire-button"
+										onClick={() => {
+											setdislpayPayment(true);
+											setServiceID(service.id_service_type);
+										}}>
+										Contratar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				);
+			});
+		} else {
+			const servicetofind = store.otherUserServices.find(services => services.id_service_type == serviceID);
+			let value = servicetofind.price_h;
 			return (
-				<div className="service-body d-flex justify-content-center" key={index}>
-					<div>
-						<p>
-							<strong>Servicio:</strong>
-							{service.id_service_type}
-						</p>
-						<p>
-							<strong>Descripcion:</strong>
-						</p>
-						<p> {service.description}</p>
-						<p>
-							<strong>Precio:</strong> {service.price_h}
-							€/h
-						</p>
-						<p>contratar servicio</p>
-						<PayPalButton
-							price={value.toString()}
-							description={service.description}
-							service_id_hired={ServiceTypes(service.id_service_type)}
-						/>
+				<div className="p-2">
+					<div className="service-body d-flex justify-content-center">
+						<div>
+							<button
+								className="services--cards-options--buttons-style"
+								onClick={() => setdislpayPayment(false)}>
+								<i className="fas fa-times-circle" />
+							</button>
+							<p>
+								<strong>Servicio:</strong>
+								{servicetofind.id_service_type}
+							</p>
+							<p>
+								<strong>Descripcion:</strong>
+							</p>
+							<p> {servicetofind.description}</p>
+							<p>
+								<strong>Precio:</strong> {servicetofind.price_h}
+								€/h
+							</p>
+							<PayPalButton
+								price={value.toString()}
+								description={servicetofind.description}
+								service_id_hired={ServiceTypes(servicetofind.id_service_type)}
+							/>
+						</div>
 					</div>
 				</div>
 			);
-		});
+		}
 	}
 	return <div className="service--cards-profile">{Cards}</div>;
 };

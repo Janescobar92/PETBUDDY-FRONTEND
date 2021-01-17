@@ -8,10 +8,6 @@ import "../../styles/login_form.scss";
 export const LoginModal = () => {
 	const { store, actions } = useContext(Context);
 
-	const imglogin = <img src={loginImg} alt="get started img" className="login-img-size" />;
-	const imgbadlogin = <img src={notFound} alt="get started img" className="login-img--cat-size" />;
-	let Whichimage = store.registeredUsers ? imglogin : imgbadlogin;
-
 	return (
 		<div className="form-login-container">
 			<button
@@ -22,7 +18,6 @@ export const LoginModal = () => {
 				onClick={() => actions.setShowLogin()}>
 				<span aria-hidden="true">&times;</span>
 			</button>
-			{Whichimage}
 			<div className="form-subcard-container">
 				<form
 					onSubmit={event => {

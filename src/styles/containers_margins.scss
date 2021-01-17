@@ -27,7 +27,7 @@ $box-border: 2rem;
     padding: 1rem;
     margin: 0 1rem;
     width: 15rem;
-    height: 15rem;
+    height: fit-content;
     color: black;
     .on--edition-buttons-services--card-container{
         display: flex;

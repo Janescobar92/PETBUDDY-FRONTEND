@@ -13,12 +13,11 @@ export const PayPalButton = props => {
 			total_price: order.purchase_units[0].amount.value,
 			date: order.update_time
 		};
-		console.log(opperation, "THIS IS MY OPPERATION");
 		actions.PaypalPayment(opperation);
 	};
 
 	useEffect(() => {
-		window.paypal
+		paypal
 			.Buttons({
 				createOrder: (data, action, err) => {
 					return action.order.create({
@@ -37,7 +36,6 @@ export const PayPalButton = props => {
 				},
 				onApprove: async (data, action) => {
 					const order = await action.order.capture();
-					console.log(order);
 					PaypalOrderObject(order);
 				},
 				onError: err => {
@@ -45,8 +43,8 @@ export const PayPalButton = props => {
 				}
 			})
 			.render("#paypal-button");
-	});
-	return <div id="paypal-button" />;
+	}, []);
+	return <span className="d-flex" id="paypal-button" />;
 };
 PayPalButton.propTypes = {
 	price: PropTypes.string,

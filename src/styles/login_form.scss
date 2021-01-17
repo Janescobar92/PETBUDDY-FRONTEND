@@ -1,5 +1,7 @@
 .form-login-container{
-    background-color: rgb(245, 245, 245);
+    background-image: url("../assets/img/loginDog1.png");
+    background-position: bottom;
+    background-size: cover;
     height: 454px;
     width: 360px;
     z-index: 1;
@@ -16,6 +18,7 @@
     width: 360px;
     z-index: 2;
     border-radius: 10px;
+    margin-top: 20rem;
     form{
         padding: 1rem 1.5rem;
         height: 272px;

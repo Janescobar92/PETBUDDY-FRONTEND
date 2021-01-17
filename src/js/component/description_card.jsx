@@ -3,6 +3,7 @@ import "../../styles/description_card.scss";
 import { Context } from "../store/appContext.js";
 import { useParams } from "react-router-dom";
 import { storage } from "../firebase/firebase_config";
+import { DeleteModal } from "./deleting_modal.jsx";
 
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
@@ -135,6 +136,13 @@ export const DescriptionCard = () => {
 					<progress value={progress} max="100" />
 					<input type="file" className="input-file" name="img" id="img" onChange={handleChange} required />
 					<div className="on--edition-buttons-description--card-container">
+						<button
+							className="navabar--delte--button-style"
+							onClick={() => {
+								actions.setShowDeleteModal();
+							}}>
+							Borrar cuenta <i className="fas fa-user-slash" />
+						</button>
 						<button onClick={handleUpload}>Subir imagen</button>
 						<button
 							onClick={() => {
@@ -145,6 +153,7 @@ export const DescriptionCard = () => {
 							Guardar cambios <i className="fas fa-check-circle" />
 						</button>
 					</div>
+					{store.showDeleteModal ? <DeleteModal /> : null}
 				</div>
 			);
 		}
