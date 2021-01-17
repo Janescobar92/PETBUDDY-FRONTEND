@@ -16,6 +16,7 @@ export const Profile = () => {
 	useEffect(() => {
 		actions.getLogedUser();
 		actions.getLogedUserPets();
+		actions.getUserServices();
 	}, []);
 
 	const userToFind = store.users.find(user => user.id == id_user.id_user);

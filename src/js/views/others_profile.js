@@ -16,6 +16,7 @@ export const OthersProfile = () => {
 
 	useEffect(() => {
 		actions.readOtherprofile(id_user.id_user);
+		actions.getOtherUserServices(id_user.id_user);
 	}, []);
 
 	const userToFind = store.profiles.find(profile => profile.id == id_user.id_user);
