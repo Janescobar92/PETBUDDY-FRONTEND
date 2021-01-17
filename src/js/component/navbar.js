@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 import { DeleteModal } from "./deleting_modal.jsx";
 import "../../styles/navbar.scss";
 
-export const Navbar = () => {
+export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 	let param = useParams();
 

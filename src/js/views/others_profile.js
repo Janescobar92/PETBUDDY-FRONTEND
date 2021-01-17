@@ -25,7 +25,7 @@ export const OthersProfile = () => {
 		return (
 			<div>
 				<Jumbotron
-					view="othersprofile"
+					view="profile"
 					title={userToFind.name}
 					subtitle={userToFind.last_name}
 					img={userToFind.image || avatar}
