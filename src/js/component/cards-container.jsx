@@ -23,7 +23,7 @@ export const CardContainerYouWorkedFor = () => {
 		return Cards;
 	} else {
 		return (
-			<div>
+			<div className="d-flex justify-content-center">
 				<p>Aún no has trabajado para nadie</p>
 			</div>
 		);

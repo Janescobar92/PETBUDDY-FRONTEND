@@ -53,7 +53,9 @@ export const Jumbotron = props => {
 	} else if (props.view == "history") {
 		return (
 			<div className="jumbotron-background-wave">
-				<h1 className="text-center jumbotron-title-size">Historial</h1>
+				<div className="jumbotron-tiltle--buttons-container">
+					<h1 className="jumbotron-title-size">Historial</h1>
+				</div>
 			</div>
 		);
 	} else if (props.view == "landing") {

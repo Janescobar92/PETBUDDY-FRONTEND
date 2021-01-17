@@ -1,25 +1,28 @@
-$primarycolor: #659aeb;
-$secondarycolor : #F0BB53;
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+$titlefonts: 'Raleway', sans-serif;
+$box-border: 2rem;
+$box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+$primarycolor: #3587ad;
+$secondarycolor: #f16679;
+$tertiarycolor:#f5b141;
+$transform-scale: scale(1.05);
 
 .container-cardbox-align{
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
-
 .card-container{
     display: flex;
     justify-content: space-between;
     width: 50%;
-    height: 30vh; 
-    border: 3px solid $primarycolor;
-    border-radius: 10px;
-    padding: 0;
+    height: 30vh;
+    border-radius: 2rem;
     text-align: right;
     margin: 1rem auto;
-    color: rgb(230, 230, 230);
-    text-shadow: 2px 2px #4d4d4d23;
+    color: #000000;
+    overflow: hidden;  
+    box-shadow: $box-shadow; 
 }
 .img-container{
     width:15%;
@@ -32,10 +35,8 @@ $secondarycolor : #F0BB53;
     }
 }
 .text-container{
-    // background-image: red;
-    background-image: url("../assets/img/animal_print_v2.png");
-    background-size: cover;
-    background-position: center;
+    background-image: url("../assets/img/animal_print_tertiary_color.png");
+    background-position: top;
     width: 100%;
     z-index:-1;
     font-size: 1rem;
@@ -48,11 +49,7 @@ $secondarycolor : #F0BB53;
     }
 }
 .card-container:hover{
-    border: 3px solid $secondarycolor;
-    .text-container {
-        background-image: url("../assets/img/animal_print_secondary_color.png");
-        color: #464B57;
-    }
+    transform: $transform-scale;
 
 }
 // Small devices (landscape phones, 576px and up)

@@ -67,6 +67,10 @@ $box-border: 2rem;
     margin: 1rem;
     border: none;
 }
+.history--container-title-style{
+    margin: 2rem 20%;
+    font-family: $titlefonts;
+}
 
 @media (max-width: 900px) {
     .body-container-margins{
