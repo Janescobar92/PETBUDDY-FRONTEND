@@ -10,7 +10,8 @@ export const PayPalButton = props => {
 			user_who_hired: actions.logedStore(),
 			hired_time: 1,
 			service_id_hired: order.purchase_units[0].reference_id,
-			total_price: order.purchase_units[0].amount.value
+			total_price: order.purchase_units[0].amount.value,
+			date: order.update_time
 		};
 		console.log(opperation, "THIS IS MY OPPERATION");
 		actions.PaypalPayment(opperation);
