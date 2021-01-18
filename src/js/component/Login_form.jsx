@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import loginImg from "../../assets/img/runnign_with_cat_petbuddy.png";
-import notFound from "../../assets/img/not_found_user_img.png";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import "../../styles/login_form.scss";

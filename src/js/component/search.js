@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import SearchIcon from "@material-ui/icons/Search";
@@ -21,7 +20,7 @@ export const Search = () => {
 				renderInput={params => (
 					<TextField
 						{...params}
-						label="Busca Servicio"
+						label="Busca un Servicio"
 						margin="normal"
 						variant="outlined"
 						InputProps={{ ...params.InputProps, type: "search" }}
@@ -29,16 +28,14 @@ export const Search = () => {
 					/>
 				)}
 			/>
-			<Link to="/services">
-				<button
-					className="button-searcher"
-					type="button"
-					onClick={() => {
-						actions.getTypeServices(document.querySelector("#searcher").value);
-					}}>
-					<i className="fas fa-search" />
-				</button>
-			</Link>
+			<button
+				className="button-searcher"
+				type="button"
+				onClick={() => {
+					actions.serviceSearcherWindowreaload(document.querySelector("#searcher").value);
+				}}>
+				<i className="fas fa-search" />
+			</button>
 		</div>
 	);
 };

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import deleteImage from "../../assets/img/delte_image_modal.png";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";

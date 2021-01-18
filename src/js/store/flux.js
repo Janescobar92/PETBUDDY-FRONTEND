@@ -566,6 +566,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Error status: ", error);
 					});
 			},
+			serviceSearcherWindowreaload: param => {
+				window.location.replace("/services/" + param);
+			},
 			showComponentService: () => {
 				if (getStore().showService == false) {
 					setStore((getStore().showService = true));
