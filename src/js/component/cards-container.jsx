@@ -9,6 +9,7 @@ export const CardContainerYouWorkedFor = () => {
 	const { store, actions } = useContext(Context);
 	let myCards = store.yove_worked_history;
 	if (myCards.length != 0) {
+		console.log(myCards);
 		const Cards = myCards.map((myCard, index) => (
 			<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + myCard.id}>
 				<HorizontalCard
@@ -33,10 +34,11 @@ export const CardContainerYouWorkedFor = () => {
 export const CardContainerhired = () => {
 	const { store, actions } = useContext(Context);
 	let myResults = store.hired_history;
+	console.log(myResults);
 
 	if (myResults.length != 0) {
 		const Cards = myResults.map((myResult, index) => (
-			<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + myResult.id}>
+			<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + myResult.user_who_ofered_id}>
 				<HorizontalCard
 					service_type={myResult.service}
 					source={myResult.image}
