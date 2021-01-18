@@ -30,6 +30,14 @@ export const Jumbotron = props => {
 				</div>
 			</div>
 		);
+	} else if (props.view == "paymentmade") {
+		return (
+			<div className="jumbotron-background-wave">
+				<div className="jumbotron-tiltle--buttons-container">
+					<h1 className="jumbotronlanding-title-size">¡Gracias por contartar un servicio!</h1>
+				</div>
+			</div>
+		);
 	} else if (props.view == "nearby") {
 		return (
 			<div className="jumbotron-background-wave ">

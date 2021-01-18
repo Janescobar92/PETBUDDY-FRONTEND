@@ -9,8 +9,6 @@ export const Services = () => {
 	const { store, actions } = useContext(Context);
 	const service_type = useParams();
 
-	console.log(service_type);
-
 	useEffect(() => {
 		actions.getTypeServices(service_type.service_type);
 	}, []);

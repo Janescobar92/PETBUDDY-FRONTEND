@@ -625,7 +625,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 					.then(response => response.json())
-					.then(answerUpload => {});
+					.then(answerUpload => {
+						window.location.replace("/payment/made/" + getActions().logedStore());
+					});
 			},
 			SearchDistance: id_user_offer => {
 				var distance = "";
