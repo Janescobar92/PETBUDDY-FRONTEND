@@ -133,7 +133,7 @@ export const ServiceCard = () => {
 							<PayPalButton
 								price={value.toString()}
 								description={servicetofind.description}
-								service_id_hired={ServiceTypes(servicetofind.id_service_type)}
+								service_id_hired={servicetofind.id}
 							/>
 						</div>
 					</div>
