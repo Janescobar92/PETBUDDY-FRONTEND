@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { HorizontalCard } from "./hcard.jsx";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
-import avatar from "../../assets/img/havatar.png";
+// import avatar from "../../assets/img/havatar.png";
 
 export const CardContainerYouWorkedFor = () => {
 	const { store, actions } = useContext(Context);

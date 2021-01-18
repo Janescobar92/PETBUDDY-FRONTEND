@@ -21,7 +21,9 @@ module.exports = {
         },
         {
           test: /\.(css|scss)$/, use: [{
-              loader: "style-loader" // creates style nodes from JS strings
+              loader: "style-loader",
+                options: {injectType: "linkTag"}
+ // creates style nodes from JS strings
           }, {
               loader: "css-loader" // translates CSS into CommonJS
           }, {

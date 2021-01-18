@@ -6,7 +6,7 @@ import { DescriptionContainer } from "../component/description-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
 import { ServiceCardContainer } from "../component/service_card_container";
 import { PetsCardContainer } from "../component/pets-cards-container.jsx";
-import avatar from "../../assets/img/avatar.png";
+// import avatar from "../../assets/img/avatar.png";
 import "../../styles/profile_containers.scss";
 
 export const Profile = () => {
@@ -30,7 +30,7 @@ export const Profile = () => {
 					view="profile"
 					title={userToFind.name}
 					subtitle={userToFind.last_name}
-					img={userToFind.image || avatar}
+					img={userToFind.image || "/avatar.png"}
 				/>
 				<ul className="nav nav-pills mb-3 justify-content-center mt-3" id="pills-tab" role="tablist">
 					<li className="nav-item" role="presentation">

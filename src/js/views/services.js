@@ -13,20 +13,20 @@ export const Services = () => {
 		actions.getTypeServices(service_type.service_type);
 	}, []);
 
-	const cards = store.services.map((item, index) => {
-		let distances = actions.SearchDistance(item.id_user_offer);
-		store.serviceID = item.id_service_type;
+	const cards = store.distances.map((item, index) => {
+		let each_service = store.services;
+		const serviceToFind = each_service.find(service => service.id_user_offer == item.id_user_offer);
 		if (actions.logedStore() != item.id_user_offer) {
 			return (
 				<Link style={{ textDecoration: "none" }} key={index} to={"/outprofile/" + item.id_user_offer}>
 					<HorizontalCard
 						key={index}
-						source={item.image}
-						name={item.name}
-						service={item.id_service_type}
-						price={item.price_h}
-						distance={distances}
-						description={item.description}
+						source={serviceToFind.image}
+						name={serviceToFind.name}
+						service={serviceToFind.id_service_type}
+						price={serviceToFind.price_h}
+						distance={item.distance}
+						description={serviceToFind.description}
 					/>
 				</Link>
 			);

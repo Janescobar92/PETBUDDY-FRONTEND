@@ -12,7 +12,7 @@ $tertiarycolor:#f5b141;
     display: flex;
     flex-flow: row-reverse;
     justify-content:end;
-    background-image: url("../assets/img/dogbackground.png");
+    background-image: url("/dogbackground.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-clip: border-box;
@@ -108,7 +108,7 @@ margin-right: 20rem;
     display: flex;
 }
 .profile{
-    background-image: url("../assets/img/animal_print_v2.png");
+    background-image: url("/animal_print_v2.png");
     background-size: cover;
     justify-content: center;
     height: 600px;

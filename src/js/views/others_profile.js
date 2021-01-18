@@ -6,7 +6,7 @@ import { DescriptionContainer } from "../component/description-container.jsx";
 import { ServiceCardContainer } from "../component/service_card_container";
 import { PetsCardContainer } from "../component/pets-cards-container.jsx";
 import { Jumbotron } from "../component/jumbotron.jsx";
-import avatar from "../../assets/img/avatar.png";
+// import avatar from "../../assets/img/avatar.png";
 
 import "../../styles/jumbotron.scss";
 
@@ -29,7 +29,7 @@ export const OthersProfile = () => {
 					view="profile"
 					title={userToFind.name}
 					subtitle={userToFind.last_name}
-					img={userToFind.image || avatar}
+					img={userToFind.image || "/avatar.png"}
 				/>
 				<div className="jumbotron-buttons-container mb-3" />
 				<div className="body--content-margins">

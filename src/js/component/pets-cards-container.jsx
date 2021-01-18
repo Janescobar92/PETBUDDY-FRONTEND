@@ -4,7 +4,6 @@ import { PetsCard } from "./vpetscard.jsx";
 import { PetsForm } from "./pets_form.jsx";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-
 import "../../styles/containers_margins.scss";
 import "../../styles/profile_containers.scss";
 
