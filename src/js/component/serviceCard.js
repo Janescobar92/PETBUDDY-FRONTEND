@@ -9,7 +9,6 @@ export const ServiceCard = () => {
 	const { store, actions } = useContext(Context);
 	const [dislpayPayment, setdislpayPayment] = useState(false);
 	const [serviceID, setServiceID] = useState(0);
-	// let serviceID = null;
 	let Cards = null;
 	let id_user = useParams();
 

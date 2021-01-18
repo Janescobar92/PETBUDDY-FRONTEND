@@ -5,7 +5,7 @@ import { Context } from "../store/appContext.js";
 import { Jumbotron } from "../component/jumbotron.jsx";
 import { HorizontalCard } from "../component/h_card.js";
 
-export const Services = porps => {
+export const Services = () => {
 	const { store, actions } = useContext(Context);
 	const service_type = useParams();
 

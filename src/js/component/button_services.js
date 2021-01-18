@@ -9,9 +9,7 @@ export const Button_Services = props => {
 	const { store, actions } = useContext(Context);
 	return (
 		<Link to={"/services/" + props.service}>
-			<div className={props.classStyle} onClick={() => actions.getTypeServices(props.service)}>
-				{/* {props.service} */}
-			</div>
+			<div className={props.classStyle} onClick={() => actions.getTypeServices(props.service)} />
 		</Link>
 	);
 };

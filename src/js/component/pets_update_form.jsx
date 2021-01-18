@@ -6,7 +6,6 @@ import { storage } from "../firebase/firebase_config";
 export const UpdatePetsForm = () => {
 	const { store, actions } = useContext(Context);
 	const [image, setImage] = useState(null);
-	// const [imgURL, setImgUrl] = useState("");
 
 	const animal = store.animals.map((eachAnimal, index) => {
 		return eachAnimal;
@@ -17,7 +16,6 @@ export const UpdatePetsForm = () => {
 			setImage(event.target.files[0]);
 		}
 	};
-	console.log("image: ", image);
 
 	let handleUpload = async () => {
 		if (image != null) {
@@ -35,7 +33,6 @@ export const UpdatePetsForm = () => {
 						.getDownloadURL()
 						.then(url => {
 							actions.SetPetImageURL(url);
-							console.log(url);
 						})
 						.then(() => actions.updateUserPet(animalToFind.image))
 						.then(() => actions.setShowLogin());

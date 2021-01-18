@@ -31,9 +31,7 @@ export const OthersProfile = () => {
 					subtitle={userToFind.last_name}
 					img={userToFind.image || avatar}
 				/>
-				<div className="jumbotron-buttons-container mb-3">
-					{/* <button className="button-login-style align-self-center">Contratar</button> */}
-				</div>
+				<div className="jumbotron-buttons-container mb-3" />
 				<div className="body--content-margins">
 					<ul className="nav nav-pills mb-3 justify-content-center mt-3" id="pills-tab" role="tablist">
 						<li className="nav-item" role="presentation">

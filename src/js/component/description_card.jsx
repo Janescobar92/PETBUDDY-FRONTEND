@@ -8,7 +8,6 @@ import { DeleteModal } from "./deleting_modal.jsx";
 export const DescriptionCard = () => {
 	const [dislpayForm, setdislpayForm] = useState(false);
 	const [image, setImage] = useState(null);
-	// const [imgURL, setImgUrl] = useState("");
 	const [progress, setProgress] = useState(0);
 	const { store, actions } = useContext(Context);
 	let id_user = useParams();

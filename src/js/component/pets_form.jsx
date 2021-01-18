@@ -12,7 +12,6 @@ export const PetsForm = () => {
 			setImage(event.target.files[0]);
 		}
 	};
-	console.log("image: ", image);
 
 	let handleUpload = async () => {
 		if (image != null) {
@@ -30,7 +29,6 @@ export const PetsForm = () => {
 						.getDownloadURL()
 						.then(url => {
 							actions.SetPetImageURL(url);
-							console.log(url);
 						})
 						.then(() => actions.createUserPet(actions.createPetForm()))
 						.then(() => actions.showComponent());

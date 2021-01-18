@@ -207,10 +207,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let myImg = null;
 				if (getStore().profileImgUrl == "") {
 					myImg = getStore().users[0].image;
-					console.log(myImg, getStore().users);
 				} else {
 					myImg = getStore().profileImgUrl;
-					console.log(myImg);
 				}
 				let myName = document.querySelector("#name").value;
 				let myLast_name = document.querySelector("#last_name").value;
@@ -227,7 +225,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location: mylocation,
 					biografy: mybiografy
 				};
-				console.log(updatedUser);
 				return updatedUser;
 			},
 			deletUserPet: petToDeleteData => {
@@ -526,7 +523,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTypeServices: id_service_type => {
-				console.log(id_service_type, "id del servicio");
 				if (id_service_type == "Paseador") {
 					id_service_type = 1;
 				} else if (id_service_type == "Cuidador") {
@@ -538,7 +534,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else if (id_service_type == "Veterinario") {
 					id_service_type = 5;
 				}
-				console.log(id_service_type, "id del servicio");
 				fetch(getStore().route + "/" + id_service_type + "/services", {
 					method: "GET"
 				})
@@ -630,9 +625,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 					.then(response => response.json())
-					.then(answerUpload => {
-						console.log(answerUpload);
-					});
+					.then(answerUpload => {});
 			},
 			SearchDistance: id_user_offer => {
 				var distance = "";
