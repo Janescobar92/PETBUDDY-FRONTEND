@@ -49,7 +49,7 @@ export const CardContainerhired = () => {
 		return Cards;
 	} else {
 		return (
-			<div>
+			<div className="d-flex justify-content-center">
 				<p>Aún no has contratado nadie</p>
 			</div>
 		);

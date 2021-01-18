@@ -20,8 +20,9 @@ export const History = () => {
 			<div className="history--container-title-style">
 				<h2>Has contratado a</h2>
 			</div>
-			<div className="container-cardbox-align" />
-			<CardContainerhired />
+			<div className="container-cardbox-align">
+				<CardContainerhired />
+			</div>
 			<div className="history--container-title-style">
 				<h2>Has trabajado para</h2>
 			</div>
