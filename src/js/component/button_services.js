@@ -8,12 +8,11 @@ import "../../styles/landing.scss";
 export const Button_Services = props => {
 	const { store, actions } = useContext(Context);
 	return (
-		<Link to={"/services/" + props.service}>
-			<div className={props.classStyle} onClick={() => actions.getTypeServices(props.service)} />
+		<Link to={"/services/" + props.service} onClick={() => actions.getTypeServices(props.service)}>
+			<div className={props.classStyle} />
 		</Link>
 	);
 };
-
 Button_Services.propTypes = {
 	service: PropTypes.string,
 	classStyle: PropTypes.string

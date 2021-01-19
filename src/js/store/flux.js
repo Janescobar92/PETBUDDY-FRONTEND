@@ -552,9 +552,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 							if (service.id_service_type == 4) service.id_service_type = "Adiestrador";
 							if (service.id_service_type == 5) service.id_service_type = "Veterinario";
 						});
-						if (serviceData.length != getStore().services.length) {
-							setStore({ services: serviceData });
-						}
+						// if (serviceData.length != getStore().services.length) {
+						setStore({ services: serviceData });
+						// }
 					})
 					.then(() => getActions().MatrixDistance(id_service_type))
 					.catch(error => {
