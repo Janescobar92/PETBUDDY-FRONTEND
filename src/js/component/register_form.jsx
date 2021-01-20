@@ -61,7 +61,7 @@ export const RegisterModal = () => {
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="repeatPassword">Repiete el password</label>
+					<label htmlFor="repeatPassword">Repite el password</label>
 					<input
 						type="password"
 						className="form-control"

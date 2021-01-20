@@ -39,10 +39,12 @@ $transform-scale: scale(1.05);
     background-position: top;
     width: 100%;
     z-index:-1;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem;
     .card-title{
         padding-top: 1.5rem;
         padding-right: 1rem;
+        font-size: 1.5rem;
     }
     .card-text{
         padding-right: 1rem;
